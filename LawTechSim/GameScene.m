@@ -80,6 +80,18 @@ static NSString *const kTMXFileName = @"PokeMap.tmx";
     // STUB
 }
 
+#pragma mark - GameControlViewDelegate
+
+- (void)gameControlDidChangeToState:(GameControlViewState)state
+{
+    // TODO: STUB
+}
+
+- (void)gameControlDidPressAction
+{
+    // TODO: STUB
+}
+
 
 
 @end

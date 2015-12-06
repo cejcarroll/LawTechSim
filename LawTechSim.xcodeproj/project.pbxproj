@@ -23,6 +23,7 @@
 		8C40EAF01C1409180053CBFE /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C40EAEF1C1409180053CBFE /* libz.tbd */; };
 		8C40EAF31C140E380053CBFE /* PokeMap.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 8C40EAF21C140E380053CBFE /* PokeMap.tmx */; };
 		8C40EAF51C140EE50053CBFE /* indoor_free_tileset__by_thegreatblaid-d5x95zt.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C40EAF41C140EE50053CBFE /* indoor_free_tileset__by_thegreatblaid-d5x95zt.png */; };
+		8C40EAFB1C1413C30053CBFE /* GameControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C40EAFA1C1413C30053CBFE /* GameControlView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +65,8 @@
 		8C40EAEF1C1409180053CBFE /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		8C40EAF21C140E380053CBFE /* PokeMap.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = PokeMap.tmx; sourceTree = "<group>"; };
 		8C40EAF41C140EE50053CBFE /* indoor_free_tileset__by_thegreatblaid-d5x95zt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "indoor_free_tileset__by_thegreatblaid-d5x95zt.png"; sourceTree = "<group>"; };
+		8C40EAF91C1413C30053CBFE /* GameControlView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameControlView.h; sourceTree = "<group>"; };
+		8C40EAFA1C1413C30053CBFE /* GameControlView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameControlView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,8 +114,9 @@
 				8C40EAB61C139E3E0053CBFE /* AppDelegate.m */,
 				8C40EADD1C13A5BE0053CBFE /* GameViewController.h */,
 				8C40EADE1C13A5BE0053CBFE /* GameViewController.m */,
-				8C40EAE01C13A6B80053CBFE /* GameScene.h */,
-				8C40EAE11C13A6B80053CBFE /* GameScene.m */,
+				8C40EAF81C1413180053CBFE /* Scenes */,
+				8C40EAF71C1412FE0053CBFE /* Nodes */,
+				8C40EAFC1C1413D30053CBFE /* Views */,
 				8C40EAC31C139E3E0053CBFE /* Assets.xcassets */,
 				8C40EAC51C139E3E0053CBFE /* LaunchScreen.storyboard */,
 				8C40EAC81C139E3E0053CBFE /* Info.plist */,
@@ -120,8 +124,6 @@
 				8C40EAE91C13FC450053CBFE /* External */,
 				8C40EADC1C13A5060053CBFE /* AutoGen SceneKit Proj */,
 				8C40EAB21C139E3E0053CBFE /* Supporting Files */,
-				8C40EAEC1C13FD0E0053CBFE /* CharacterNode.h */,
-				8C40EAED1C13FD0E0053CBFE /* CharacterNode.m */,
 			);
 			path = LawTechSim;
 			sourceTree = "<group>";
@@ -181,6 +183,33 @@
 				8C40EAF41C140EE50053CBFE /* indoor_free_tileset__by_thegreatblaid-d5x95zt.png */,
 			);
 			name = TMX;
+			sourceTree = "<group>";
+		};
+		8C40EAF71C1412FE0053CBFE /* Nodes */ = {
+			isa = PBXGroup;
+			children = (
+				8C40EAEC1C13FD0E0053CBFE /* CharacterNode.h */,
+				8C40EAED1C13FD0E0053CBFE /* CharacterNode.m */,
+			);
+			name = Nodes;
+			sourceTree = "<group>";
+		};
+		8C40EAF81C1413180053CBFE /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				8C40EAE01C13A6B80053CBFE /* GameScene.h */,
+				8C40EAE11C13A6B80053CBFE /* GameScene.m */,
+			);
+			name = Scenes;
+			sourceTree = "<group>";
+		};
+		8C40EAFC1C1413D30053CBFE /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8C40EAF91C1413C30053CBFE /* GameControlView.h */,
+				8C40EAFA1C1413C30053CBFE /* GameControlView.m */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -287,6 +316,7 @@
 			files = (
 				8C40EAEE1C13FD0E0053CBFE /* CharacterNode.m in Sources */,
 				8C40EADF1C13A5BE0053CBFE /* GameViewController.m in Sources */,
+				8C40EAFB1C1413C30053CBFE /* GameControlView.m in Sources */,
 				8C40EABF1C139E3E0053CBFE /* AutoGenGameViewController.m in Sources */,
 				8C40EAB71C139E3E0053CBFE /* AppDelegate.m in Sources */,
 				8C40EAE51C13FC350053CBFE /* JSTileMap.m in Sources */,
