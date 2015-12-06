@@ -8,6 +8,7 @@
 
 #import "GameScene.h"
 #import "JSTileMap.h"
+#import "CharacterNode.h"
 
 @interface GameScene ()
 
@@ -15,6 +16,8 @@
  Holds TMX file representation, SKNode for world
  */
 @property (nonatomic, strong) JSTileMap *tileMapNode;
+
+@property (nonatomic, strong) CharacterNode *characterNode;
 
 @end
 
@@ -29,8 +32,10 @@ static NSString *const kTMXFileName = @"PokeMap.tmx";
     if (self = [super initWithSize:size])
     {
         self.anchorPoint = CGPointMake(0.5,0.5);
+        self.scaleMode = SKSceneScaleModeAspectFill;
         
         [self addChild:self.tileMapNode];
+        [self addChild:self.characterNode];
     }
 
     return self;
@@ -43,6 +48,7 @@ static NSString *const kTMXFileName = @"PokeMap.tmx";
     if (!_tileMapNode)
     {
         _tileMapNode = [JSTileMap mapNamed:kTMXFileName];
+
         CGFloat screenScale = [[UIScreen mainScreen] scale];
         _tileMapNode.xScale = screenScale;
         _tileMapNode.yScale = screenScale;
@@ -56,6 +62,22 @@ static NSString *const kTMXFileName = @"PokeMap.tmx";
     }
     
     return _tileMapNode;
+}
+
+- (CharacterNode *)characterNode
+{
+    if (!_characterNode)
+    {
+        _characterNode = [[CharacterNode alloc] init];
+        
+        CGFloat screenScale = [[UIScreen mainScreen] scale];
+        [_characterNode setScreenScale:screenScale];
+        
+        // TODO: Place appropriately
+
+    }
+    
+    return _characterNode;
 }
 
 #pragma mark - SKScene
@@ -84,7 +106,20 @@ static NSString *const kTMXFileName = @"PokeMap.tmx";
 
 - (void)gameControlDidChangeToState:(GameControlViewState)state
 {
-    // TODO: STUB
+    CharacterNodeState charState;
+    
+    if (state == GameControlViewStateNoPress)
+        charState = CharacterNodeStateStill;
+    else if (state == GameControlViewStateLeftPress)
+        charState = CharacterNodeStateMovingLeft;
+    else if (state == GameControlViewStateUpPress)
+        charState = CharacterNodeStateMovingUp;
+    else if (state == GameControlViewStateRightPress)
+        charState = CharacterNodeStateMovingRight;
+    else if (state == GameControlViewStateDownPress)
+        charState = CharacterNodeStateMovingDown;
+    
+    [self.characterNode setState:charState];
 }
 
 - (void)gameControlDidPressAction

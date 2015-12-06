@@ -21,11 +21,15 @@
 
 @implementation GameControlView
 
+static const CGSize kButtonSize = {50, 50};
+
 - (instancetype)initWithFrame:(CGRect)frame
 {
     if (self = [super initWithFrame:frame])
     {
         _state = GameControlViewStateNoPress;
+        
+        self.backgroundColor = [UIColor darkGrayColor];
         
         
         // FIXME: Replace with actual assets and organize later on
@@ -52,30 +56,35 @@
     
     // LEFT
     btnFrame = self.leftBtn.frame;
+    btnFrame.size = kButtonSize;
     btnFrame.origin.x = kButtonPadding;
     btnFrame.origin.y = bounds.size.height / 2;
     [self.leftBtn setFrame:btnFrame];
     
     // UP
     btnFrame = self.upBtn.frame;
+    btnFrame.size = kButtonSize;
     btnFrame.origin.x = kButtonPadding + kButtonSpacing;
     btnFrame.origin.y = bounds.size.height / 2 - kButtonSpacing;
     [self.upBtn setFrame:btnFrame];
     
     // DOWN
     btnFrame = self.downBtn.frame;
+    btnFrame.size = kButtonSize;
     btnFrame.origin.x = kButtonPadding + kButtonSpacing;
     btnFrame.origin.y = bounds.size.height / 2 + kButtonSpacing;
     [self.downBtn setFrame:btnFrame];
     
     // RIGHT
     btnFrame = self.rightBtn.frame;
+    btnFrame.size = kButtonSize;
     btnFrame.origin.x = kButtonPadding + 2*kButtonSpacing;
     btnFrame.origin.y = bounds.size.height / 2;
     [self.rightBtn setFrame:btnFrame];
     
     // ACTION
     btnFrame = self.actionBtn.frame;
+    btnFrame.size.height = kButtonSize.height;
     btnFrame.origin.x = bounds.size.width - kButtonPadding - btnFrame.size.width;
     btnFrame.origin.y = bounds.size.height / 2;
     [self.actionBtn setFrame:btnFrame];
@@ -131,7 +140,9 @@
     
     // LEFT
     self.leftBtn = [UIButton buttonWithType:UIButtonTypeSystem];
+    self.leftBtn.tintColor = [UIColor whiteColor];
     [self.leftBtn setTitle:@"LEFT" forState:UIControlStateNormal];
+    [self.leftBtn setBackgroundColor:[UIColor grayColor]];
     [self.leftBtn sizeToFit];
     [self.leftBtn addTarget:self
                      action:@selector(leftBtnPressed)
@@ -142,7 +153,9 @@
     
     // UP
     self.upBtn = [UIButton buttonWithType:UIButtonTypeSystem];
+    self.upBtn.tintColor = [UIColor whiteColor];
     [self.upBtn setTitle:@"UP" forState:UIControlStateNormal];
+    [self.upBtn setBackgroundColor:[UIColor grayColor]];
     [self.upBtn sizeToFit];
     [self.upBtn addTarget:self
                    action:@selector(upBtnPressed)
@@ -153,7 +166,9 @@
     
     // RIGHT
     self.rightBtn = [UIButton buttonWithType:UIButtonTypeSystem];
+    self.rightBtn.tintColor = [UIColor whiteColor];
     [self.rightBtn setTitle:@"RIGHT" forState:UIControlStateNormal];
+    [self.rightBtn setBackgroundColor:[UIColor grayColor]];
     [self.rightBtn sizeToFit];
     [self.rightBtn addTarget:self
                       action:@selector(rightBtnPressed)
@@ -164,7 +179,9 @@
     
     // DOWN
     self.downBtn = [UIButton buttonWithType:UIButtonTypeSystem];
+    self.downBtn.tintColor = [UIColor whiteColor];
     [self.downBtn setTitle:@"DOWN" forState:UIControlStateNormal];
+    [self.downBtn setBackgroundColor:[UIColor grayColor]];
     [self.downBtn sizeToFit];
     [self.downBtn addTarget:self
                      action:@selector(downBtnPressed)
@@ -175,7 +192,9 @@
     
     // ACTION
     self.actionBtn = [UIButton buttonWithType:UIButtonTypeSystem];
+    self.actionBtn.tintColor = [UIColor whiteColor];
     [self.actionBtn setTitle:@"ACTION" forState:UIControlStateNormal];
+    [self.actionBtn setBackgroundColor:[UIColor grayColor]];
     [self.actionBtn sizeToFit];
     [self.actionBtn addTarget:self
                           action:@selector(actionBtnPressed)

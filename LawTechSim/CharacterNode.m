@@ -11,8 +11,10 @@
 @interface CharacterNode ()
 
 /*   Actions to be executed by node to update texture   */
-@property (nonatomic, strong) SKAction *stillDownAction;
+@property (nonatomic, strong) SKAction *stillLeftAction;
 @property (nonatomic, strong) SKAction *stillUpAction;
+@property (nonatomic, strong) SKAction *stillDownAction;
+@property (nonatomic, strong) SKAction *stillRightAction;
 @property (nonatomic, strong) SKAction *movingLeftAction;
 @property (nonatomic, strong) SKAction *movingUpAction;
 @property (nonatomic, strong) SKAction *movingRightAction;
@@ -27,9 +29,12 @@
 
 static const NSUInteger kInitialMovementSpeed = 5;
 
-// Time in seconds between texture changes for animations on different axis
-static const NSTimeInterval kHorizontalAnimationFramerate = 0.3;
-static const NSTimeInterval kVerticalAnimationFramerate = 0.5;
+static const CGFloat kScreenRatioMagnifier = 0.5; // Increase sprite size by this ratio to match tilemap
+
+// Time in seconds between texture changes for animations
+static const NSTimeInterval kAnimationFramerate = 0.15;
+
+static NSString *const kCharacterActionKey = @"CharacterNodeAction";
 
 - (instancetype)init
 {
@@ -55,6 +60,17 @@ static const NSTimeInterval kVerticalAnimationFramerate = 0.5;
     _state = state;
 }
 
+- (void)setScreenScale:(CGFloat)screenScale
+{
+    if (_screenScale != screenScale)
+    {
+        self.xScale = screenScale * kScreenRatioMagnifier;
+        self.yScale = screenScale * kScreenRatioMagnifier;
+    }
+    
+    _screenScale = screenScale;
+}
+
 
 /**
  Perform texture changes for given state
@@ -65,11 +81,17 @@ static const NSTimeInterval kVerticalAnimationFramerate = 0.5;
 {
     SKAction *execAction = nil;
     
+    [self removeActionForKey:kCharacterActionKey];
+    
     switch (state) {
         case CharacterNodeStateStill:
-            if (self.state == CharacterNodeStateMovingUp)
+            if (self.state == CharacterNodeStateMovingLeft)
+                execAction = self.stillLeftAction;
+            else if (self.state == CharacterNodeStateMovingUp)
                 execAction = self.stillUpAction;
-            else
+            else if (self.state == CharacterNodeStateMovingRight)
+                execAction = self.stillRightAction;
+            else if (self.state == CharacterNodeStateMovingDown)
                 execAction = self.stillDownAction;
             break;
         case CharacterNodeStateMovingLeft:
@@ -87,20 +109,21 @@ static const NSTimeInterval kVerticalAnimationFramerate = 0.5;
     }
     
     /*   TODO: Maybe assign key? Dunno which is faster - clearing all action or specifying key */
-    [self runAction:execAction];
+    [self runAction:execAction
+            withKey:kCharacterActionKey];
 }
 
 #pragma mark - Properties
 
-- (SKAction *)stillDownAction
+- (SKAction *)stillLeftAction
 {
-    if (!_stillDownAction)
+    if (!_stillLeftAction)
     {
-        SKTexture *t = [SKTexture textureWithImageNamed:@"SD"];
-        _stillDownAction = [SKAction setTexture:t resize:NO];
+        SKTexture *t = [SKTexture textureWithImageNamed:@"SL"];
+        _stillLeftAction = [SKAction setTexture:t resize:NO];
     }
     
-    return _stillDownAction;
+    return _stillLeftAction;
 }
 
 - (SKAction *)stillUpAction
@@ -114,16 +137,41 @@ static const NSTimeInterval kVerticalAnimationFramerate = 0.5;
     return _stillUpAction;
 }
 
+- (SKAction *)stillRightAction
+{
+    if (!_stillRightAction)
+    {
+        SKTexture *t = [SKTexture textureWithImageNamed:@"SR"];
+        _stillRightAction = [SKAction setTexture:t resize:NO];
+    }
+    
+    return _stillRightAction;
+}
+
+- (SKAction *)stillDownAction
+{
+    if (!_stillDownAction)
+    {
+        SKTexture *t = [SKTexture textureWithImageNamed:@"SD"];
+        _stillDownAction = [SKAction setTexture:t resize:NO];
+    }
+    
+    return _stillDownAction;
+}
+
+
+
 - (SKAction *)movingLeftAction
 {
     if (!_movingLeftAction)
     {
-        SKTexture *t0 = [SKTexture textureWithImageNamed:@"L0"];
-        SKTexture *t1 = [SKTexture textureWithImageNamed:@"L1"];
-        SKTexture *t2 = [SKTexture textureWithImageNamed:@"L2"];
+        SKTexture *t0 = [SKTexture textureWithImageNamed:@"WL0"];
+        SKTexture *t1 = [SKTexture textureWithImageNamed:@"WL1"];
+        SKTexture *t2 = [SKTexture textureWithImageNamed:@"WL2"];
         
-        _movingLeftAction = [SKAction animateWithTextures:@[t0, t1, t2]
-                                             timePerFrame:kHorizontalAnimationFramerate];
+        SKAction *repeatingAction = [SKAction animateWithTextures:@[t0, t1, t2, t1]
+                                                     timePerFrame:kAnimationFramerate];
+        _movingLeftAction = [SKAction repeatActionForever:repeatingAction];
     }
     
     return _movingLeftAction;
@@ -133,11 +181,13 @@ static const NSTimeInterval kVerticalAnimationFramerate = 0.5;
 {
     if (!_movingUpAction)
     {
-        SKTexture *t0 = [SKTexture textureWithImageNamed:@"U0"];
-        SKTexture *t1 = [SKTexture textureWithImageNamed:@"U1"];
+        SKTexture *t0 = [SKTexture textureWithImageNamed:@"WU0"];
+        SKTexture *t1 = [SKTexture textureWithImageNamed:@"WU1"];
+        SKTexture *t2 = [SKTexture textureWithImageNamed:@"WU2"];
         
-        _movingUpAction = [SKAction animateWithTextures:@[t0, t1]
-                                           timePerFrame:kVerticalAnimationFramerate];
+        SKAction *repeatingAction = [SKAction animateWithTextures:@[t0, t1, t2, t1]
+                                                     timePerFrame:kAnimationFramerate];
+        _movingUpAction = [SKAction repeatActionForever:repeatingAction];
     }
     
     return _movingUpAction;
@@ -147,12 +197,15 @@ static const NSTimeInterval kVerticalAnimationFramerate = 0.5;
 {
     if (!_movingRightAction)
     {
-        SKTexture *t0 = [SKTexture textureWithImageNamed:@"R0"];
-        SKTexture *t1 = [SKTexture textureWithImageNamed:@"R1"];
-        SKTexture *t2 = [SKTexture textureWithImageNamed:@"R2"];
+        SKTexture *t0 = [SKTexture textureWithImageNamed:@"WR0"];
+        SKTexture *t1 = [SKTexture textureWithImageNamed:@"WR1"];
+        SKTexture *t2 = [SKTexture textureWithImageNamed:@"WR2"];
         
-        _movingRightAction = [SKAction animateWithTextures:@[t0, t1, t2]
-                                              timePerFrame:kHorizontalAnimationFramerate];
+        
+        SKAction *repeatingAction = [SKAction animateWithTextures:@[t0, t1, t2, t1]
+                                                     timePerFrame:kAnimationFramerate];
+        _movingRightAction = [SKAction repeatActionForever:repeatingAction];
+        
     }
     
     return _movingRightAction;
@@ -162,11 +215,13 @@ static const NSTimeInterval kVerticalAnimationFramerate = 0.5;
 {
     if (!_movingDownAction)
     {
-        SKTexture *t0 = [SKTexture textureWithImageNamed:@"D0"];
-        SKTexture *t1 = [SKTexture textureWithImageNamed:@"D1"];
+        SKTexture *t0 = [SKTexture textureWithImageNamed:@"WD0"];
+        SKTexture *t1 = [SKTexture textureWithImageNamed:@"WD1"];
+        SKTexture *t2 = [SKTexture textureWithImageNamed:@"WD2"];
         
-        _movingDownAction = [SKAction animateWithTextures:@[t0, t1]
-                                             timePerFrame:kVerticalAnimationFramerate];
+        SKAction *repeatingAction = [SKAction animateWithTextures:@[t0, t1, t2, t1]
+                                                     timePerFrame:kAnimationFramerate];
+        _movingDownAction = [SKAction repeatActionForever:repeatingAction];
     }
     
     return _movingDownAction;

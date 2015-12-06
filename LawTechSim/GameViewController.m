@@ -12,19 +12,31 @@
 
 @interface GameViewController ()
 
-@property (nonatomic, strong) SKView *view;
+@property (nonatomic, strong) SKView *gameView;
 @property (nonatomic, strong) GameScene *gameScene;
 @property (nonatomic, strong) GameControlView *controlView;
 
 @end
 
 @implementation GameViewController
-@dynamic view;
+
 
 
 - (void)loadView
 {
-    self.view = [[SKView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.view = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.view.autoresizingMask = UIViewAutoresizingNone;
+
+    // GameView
+    self.gameView = [[SKView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.gameView.autoresizingMask = UIViewAutoresizingNone;
+    [self.view addSubview:self.gameView];
+    
+    // TEMP: logs
+    self.gameView.showsFPS = YES;
+    self.gameView.showsNodeCount = YES;
+    
+    // Controls
     [self.view addSubview:self.controlView];
 
     // TODO: Implement Start Screen?
@@ -37,12 +49,16 @@
     // TEMP: Load GameScene for now
     // Setup and Present GameScene
     self.controlView.delegate = self.gameScene;
-    [self.view presentScene:self.gameScene];
+    [self.gameView presentScene:self.gameScene];
 }
 
 - (void)viewDidLayoutSubviews
 {
     [super viewDidLayoutSubviews];
+    
+    CGRect gameFrame = self.view.bounds;
+    gameFrame.size.height /= 2;
+    [self.gameView setFrame:gameFrame];
     
     // Layout control to bottom half of screen TEMP
     CGRect ctrlFrame = self.view.bounds;
