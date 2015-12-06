@@ -3,47 +3,83 @@
 //  LawTechSim
 //
 //  Created by Leo Shimonaka on 12/5/15.
-//  Copyright (c) 2015 Leo Shimonaka. All rights reserved.
+//  Copyright © 2015 Leo Shimonaka. All rights reserved.
 //
 
 #import "GameScene.h"
+#import "JSTileMap.h"
+
+@interface GameScene ()
+
+/**
+ Holds TMX file representation, SKNode for world
+ */
+@property (nonatomic, strong) JSTileMap *tileMapNode;
+
+@end
+
+//-------------------------------------------------
 
 @implementation GameScene
 
--(void)didMoveToView:(SKView *)view {
-    /* Setup your scene here */
-    SKLabelNode *myLabel = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
-    
-    myLabel.text = @"Hello, World!";
-    myLabel.fontSize = 45;
-    myLabel.position = CGPointMake(CGRectGetMidX(self.frame),
-                                   CGRectGetMidY(self.frame));
-    
-    [self addChild:myLabel];
-}
+static NSString *const kTMXFileName = @"PokeMap.tmx";
 
--(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    /* Called when a touch begins */
-    
-    for (UITouch *touch in touches) {
-        CGPoint location = [touch locationInNode:self];
+- (instancetype)initWithSize:(CGSize)size
+{
+    if (self = [super initWithSize:size])
+    {
+        self.anchorPoint = CGPointMake(0.5,0.5);
         
-        SKSpriteNode *sprite = [SKSpriteNode spriteNodeWithImageNamed:@"Spaceship"];
-        
-        sprite.xScale = 0.5;
-        sprite.yScale = 0.5;
-        sprite.position = location;
-        
-        SKAction *action = [SKAction rotateByAngle:M_PI duration:1];
-        
-        [sprite runAction:[SKAction repeatActionForever:action]];
-        
-        [self addChild:sprite];
+        [self addChild:self.tileMapNode];
     }
+
+    return self;
 }
 
--(void)update:(CFTimeInterval)currentTime {
-    /* Called before each frame is rendered */
+#pragma mark - Properties
+
+- (JSTileMap *)tileMapNode
+{
+    if (!_tileMapNode)
+    {
+        _tileMapNode = [JSTileMap mapNamed:kTMXFileName];
+        CGFloat screenScale = [[UIScreen mainScreen] scale];
+        _tileMapNode.xScale = screenScale;
+        _tileMapNode.yScale = screenScale;
+        
+        
+        /*   TODO: replace with appropriate start position indicated by TMX   */
+        /*   center map   */
+        CGRect mapBounds = [_tileMapNode calculateAccumulatedFrame];
+        _tileMapNode.position = CGPointMake(-mapBounds.size.width/2.0,
+                                            -mapBounds.size.height/2.0);
+    }
+    
+    return _tileMapNode;
 }
+
+#pragma mark - SKScene
+
+- (void)update:(NSTimeInterval)currentTime
+{
+    // STUB
+}
+
+- (void)didEvaluateActions
+{
+    // STUB
+}
+
+- (void)didSimulatePhysics
+{
+    // STUB: Probably don't need this, depending on game design
+}
+
+- (void)didFinishUpdate
+{
+    // STUB
+}
+
+
 
 @end

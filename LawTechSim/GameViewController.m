@@ -3,74 +3,60 @@
 //  LawTechSim
 //
 //  Created by Leo Shimonaka on 12/5/15.
-//  Copyright (c) 2015 Leo Shimonaka. All rights reserved.
+//  Copyright © 2015 Leo Shimonaka. All rights reserved.
 //
 
 #import "GameViewController.h"
 #import "GameScene.h"
 
-@implementation SKScene (Unarchive)
+@interface GameViewController ()
 
-+ (instancetype)unarchiveFromFile:(NSString *)file {
-    /* Retrieve scene file path from the application bundle */
-    NSString *nodePath = [[NSBundle mainBundle] pathForResource:file ofType:@"sks"];
-    /* Unarchive the file to an SKScene object */
-    NSData *data = [NSData dataWithContentsOfFile:nodePath
-                                          options:NSDataReadingMappedIfSafe
-                                            error:nil];
-    NSKeyedUnarchiver *arch = [[NSKeyedUnarchiver alloc] initForReadingWithData:data];
-    [arch setClass:self forClassName:@"SKScene"];
-    SKScene *scene = [arch decodeObjectForKey:NSKeyedArchiveRootObjectKey];
-    [arch finishDecoding];
-    
-    return scene;
-}
+@property (nonatomic, strong) SKView *view;
+@property (nonatomic, strong) GameScene *gameScene;
 
 @end
 
 @implementation GameViewController
+@dynamic view;
+
+
+- (void)loadView
+{
+    self.view = [[SKView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+
+    // TODO: Implement Start Screen?
+    
+}
+
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    // TEMP: Load GameScene for now
+    [self.view presentScene:self.gameScene];
 
-    // Configure the view.
-    SKView * skView = (SKView *)self.view;
-    skView.showsFPS = YES;
-    skView.showsNodeCount = YES;
-    /* Sprite Kit applies additional optimizations to improve rendering performance */
-    skView.ignoresSiblingOrder = YES;
     
-    // Create and configure the scene.
-    GameScene *scene = [GameScene unarchiveFromFile:@"GameScene"];
-    scene.scaleMode = SKSceneScaleModeAspectFill;
-    
-    // Present the scene.
-    [skView presentScene:scene];
 }
 
-- (BOOL)shouldAutorotate
-{
-    return YES;
-}
+#pragma mark - Properties
 
-- (UIInterfaceOrientationMask)supportedInterfaceOrientations
+- (GameScene *)gameScene
 {
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-        return UIInterfaceOrientationMaskAllButUpsideDown;
-    } else {
-        return UIInterfaceOrientationMaskAll;
+    if (!_gameScene)
+    {
+        _gameScene = [GameScene sceneWithSize: self.view.bounds.size];
+        // TODO: Load last played state (?)
     }
+    
+    return _gameScene;
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Release any cached data, images, etc that aren't in use.
+    // Dispose of any resources that can be recreated.
 }
 
-- (BOOL)prefersStatusBarHidden {
-    return YES;
-}
 
 @end

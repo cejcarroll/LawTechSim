@@ -9,13 +9,20 @@
 /* Begin PBXBuildFile section */
 		8C40EAB41C139E3E0053CBFE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C40EAB31C139E3E0053CBFE /* main.m */; };
 		8C40EAB71C139E3E0053CBFE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C40EAB61C139E3E0053CBFE /* AppDelegate.m */; };
-		8C40EABA1C139E3E0053CBFE /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C40EAB91C139E3E0053CBFE /* GameScene.m */; };
-		8C40EABC1C139E3E0053CBFE /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 8C40EABB1C139E3E0053CBFE /* GameScene.sks */; };
-		8C40EABF1C139E3E0053CBFE /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C40EABE1C139E3E0053CBFE /* GameViewController.m */; };
-		8C40EAC21C139E3E0053CBFE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C40EAC01C139E3E0053CBFE /* Main.storyboard */; };
+		8C40EABA1C139E3E0053CBFE /* AutoGenGameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C40EAB91C139E3E0053CBFE /* AutoGenGameScene.m */; };
+		8C40EABC1C139E3E0053CBFE /* AutoGenGameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 8C40EABB1C139E3E0053CBFE /* AutoGenGameScene.sks */; };
+		8C40EABF1C139E3E0053CBFE /* AutoGenGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C40EABE1C139E3E0053CBFE /* AutoGenGameViewController.m */; };
 		8C40EAC41C139E3E0053CBFE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C40EAC31C139E3E0053CBFE /* Assets.xcassets */; };
 		8C40EAC71C139E3E0053CBFE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C40EAC51C139E3E0053CBFE /* LaunchScreen.storyboard */; };
 		8C40EAD21C139E3E0053CBFE /* LawTechSimTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C40EAD11C139E3E0053CBFE /* LawTechSimTests.m */; };
+		8C40EADF1C13A5BE0053CBFE /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C40EADE1C13A5BE0053CBFE /* GameViewController.m */; };
+		8C40EAE21C13A6B80053CBFE /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C40EAE11C13A6B80053CBFE /* GameScene.m */; };
+		8C40EAE51C13FC350053CBFE /* JSTileMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C40EAE41C13FC350053CBFE /* JSTileMap.m */; };
+		8C40EAE81C13FC400053CBFE /* LFCGzipUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C40EAE71C13FC400053CBFE /* LFCGzipUtility.m */; };
+		8C40EAEE1C13FD0E0053CBFE /* CharacterNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C40EAED1C13FD0E0053CBFE /* CharacterNode.m */; };
+		8C40EAF01C1409180053CBFE /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C40EAEF1C1409180053CBFE /* libz.tbd */; };
+		8C40EAF31C140E380053CBFE /* PokeMap.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 8C40EAF21C140E380053CBFE /* PokeMap.tmx */; };
+		8C40EAF51C140EE50053CBFE /* indoor_free_tileset__by_thegreatblaid-d5x95zt.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C40EAF41C140EE50053CBFE /* indoor_free_tileset__by_thegreatblaid-d5x95zt.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,18 +40,30 @@
 		8C40EAB31C139E3E0053CBFE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8C40EAB51C139E3E0053CBFE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		8C40EAB61C139E3E0053CBFE /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		8C40EAB81C139E3E0053CBFE /* GameScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
-		8C40EAB91C139E3E0053CBFE /* GameScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameScene.m; sourceTree = "<group>"; };
-		8C40EABB1C139E3E0053CBFE /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
-		8C40EABD1C139E3E0053CBFE /* GameViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
-		8C40EABE1C139E3E0053CBFE /* GameViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
-		8C40EAC11C139E3E0053CBFE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		8C40EAB81C139E3E0053CBFE /* AutoGenGameScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AutoGenGameScene.h; sourceTree = "<group>"; };
+		8C40EAB91C139E3E0053CBFE /* AutoGenGameScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AutoGenGameScene.m; sourceTree = "<group>"; };
+		8C40EABB1C139E3E0053CBFE /* AutoGenGameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = AutoGenGameScene.sks; sourceTree = "<group>"; };
+		8C40EABD1C139E3E0053CBFE /* AutoGenGameViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AutoGenGameViewController.h; sourceTree = "<group>"; };
+		8C40EABE1C139E3E0053CBFE /* AutoGenGameViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AutoGenGameViewController.m; sourceTree = "<group>"; };
 		8C40EAC31C139E3E0053CBFE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8C40EAC61C139E3E0053CBFE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8C40EAC81C139E3E0053CBFE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8C40EACD1C139E3E0053CBFE /* LawTechSimTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LawTechSimTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C40EAD11C139E3E0053CBFE /* LawTechSimTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LawTechSimTests.m; sourceTree = "<group>"; };
 		8C40EAD31C139E3E0053CBFE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8C40EADD1C13A5BE0053CBFE /* GameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
+		8C40EADE1C13A5BE0053CBFE /* GameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
+		8C40EAE01C13A6B80053CBFE /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
+		8C40EAE11C13A6B80053CBFE /* GameScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameScene.m; sourceTree = "<group>"; };
+		8C40EAE31C13FC350053CBFE /* JSTileMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSTileMap.h; sourceTree = "<group>"; };
+		8C40EAE41C13FC350053CBFE /* JSTileMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSTileMap.m; sourceTree = "<group>"; };
+		8C40EAE61C13FC400053CBFE /* LFCGzipUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFCGzipUtility.h; sourceTree = "<group>"; };
+		8C40EAE71C13FC400053CBFE /* LFCGzipUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFCGzipUtility.m; sourceTree = "<group>"; };
+		8C40EAEC1C13FD0E0053CBFE /* CharacterNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CharacterNode.h; sourceTree = "<group>"; };
+		8C40EAED1C13FD0E0053CBFE /* CharacterNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CharacterNode.m; sourceTree = "<group>"; };
+		8C40EAEF1C1409180053CBFE /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		8C40EAF21C140E380053CBFE /* PokeMap.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = PokeMap.tmx; sourceTree = "<group>"; };
+		8C40EAF41C140EE50053CBFE /* indoor_free_tileset__by_thegreatblaid-d5x95zt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "indoor_free_tileset__by_thegreatblaid-d5x95zt.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +71,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C40EAF01C1409180053CBFE /* libz.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,6 +91,7 @@
 				8C40EAB11C139E3E0053CBFE /* LawTechSim */,
 				8C40EAD01C139E3E0053CBFE /* LawTechSimTests */,
 				8C40EAB01C139E3E0053CBFE /* Products */,
+				8C40EAF11C1409350053CBFE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -88,16 +109,19 @@
 			children = (
 				8C40EAB51C139E3E0053CBFE /* AppDelegate.h */,
 				8C40EAB61C139E3E0053CBFE /* AppDelegate.m */,
-				8C40EAB81C139E3E0053CBFE /* GameScene.h */,
-				8C40EAB91C139E3E0053CBFE /* GameScene.m */,
-				8C40EABB1C139E3E0053CBFE /* GameScene.sks */,
-				8C40EABD1C139E3E0053CBFE /* GameViewController.h */,
-				8C40EABE1C139E3E0053CBFE /* GameViewController.m */,
-				8C40EAC01C139E3E0053CBFE /* Main.storyboard */,
+				8C40EADD1C13A5BE0053CBFE /* GameViewController.h */,
+				8C40EADE1C13A5BE0053CBFE /* GameViewController.m */,
+				8C40EAE01C13A6B80053CBFE /* GameScene.h */,
+				8C40EAE11C13A6B80053CBFE /* GameScene.m */,
 				8C40EAC31C139E3E0053CBFE /* Assets.xcassets */,
 				8C40EAC51C139E3E0053CBFE /* LaunchScreen.storyboard */,
 				8C40EAC81C139E3E0053CBFE /* Info.plist */,
+				8C40EAF61C140EE80053CBFE /* TMX */,
+				8C40EAE91C13FC450053CBFE /* External */,
+				8C40EADC1C13A5060053CBFE /* AutoGen SceneKit Proj */,
 				8C40EAB21C139E3E0053CBFE /* Supporting Files */,
+				8C40EAEC1C13FD0E0053CBFE /* CharacterNode.h */,
+				8C40EAED1C13FD0E0053CBFE /* CharacterNode.m */,
 			);
 			path = LawTechSim;
 			sourceTree = "<group>";
@@ -117,6 +141,46 @@
 				8C40EAD31C139E3E0053CBFE /* Info.plist */,
 			);
 			path = LawTechSimTests;
+			sourceTree = "<group>";
+		};
+		8C40EADC1C13A5060053CBFE /* AutoGen SceneKit Proj */ = {
+			isa = PBXGroup;
+			children = (
+				8C40EABD1C139E3E0053CBFE /* AutoGenGameViewController.h */,
+				8C40EABE1C139E3E0053CBFE /* AutoGenGameViewController.m */,
+				8C40EAB81C139E3E0053CBFE /* AutoGenGameScene.h */,
+				8C40EAB91C139E3E0053CBFE /* AutoGenGameScene.m */,
+				8C40EABB1C139E3E0053CBFE /* AutoGenGameScene.sks */,
+			);
+			name = "AutoGen SceneKit Proj";
+			sourceTree = "<group>";
+		};
+		8C40EAE91C13FC450053CBFE /* External */ = {
+			isa = PBXGroup;
+			children = (
+				8C40EAE31C13FC350053CBFE /* JSTileMap.h */,
+				8C40EAE41C13FC350053CBFE /* JSTileMap.m */,
+				8C40EAE61C13FC400053CBFE /* LFCGzipUtility.h */,
+				8C40EAE71C13FC400053CBFE /* LFCGzipUtility.m */,
+			);
+			name = External;
+			sourceTree = "<group>";
+		};
+		8C40EAF11C1409350053CBFE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8C40EAEF1C1409180053CBFE /* libz.tbd */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8C40EAF61C140EE80053CBFE /* TMX */ = {
+			isa = PBXGroup;
+			children = (
+				8C40EAF21C140E380053CBFE /* PokeMap.tmx */,
+				8C40EAF41C140EE50053CBFE /* indoor_free_tileset__by_thegreatblaid-d5x95zt.png */,
+			);
+			name = TMX;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -199,10 +263,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8C40EABC1C139E3E0053CBFE /* GameScene.sks in Resources */,
+				8C40EABC1C139E3E0053CBFE /* AutoGenGameScene.sks in Resources */,
 				8C40EAC71C139E3E0053CBFE /* LaunchScreen.storyboard in Resources */,
 				8C40EAC41C139E3E0053CBFE /* Assets.xcassets in Resources */,
-				8C40EAC21C139E3E0053CBFE /* Main.storyboard in Resources */,
+				8C40EAF31C140E380053CBFE /* PokeMap.tmx in Resources */,
+				8C40EAF51C140EE50053CBFE /* indoor_free_tileset__by_thegreatblaid-d5x95zt.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -220,9 +285,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8C40EABF1C139E3E0053CBFE /* GameViewController.m in Sources */,
+				8C40EAEE1C13FD0E0053CBFE /* CharacterNode.m in Sources */,
+				8C40EADF1C13A5BE0053CBFE /* GameViewController.m in Sources */,
+				8C40EABF1C139E3E0053CBFE /* AutoGenGameViewController.m in Sources */,
 				8C40EAB71C139E3E0053CBFE /* AppDelegate.m in Sources */,
-				8C40EABA1C139E3E0053CBFE /* GameScene.m in Sources */,
+				8C40EAE51C13FC350053CBFE /* JSTileMap.m in Sources */,
+				8C40EABA1C139E3E0053CBFE /* AutoGenGameScene.m in Sources */,
+				8C40EAE21C13A6B80053CBFE /* GameScene.m in Sources */,
+				8C40EAE81C13FC400053CBFE /* LFCGzipUtility.m in Sources */,
 				8C40EAB41C139E3E0053CBFE /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -246,14 +316,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		8C40EAC01C139E3E0053CBFE /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				8C40EAC11C139E3E0053CBFE /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		8C40EAC51C139E3E0053CBFE /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
