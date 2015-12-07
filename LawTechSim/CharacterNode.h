@@ -33,17 +33,12 @@ typedef NS_ENUM(NSInteger, CharacterNodeState)
  */
 @property (nonatomic, assign) CharacterNodeState state;
 
-
 /**
- Screen scale to be displayed to. This is multiplied by 2 to fit environment size of tilemap used
+ Update position of sprite with delta time
+ 
+ @param deltaTime time in seconds between frames
  */
-@property (nonatomic, assign) CGFloat screenScale;
-
-
-/**
- Speed of character. Default is 5
- */
-@property (nonatomic, assign) NSUInteger movementSpeed;
+- (void)updatePositionWithTimeInterval:(NSTimeInterval)deltaTime;
 
 
 @end

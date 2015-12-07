@@ -136,7 +136,12 @@ static const CGSize kButtonSize = {50, 50};
 // TEMP: Too lazy; Initializing all buttons at once
 - (void)initializeButtons
 {
-    NSUInteger depressControlEvents = UIControlEventTouchDragExit | UIControlEventTouchUpInside;
+    
+    // FIXME: Handle Dragging between buttonsl
+    NSInteger pressControlEvents = UIControlEventTouchDown | UIControlEventTouchDragEnter;
+    NSUInteger depressControlEvents = UIControlEventTouchDragOutside | UIControlEventTouchUpInside;
+    
+    // TODO: cleanup general noise belowxz
     
     // LEFT
     self.leftBtn = [UIButton buttonWithType:UIButtonTypeSystem];
@@ -146,7 +151,7 @@ static const CGSize kButtonSize = {50, 50};
     [self.leftBtn sizeToFit];
     [self.leftBtn addTarget:self
                      action:@selector(leftBtnPressed)
-           forControlEvents:UIControlEventTouchDown];
+           forControlEvents:pressControlEvents];
     [self.leftBtn addTarget:self
                      action:@selector(directionalBtnDepressed)
            forControlEvents:depressControlEvents];
@@ -159,7 +164,7 @@ static const CGSize kButtonSize = {50, 50};
     [self.upBtn sizeToFit];
     [self.upBtn addTarget:self
                    action:@selector(upBtnPressed)
-         forControlEvents:UIControlEventTouchDown];
+         forControlEvents:pressControlEvents];
     [self.upBtn addTarget:self
                      action:@selector(directionalBtnDepressed)
            forControlEvents:depressControlEvents];
@@ -172,7 +177,7 @@ static const CGSize kButtonSize = {50, 50};
     [self.rightBtn sizeToFit];
     [self.rightBtn addTarget:self
                       action:@selector(rightBtnPressed)
-            forControlEvents:UIControlEventTouchDown];
+            forControlEvents:pressControlEvents];
     [self.rightBtn addTarget:self
                      action:@selector(directionalBtnDepressed)
            forControlEvents:depressControlEvents];
@@ -185,7 +190,7 @@ static const CGSize kButtonSize = {50, 50};
     [self.downBtn sizeToFit];
     [self.downBtn addTarget:self
                      action:@selector(downBtnPressed)
-           forControlEvents:UIControlEventTouchDown];
+           forControlEvents:pressControlEvents];
     [self.downBtn addTarget:self
                      action:@selector(directionalBtnDepressed)
            forControlEvents:depressControlEvents];

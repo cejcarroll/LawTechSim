@@ -13,11 +13,24 @@
 @interface GameScene ()
 
 /**
+ Adjusts viewport of scene
+ */
+@property (nonatomic, strong) SKCameraNode *cameraNode;
+
+/**
  Holds TMX file representation, SKNode for world
  */
 @property (nonatomic, strong) JSTileMap *tileMapNode;
 
+/**
+ Representation of user character in screen
+ */
 @property (nonatomic, strong) CharacterNode *characterNode;
+
+/**
+ Last time update: was called in game loop
+ */
+@property (nonatomic, assign) NSTimeInterval lastUpdateTimeInterval;
 
 @end
 
@@ -34,6 +47,9 @@ static NSString *const kTMXFileName = @"PokeMap.tmx";
         self.anchorPoint = CGPointMake(0.5,0.5);
         self.scaleMode = SKSceneScaleModeAspectFill;
         
+        _lastUpdateTimeInterval = 0;
+        
+        [self addChild:self.cameraNode];
         [self addChild:self.tileMapNode];
         [self addChild:self.characterNode];
     }
@@ -43,16 +59,24 @@ static NSString *const kTMXFileName = @"PokeMap.tmx";
 
 #pragma mark - Properties
 
+- (SKCameraNode *)cameraNode
+{
+    if (!_cameraNode)
+    {
+        self.cameraNode = [SKCameraNode node];
+        CGFloat screenScale = [[UIScreen mainScreen] scale];
+        [self.cameraNode setScale:1.0 / screenScale];
+        self.camera = self.cameraNode;
+    }
+    
+    return _cameraNode;
+}
+
 - (JSTileMap *)tileMapNode
 {
     if (!_tileMapNode)
     {
         _tileMapNode = [JSTileMap mapNamed:kTMXFileName];
-
-        CGFloat screenScale = [[UIScreen mainScreen] scale];
-        _tileMapNode.xScale = screenScale;
-        _tileMapNode.yScale = screenScale;
-        
         
         /*   TODO: replace with appropriate start position indicated by TMX   */
         /*   center map   */
@@ -69,12 +93,9 @@ static NSString *const kTMXFileName = @"PokeMap.tmx";
     if (!_characterNode)
     {
         _characterNode = [[CharacterNode alloc] init];
-        
-        CGFloat screenScale = [[UIScreen mainScreen] scale];
-        [_characterNode setScreenScale:screenScale];
+    
         
         // TODO: Place appropriately
-
     }
     
     return _characterNode;
@@ -84,7 +105,23 @@ static NSString *const kTMXFileName = @"PokeMap.tmx";
 
 - (void)update:(NSTimeInterval)currentTime
 {
-    // STUB
+    CGFloat deltaTime; /*   Time between frames updates in seconds   */
+    deltaTime = self.lastUpdateTimeInterval - currentTime;
+    self.lastUpdateTimeInterval = currentTime;
+    
+    if (deltaTime > 0.02)
+        deltaTime = 0.02;
+    
+    // Update character location
+    [self.characterNode updatePositionWithTimeInterval:deltaTime];
+    
+    
+    // Center camera on character
+    [self.cameraNode setPosition:self.characterNode.position];
+    
+    
+    // TODO: Detect collisions
+    
 }
 
 - (void)didEvaluateActions

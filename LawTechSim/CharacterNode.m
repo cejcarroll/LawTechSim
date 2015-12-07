@@ -27,7 +27,7 @@
 
 // TODO: Probably should organize string constants for assets if not too lazy
 
-static const NSUInteger kInitialMovementSpeed = 5;
+static const NSUInteger kMovementSpeedPerSec = 100;
 
 static const CGFloat kScreenRatioMagnifier = 0.5; // Increase sprite size by this ratio to match tilemap
 
@@ -40,8 +40,8 @@ static NSString *const kCharacterActionKey = @"CharacterNodeAction";
 {
     if (self = [super initWithImageNamed:@"SD"])
     {
-        self.state = CharacterNodeStateStill;
-        self.movementSpeed = kInitialMovementSpeed;
+        [self setState:CharacterNodeStateStill];
+        [self setScale:kScreenRatioMagnifier];
     }
     
     return self;
@@ -59,18 +59,6 @@ static NSString *const kCharacterActionKey = @"CharacterNodeAction";
     [self performActionForState:state];
     _state = state;
 }
-
-- (void)setScreenScale:(CGFloat)screenScale
-{
-    if (_screenScale != screenScale)
-    {
-        self.xScale = screenScale * kScreenRatioMagnifier;
-        self.yScale = screenScale * kScreenRatioMagnifier;
-    }
-    
-    _screenScale = screenScale;
-}
-
 
 /**
  Perform texture changes for given state
@@ -111,6 +99,37 @@ static NSString *const kCharacterActionKey = @"CharacterNodeAction";
     /*   TODO: Maybe assign key? Dunno which is faster - clearing all action or specifying key */
     [self runAction:execAction
             withKey:kCharacterActionKey];
+}
+
+/**
+ Update position of sprite with delta time
+ 
+ @param deltaTime time in seconds between frames
+ */
+- (void)updatePositionWithTimeInterval:(NSTimeInterval)deltaTime
+{
+    CGFloat moveDist = kMovementSpeedPerSec * deltaTime;
+    CGPoint newPosition = self.position;
+    
+    switch (self.state)
+    {
+        case CharacterNodeStateStill:
+            break;
+        case CharacterNodeStateMovingLeft:
+            newPosition.x += moveDist;
+            break;
+        case CharacterNodeStateMovingUp:
+            newPosition.y -= moveDist;
+            break;
+        case CharacterNodeStateMovingRight:
+            newPosition.x -= moveDist;
+            break;
+        case CharacterNodeStateMovingDown:
+            newPosition.y += moveDist;
+            break;
+    }
+    
+    [self setPosition:newPosition];
 }
 
 #pragma mark - Properties
