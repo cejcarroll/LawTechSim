@@ -12,24 +12,16 @@
 
 @interface GameScene ()
 
-/**
- Adjusts viewport of scene
- */
+/// Adjusts viewport of scene
 @property (nonatomic, strong) SKCameraNode *cameraNode;
 
-/**
- Holds TMX file representation, SKNode for world
- */
+/// Holds TMX file representation, SKNode for world
 @property (nonatomic, strong) JSTileMap *tileMapNode;
 
-/**
- Representation of user character in screen
- */
+/// Representation of user character in screen
 @property (nonatomic, strong) CharacterNode *characterNode;
 
-/**
- Last time update: was called in game loop
- */
+/// Last time update: was called in game loop
 @property (nonatomic, assign) NSTimeInterval lastUpdateTimeInterval;
 
 @end
@@ -105,38 +97,36 @@ static NSString *const kTMXFileName = @"PokeMap.tmx";
 
 - (void)update:(NSTimeInterval)currentTime
 {
-    CGFloat deltaTime; /*   Time between frames updates in seconds   */
-    deltaTime = self.lastUpdateTimeInterval - currentTime;
+    /*   Calculate time b/t frames   */
+    CGFloat deltaTime = self.lastUpdateTimeInterval - currentTime;
     self.lastUpdateTimeInterval = currentTime;
     
+    // Cap
     if (deltaTime > 0.02)
         deltaTime = 0.02;
     
-    // Update character location
+    /*   Update character's position   */
     [self.characterNode updatePositionWithTimeInterval:deltaTime];
     
-    
-    // Center camera on character
-    [self.cameraNode setPosition:self.characterNode.position];
-    
-    
+
     // TODO: Detect collisions
     
 }
 
 - (void)didEvaluateActions
 {
-    // STUB
+    // TODO: STUB
 }
 
 - (void)didSimulatePhysics
 {
-    // STUB: Probably don't need this, depending on game design
+    // TODO: STUB - Probably don't need this, depending on game design
 }
 
 - (void)didFinishUpdate
 {
-    // STUB
+    /*   Update camera centered on user   */
+    [self.cameraNode setPosition:self.characterNode.position];
 }
 
 #pragma mark - GameControlViewDelegate

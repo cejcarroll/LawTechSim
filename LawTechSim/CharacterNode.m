@@ -27,11 +27,13 @@
 
 // TODO: Probably should organize string constants for assets if not too lazy
 
+/// Speed of character sprites
 static const NSUInteger kMovementSpeedPerSec = 100;
 
-static const CGFloat kScreenRatioMagnifier = 0.5; // Increase sprite size by this ratio to match tilemap
+/// Increase sprite size by this ratio to match tilemap
+static const CGFloat kScreenRatioMagnifier = 0.5;
 
-// Time in seconds between texture changes for animations
+/// Time in seconds between texture changes for animations
 static const NSTimeInterval kAnimationFramerate = 0.15;
 
 static NSString *const kCharacterActionKey = @"CharacterNodeAction";
