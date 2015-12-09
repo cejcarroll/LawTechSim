@@ -1,0 +1,27 @@
+SCENARIO: Sei
+IF:Sei knows you participated : Sei thanks you for participating
+DEFAULT: Sei asks you if you participated in class project
+
+SCENE: Sei thanks you for participating
+*:Sei:Thanks for participating!
+SCENE_END:
+
+SCENE: Sei asks you if you participated in class project
+*:Sei: Did you participate in the class project?
+
+CHOICE:
+Yes : Notify Sei you did participate
+Not yet : NO_JUMP
+CHOICE_END:
+
+*:Sei:Okay, participate soon!
+
+SCENE_END:
+
+
+SCENE: Notify Sei you did participate
+
+*:Student: Yes I have!
+COMPLETED: Sei knows you participated
+
+SCENE_END:

@@ -1,0 +1,18 @@
+# Set up characters
+
+SCENARIO: Brad
+DEFAULT: Brad doesn't know who you are
+
+SCENE: Brad doesn't know who you are
+ENDSCENE:
+
+
+SCENARIO: Sei
+IF: Did participate in class project : Sei thanks you for participating
+DEFAULT: Sei reminds you to participate in the class project
+
+SCENE: Sei thanks you for participating
+ENDSCENE:
+
+SCENE: Sei reminds you to participate in class project
+ENDSCENE:
