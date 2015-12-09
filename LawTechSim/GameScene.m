@@ -30,7 +30,9 @@
 
 @implementation GameScene
 
-static NSString *const kTMXFileName = @"PokeMap.tmx";
+static NSString *const kTMXFileName = @"tilemap.tmx";
+static const CGFloat kCharacterZPosition = -35;
+static const CGFloat kTileMapLayerDistance = -10;
 
 - (instancetype)initWithSize:(CGSize)size
 {
@@ -44,6 +46,8 @@ static NSString *const kTMXFileName = @"PokeMap.tmx";
         [self addChild:self.cameraNode];
         [self addChild:self.tileMapNode];
         [self addChild:self.characterNode];
+        
+
     }
 
     return self;
@@ -68,7 +72,9 @@ static NSString *const kTMXFileName = @"PokeMap.tmx";
 {
     if (!_tileMapNode)
     {
-        _tileMapNode = [JSTileMap mapNamed:kTMXFileName];
+        _tileMapNode = [JSTileMap mapNamed:kTMXFileName
+                         withBaseZPosition:0
+                         andZOrderModifier:kTileMapLayerDistance];
         
         /*   TODO: replace with appropriate start position indicated by TMX   */
         /*   center map   */
@@ -85,7 +91,7 @@ static NSString *const kTMXFileName = @"PokeMap.tmx";
     if (!_characterNode)
     {
         _characterNode = [[CharacterNode alloc] init];
-    
+        _characterNode.zPosition = kCharacterZPosition;
         
         // TODO: Place appropriately
     }

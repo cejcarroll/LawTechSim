@@ -21,8 +21,6 @@
 		8C40EAE81C13FC400053CBFE /* LFCGzipUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C40EAE71C13FC400053CBFE /* LFCGzipUtility.m */; };
 		8C40EAEE1C13FD0E0053CBFE /* CharacterNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C40EAED1C13FD0E0053CBFE /* CharacterNode.m */; };
 		8C40EAF01C1409180053CBFE /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C40EAEF1C1409180053CBFE /* libz.tbd */; };
-		8C40EAF31C140E380053CBFE /* PokeMap.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 8C40EAF21C140E380053CBFE /* PokeMap.tmx */; };
-		8C40EAF51C140EE50053CBFE /* indoor_free_tileset__by_thegreatblaid-d5x95zt.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C40EAF41C140EE50053CBFE /* indoor_free_tileset__by_thegreatblaid-d5x95zt.png */; };
 		8C40EAFB1C1413C30053CBFE /* GameControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C40EAFA1C1413C30053CBFE /* GameControlView.m */; };
 		8CAB49AC1C14D387002D9670 /* 0ORIGINAL.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CAB499B1C14D387002D9670 /* 0ORIGINAL.png */; };
 		8CAB49AD1C14D387002D9670 /* SD.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CAB499C1C14D387002D9670 /* SD.png */; };
@@ -41,6 +39,9 @@
 		8CAB49BA1C14D387002D9670 /* WU0.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CAB49A91C14D387002D9670 /* WU0.png */; };
 		8CAB49BB1C14D387002D9670 /* WU1.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CAB49AA1C14D387002D9670 /* WU1.png */; };
 		8CAB49BC1C14D387002D9670 /* WU2.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CAB49AB1C14D387002D9670 /* WU2.png */; };
+		8CFD662F1C18DBB5002C4B4E /* labelTileset.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CFD662C1C18DBB5002C4B4E /* labelTileset.png */; };
+		8CFD66311C18DBB5002C4B4E /* tileset.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CFD662E1C18DBB5002C4B4E /* tileset.png */; };
+		8CFD66351C18DDA0002C4B4E /* tilemap.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 8CFD66341C18DDA0002C4B4E /* tilemap.tmx */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,8 +81,6 @@
 		8C40EAEC1C13FD0E0053CBFE /* CharacterNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CharacterNode.h; sourceTree = "<group>"; };
 		8C40EAED1C13FD0E0053CBFE /* CharacterNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CharacterNode.m; sourceTree = "<group>"; };
 		8C40EAEF1C1409180053CBFE /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
-		8C40EAF21C140E380053CBFE /* PokeMap.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = PokeMap.tmx; sourceTree = "<group>"; };
-		8C40EAF41C140EE50053CBFE /* indoor_free_tileset__by_thegreatblaid-d5x95zt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "indoor_free_tileset__by_thegreatblaid-d5x95zt.png"; sourceTree = "<group>"; };
 		8C40EAF91C1413C30053CBFE /* GameControlView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameControlView.h; sourceTree = "<group>"; };
 		8C40EAFA1C1413C30053CBFE /* GameControlView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameControlView.m; sourceTree = "<group>"; };
 		8CAB499B1C14D387002D9670 /* 0ORIGINAL.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 0ORIGINAL.png; sourceTree = "<group>"; };
@@ -101,6 +100,9 @@
 		8CAB49A91C14D387002D9670 /* WU0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WU0.png; sourceTree = "<group>"; };
 		8CAB49AA1C14D387002D9670 /* WU1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WU1.png; sourceTree = "<group>"; };
 		8CAB49AB1C14D387002D9670 /* WU2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WU2.png; sourceTree = "<group>"; };
+		8CFD662C1C18DBB5002C4B4E /* labelTileset.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = labelTileset.png; sourceTree = "<group>"; };
+		8CFD662E1C18DBB5002C4B4E /* tileset.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tileset.png; sourceTree = "<group>"; };
+		8CFD66341C18DDA0002C4B4E /* tilemap.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = tilemap.tmx; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,8 +156,8 @@
 				8C40EAC31C139E3E0053CBFE /* Assets.xcassets */,
 				8C40EAC51C139E3E0053CBFE /* LaunchScreen.storyboard */,
 				8C40EAC81C139E3E0053CBFE /* Info.plist */,
+				8CFD662B1C18DBB5002C4B4E /* TMXAssets */,
 				8CAB499A1C14D387002D9670 /* CharacterAssets */,
-				8C40EAF61C140EE80053CBFE /* TMX */,
 				8C40EAE91C13FC450053CBFE /* External */,
 				8C40EADC1C13A5060053CBFE /* AutoGen SceneKit Proj */,
 				8C40EAB21C139E3E0053CBFE /* Supporting Files */,
@@ -211,15 +213,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		8C40EAF61C140EE80053CBFE /* TMX */ = {
-			isa = PBXGroup;
-			children = (
-				8C40EAF21C140E380053CBFE /* PokeMap.tmx */,
-				8C40EAF41C140EE50053CBFE /* indoor_free_tileset__by_thegreatblaid-d5x95zt.png */,
-			);
-			name = TMX;
-			sourceTree = "<group>";
-		};
 		8C40EAF71C1412FE0053CBFE /* Nodes */ = {
 			isa = PBXGroup;
 			children = (
@@ -269,6 +262,16 @@
 				8CAB49AB1C14D387002D9670 /* WU2.png */,
 			);
 			path = CharacterAssets;
+			sourceTree = "<group>";
+		};
+		8CFD662B1C18DBB5002C4B4E /* TMXAssets */ = {
+			isa = PBXGroup;
+			children = (
+				8CFD66341C18DDA0002C4B4E /* tilemap.tmx */,
+				8CFD662C1C18DBB5002C4B4E /* labelTileset.png */,
+				8CFD662E1C18DBB5002C4B4E /* tileset.png */,
+			);
+			path = TMXAssets;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -357,21 +360,22 @@
 				8C40EABC1C139E3E0053CBFE /* AutoGenGameScene.sks in Resources */,
 				8C40EAC71C139E3E0053CBFE /* LaunchScreen.storyboard in Resources */,
 				8CAB49B91C14D387002D9670 /* WR2.png in Resources */,
+				8CFD66351C18DDA0002C4B4E /* tilemap.tmx in Resources */,
 				8C40EAC41C139E3E0053CBFE /* Assets.xcassets in Resources */,
 				8CAB49AC1C14D387002D9670 /* 0ORIGINAL.png in Resources */,
 				8CAB49B81C14D387002D9670 /* WR1.png in Resources */,
 				8CAB49B01C14D387002D9670 /* SU.png in Resources */,
 				8CAB49B21C14D387002D9670 /* WD1.png in Resources */,
 				8CAB49BA1C14D387002D9670 /* WU0.png in Resources */,
-				8C40EAF31C140E380053CBFE /* PokeMap.tmx in Resources */,
 				8CAB49BB1C14D387002D9670 /* WU1.png in Resources */,
 				8CAB49B41C14D387002D9670 /* WL0.png in Resources */,
 				8CAB49AD1C14D387002D9670 /* SD.png in Resources */,
 				8CAB49B11C14D387002D9670 /* WD0.png in Resources */,
 				8CAB49BC1C14D387002D9670 /* WU2.png in Resources */,
 				8CAB49B71C14D387002D9670 /* WR0.png in Resources */,
+				8CFD66311C18DBB5002C4B4E /* tileset.png in Resources */,
 				8CAB49B51C14D387002D9670 /* WL1.png in Resources */,
-				8C40EAF51C140EE50053CBFE /* indoor_free_tileset__by_thegreatblaid-d5x95zt.png in Resources */,
+				8CFD662F1C18DBB5002C4B4E /* labelTileset.png in Resources */,
 				8CAB49AF1C14D387002D9670 /* SR.png in Resources */,
 				8CAB49B61C14D387002D9670 /* WL2.png in Resources */,
 			);
