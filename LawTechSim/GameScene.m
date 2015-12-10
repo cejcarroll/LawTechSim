@@ -10,6 +10,8 @@
 #import "JSTileMap.h"
 #import "CharacterNode.h"
 
+#define COLLISION_DEBUG
+
 @interface GameScene ()
 
 /// Adjusts viewport of scene
@@ -24,13 +26,23 @@
 /// Last time update: was called in game loop
 @property (nonatomic, assign) NSTimeInterval lastUpdateTimeInterval;
 
+#ifdef COLLISION_DEBUG
+/// Show where the collision box is
+@property (nonatomic, strong) SKSpriteNode *collisionBoxNode;
+#endif
+
 @end
 
 //-------------------------------------------------
 
 @implementation GameScene
 
-static NSString *const kTMXFileName = @"tilemap.tmx";
+// TMX Constants
+static NSString *const kTMXFileName             = @"tilemap.tmx";
+static NSString *const kLocationObjLayer        = @"locations";
+static NSString *const kLocationObjCharacterPos = @"characterLocation";
+static NSString *const kLocationObjNPCBradPos   = @"npcBradLocation";
+
 static const CGFloat kCharacterZPosition = -35;
 static const CGFloat kTileMapLayerDistance = -10;
 
@@ -47,7 +59,11 @@ static const CGFloat kTileMapLayerDistance = -10;
         [self addChild:self.tileMapNode];
         [self addChild:self.characterNode];
         
-
+#ifdef COLLISION_DEBUG
+        self.collisionBoxNode = [SKSpriteNode spriteNodeWithColor:[UIColor blueColor] size:CGSizeZero];
+        self.collisionBoxNode.zPosition = kCharacterZPosition - 1; // right below character
+        [self addChild:self.collisionBoxNode];
+#endif
     }
 
     return self;
@@ -107,7 +123,7 @@ static const CGFloat kTileMapLayerDistance = -10;
     CGFloat deltaTime = self.lastUpdateTimeInterval - currentTime;
     self.lastUpdateTimeInterval = currentTime;
     
-    // Cap
+    // Cap time diff
     if (deltaTime > 0.02)
         deltaTime = 0.02;
     
@@ -119,20 +135,20 @@ static const CGFloat kTileMapLayerDistance = -10;
     
 }
 
-- (void)didEvaluateActions
-{
-    // TODO: STUB
-}
-
-- (void)didSimulatePhysics
-{
-    // TODO: STUB - Probably don't need this, depending on game design
-}
 
 - (void)didFinishUpdate
 {
     /*   Update camera centered on user   */
     [self.cameraNode setPosition:self.characterNode.position];
+
+    /*   Prevent movement from collisions   */
+    
+#ifdef COLLISION_DEBUG
+    CGRect collisionRect = self.characterNode.collisionFrame;
+    self.collisionBoxNode.position = collisionRect.origin;
+    self.collisionBoxNode.size = collisionRect.size;
+#endif
+    
 }
 
 #pragma mark - GameControlViewDelegate

@@ -7,6 +7,7 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
+#include "EntityNode.h"
 
 
 /**
@@ -26,7 +27,7 @@ typedef NS_ENUM(NSInteger, CharacterNodeState)
 /**
  Represents character entity, encapsulating texture changes / animation
  */
-@interface CharacterNode : SKSpriteNode
+@interface CharacterNode : EntityNode
 
 /**
  State representing current texture
@@ -39,6 +40,14 @@ typedef NS_ENUM(NSInteger, CharacterNodeState)
  @param deltaTime time in seconds between frames
  */
 - (void)updatePositionWithTimeInterval:(NSTimeInterval)deltaTime;
+
+
+/**
+ Frame to detect collisions for CharacterNode
+ 
+ @return a CGRect indication the frame's position
+ */
+- (CGRect)collisionFrame;
 
 
 @end

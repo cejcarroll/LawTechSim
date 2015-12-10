@@ -36,11 +36,17 @@ static const CGFloat kScreenRatioMagnifier = 0.5;
 /// Time in seconds between texture changes for animations
 static const NSTimeInterval kAnimationFramerate = 0.15;
 
+/// Size of collision box. Should be close to tile-size
+static const CGSize kCollisionBoxSize = {16, 8};
+
+/// Offset to bring bounding box closer to feet of character
+static const CGFloat kCollisionBoxYOffset = 10;
+
 static NSString *const kCharacterActionKey = @"CharacterNodeAction";
 
 - (instancetype)init
 {
-    if (self = [super initWithImageNamed:@"SD"])
+    if (self = [super initWithEntityId:@"Main"])
     {
         [self setState:CharacterNodeStateStill];
         [self setScale:kScreenRatioMagnifier];
@@ -103,11 +109,6 @@ static NSString *const kCharacterActionKey = @"CharacterNodeAction";
             withKey:kCharacterActionKey];
 }
 
-/**
- Update position of sprite with delta time
- 
- @param deltaTime time in seconds between frames
- */
 - (void)updatePositionWithTimeInterval:(NSTimeInterval)deltaTime
 {
     CGFloat moveDist = kMovementSpeedPerSec * deltaTime;
@@ -134,15 +135,25 @@ static NSString *const kCharacterActionKey = @"CharacterNodeAction";
     [self setPosition:newPosition];
 }
 
+- (CGRect)collisionFrame
+{
+    CGRect frame = self.frame;
+
+    frame.origin = self.position;
+    frame.origin.y -= kCollisionBoxYOffset; // Shift down
+
+    frame.size = kCollisionBoxSize;
+    
+    return frame;
+}
+
 #pragma mark - Properties
 
 - (SKAction *)stillLeftAction
 {
     if (!_stillLeftAction)
-    {
-        SKTexture *t = [SKTexture textureWithImageNamed:@"SL"];
-        _stillLeftAction = [SKAction setTexture:t resize:NO];
-    }
+        _stillLeftAction = [SKAction setTexture:self.stlLeftTexture
+                                         resize:NO];
     
     return _stillLeftAction;
 }
@@ -150,10 +161,8 @@ static NSString *const kCharacterActionKey = @"CharacterNodeAction";
 - (SKAction *)stillUpAction
 {
     if (!_stillUpAction)
-    {
-        SKTexture *t = [SKTexture textureWithImageNamed:@"SU"];
-        _stillUpAction = [SKAction setTexture:t resize:NO];
-    }
+        _stillUpAction = [SKAction setTexture:self.stlUpTexture
+                                       resize:NO];
     
     return _stillUpAction;
 }
@@ -161,10 +170,8 @@ static NSString *const kCharacterActionKey = @"CharacterNodeAction";
 - (SKAction *)stillRightAction
 {
     if (!_stillRightAction)
-    {
-        SKTexture *t = [SKTexture textureWithImageNamed:@"SR"];
-        _stillRightAction = [SKAction setTexture:t resize:NO];
-    }
+        _stillRightAction = [SKAction setTexture:self.stlRightTexture
+                                          resize:NO];
     
     return _stillRightAction;
 }
@@ -172,10 +179,8 @@ static NSString *const kCharacterActionKey = @"CharacterNodeAction";
 - (SKAction *)stillDownAction
 {
     if (!_stillDownAction)
-    {
-        SKTexture *t = [SKTexture textureWithImageNamed:@"SD"];
-        _stillDownAction = [SKAction setTexture:t resize:NO];
-    }
+        _stillDownAction = [SKAction setTexture:self.stlDownTexture
+                                         resize:NO];
     
     return _stillDownAction;
 }
@@ -186,11 +191,10 @@ static NSString *const kCharacterActionKey = @"CharacterNodeAction";
 {
     if (!_movingLeftAction)
     {
-        SKTexture *t0 = [SKTexture textureWithImageNamed:@"WL0"];
-        SKTexture *t1 = [SKTexture textureWithImageNamed:@"WL1"];
-        SKTexture *t2 = [SKTexture textureWithImageNamed:@"WL2"];
-        
-        SKAction *repeatingAction = [SKAction animateWithTextures:@[t0, t1, t2, t1]
+        SKAction *repeatingAction = [SKAction animateWithTextures:@[self.movLeft0Texture,
+                                                                    self.stlLeftTexture,
+                                                                    self.movLeft1Texture,
+                                                                    self.stlLeftTexture]
                                                      timePerFrame:kAnimationFramerate];
         _movingLeftAction = [SKAction repeatActionForever:repeatingAction];
     }
@@ -202,11 +206,10 @@ static NSString *const kCharacterActionKey = @"CharacterNodeAction";
 {
     if (!_movingUpAction)
     {
-        SKTexture *t0 = [SKTexture textureWithImageNamed:@"WU0"];
-        SKTexture *t1 = [SKTexture textureWithImageNamed:@"WU1"];
-        SKTexture *t2 = [SKTexture textureWithImageNamed:@"WU2"];
-        
-        SKAction *repeatingAction = [SKAction animateWithTextures:@[t0, t1, t2, t1]
+        SKAction *repeatingAction = [SKAction animateWithTextures:@[self.movUp0Texture,
+                                                                    self.stlUpTexture,
+                                                                    self.movUp1Texture,
+                                                                    self.stlUpTexture]
                                                      timePerFrame:kAnimationFramerate];
         _movingUpAction = [SKAction repeatActionForever:repeatingAction];
     }
@@ -218,12 +221,10 @@ static NSString *const kCharacterActionKey = @"CharacterNodeAction";
 {
     if (!_movingRightAction)
     {
-        SKTexture *t0 = [SKTexture textureWithImageNamed:@"WR0"];
-        SKTexture *t1 = [SKTexture textureWithImageNamed:@"WR1"];
-        SKTexture *t2 = [SKTexture textureWithImageNamed:@"WR2"];
-        
-        
-        SKAction *repeatingAction = [SKAction animateWithTextures:@[t0, t1, t2, t1]
+        SKAction *repeatingAction = [SKAction animateWithTextures:@[self.movRight0Texture,
+                                                                    self.stlRightTexture,
+                                                                    self.movRight1Texture,
+                                                                    self.stlRightTexture]
                                                      timePerFrame:kAnimationFramerate];
         _movingRightAction = [SKAction repeatActionForever:repeatingAction];
         
@@ -236,11 +237,10 @@ static NSString *const kCharacterActionKey = @"CharacterNodeAction";
 {
     if (!_movingDownAction)
     {
-        SKTexture *t0 = [SKTexture textureWithImageNamed:@"WD0"];
-        SKTexture *t1 = [SKTexture textureWithImageNamed:@"WD1"];
-        SKTexture *t2 = [SKTexture textureWithImageNamed:@"WD2"];
-        
-        SKAction *repeatingAction = [SKAction animateWithTextures:@[t0, t1, t2, t1]
+        SKAction *repeatingAction = [SKAction animateWithTextures:@[self.movDown0Texture,
+                                                                    self.stlDownTexture,
+                                                                    self.movDown1Texture,
+                                                                    self.stlDownTexture]
                                                      timePerFrame:kAnimationFramerate];
         _movingDownAction = [SKAction repeatActionForever:repeatingAction];
     }
