@@ -34,6 +34,7 @@ typedef NS_ENUM(NSInteger, CharacterNodeState)
  */
 @property (nonatomic, assign) CharacterNodeState state;
 
+
 /**
  Update position of sprite with delta time
  
@@ -47,7 +48,7 @@ typedef NS_ENUM(NSInteger, CharacterNodeState)
  
  @return a CGRect indication the frame's position
  */
-- (CGRect)collisionFrame;
+- (CGRect)collisionRect;
 
 
 @end

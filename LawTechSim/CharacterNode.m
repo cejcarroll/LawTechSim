@@ -135,13 +135,12 @@ static NSString *const kCharacterActionKey = @"CharacterNodeAction";
     [self setPosition:newPosition];
 }
 
-- (CGRect)collisionFrame
+- (CGRect)collisionRect
 {
     CGRect frame = self.frame;
 
     frame.origin = self.position;
     frame.origin.y -= kCollisionBoxYOffset; // Shift down
-
     frame.size = kCollisionBoxSize;
     
     return frame;

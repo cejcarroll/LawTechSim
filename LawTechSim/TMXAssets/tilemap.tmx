@@ -411,7 +411,7 @@
   </data>
  </layer>
  <objectgroup name="locations">
-  <object id="1" name="characterLocation" x="70" y="140"/>
+  <object id="1" name="characterLocation" x="75.5" y="148.5"/>
   <object id="6" name="npcBradLocation" x="200" y="85"/>
  </objectgroup>
  <layer name="foreground" width="20" height="20">
@@ -818,7 +818,7 @@
    <tile gid="0"/>
   </data>
  </layer>
- <layer name="collisions" width="20" height="20" opacity="0.19">
+ <layer name="collisions" width="20" height="20" opacity="0.66">
   <data>
    <tile gid="743"/>
    <tile gid="743"/>
@@ -897,7 +897,7 @@
    <tile gid="743"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="743"/>
+   <tile gid="0"/>
    <tile gid="743"/>
    <tile gid="743"/>
    <tile gid="743"/>
