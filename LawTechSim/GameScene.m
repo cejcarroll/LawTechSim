@@ -10,7 +10,7 @@
 #import "JSTileMap.h"
 #import "CharacterNode.h"
 
-#define COLLISION_DEBUG
+//#define COLLISION_DEBUG
 
 @interface GameScene ()
 
@@ -213,8 +213,7 @@ static const CGFloat kCollisionPadding = 0.5;
 
 #pragma mark - GameScene
 
-// FIXME: Consider moving functions to JSTileMap extension
-
+// FIXME: Consider moving positionNode:atLocationObj to JSTileMap extension
 /**
  Position node at a specified location within "location" object layer of tmx file
  
@@ -303,7 +302,7 @@ static const CGFloat kCollisionPadding = 0.5;
 
 
 /**
- Get tiles against which character's collision will be checked.
+ Get tiles against which character's collision should be checked.
  
  @param layer TMXLayer with tiles to check collision against
  

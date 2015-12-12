@@ -184,8 +184,8 @@ int parseEvents(FILE *f)
     int isEventEnd = 0;
 
     // Default values for jumps
-    strcpy(successScene, "NO_JUMP");
-    strcpy(failureScene, "NO_JUMP");
+    strcpy(successScene, "no_jump");
+    strcpy(failureScene, "no_jump");
 
     grabUntilChar(f, ':', event, WHTSPC_OMT, FMT_LOWERCASE);
 
@@ -197,9 +197,9 @@ int parseEvents(FILE *f)
         if (strcmp(buf, "EVENT_END") == 0)
             isEventEnd = 1;
         else if (strcmp(buf, "ON_SUCCESS") == 0)
-            grabUntilChar(f, '\n', successScene, WHTSPC_OMT, FMT_NONE);
+            grabUntilChar(f, '\n', successScene, WHTSPC_OMT, FMT_LOWERCASE);
         else if (strcmp(buf, "ON_FAILURE") == 0)
-            grabUntilChar(f, '\n', failureScene, WHTSPC_OMT, FMT_NONE);
+            grabUntilChar(f, '\n', failureScene, WHTSPC_OMT, FMT_LOWERCASE);
     }
 
     printf(EVENT_TAG, event, successScene, failureScene);

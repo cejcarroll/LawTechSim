@@ -1,37 +1,3 @@
-<scenariogroup character="Brad">
-	<scenario cond="bradhasbeendefeated"  jumpTo="bradgivesyouana"/>
-	<scenario cond="bradknowsyou"  jumpTo="bradfightsyou"/>
-	<scenario cond="DEFAULT" jumpTo="braddoesnotknowwhoyouare"/>
-</scenariogroup>
-
-<scene id="braddoesnotknowwhoyouare">
-	<toggle id="bradknowsyou"/>
-</scene>
-
-<scene id="bradfightsyou">
-<choicegroup>
-	<choice option="Yes" onSelection="playspaceinvaderagainstbrad"/>
-	<choice option="Ignore" onSelection="no_jump"/>
-</choicegroup>
-</scene>
-
-<scene id="playspaceinvaderagainstbrad">
-	<event id="spaceinvaderbrad" onSuccess="YoubeatBradinSpaceInvader" onFail="NO_JUMP">
-</scene>
-
-<scene id="youbeatbradinspaceinvader">
-	<dialogue speaker="Brad" content="Wow, I am amazed!"/>
-	<toggle id="bradhasbeendefeated"/>
-</scene>
-
-<scene id="youlostagainstbradinspaceinvader">
-	<dialogue speaker="Brad" content="Hah, You suck!"/>
-</scene>
-
-<scene id="bradgivesyouana">
-	<dialogue speaker="Brad" content="I am so impressed with your space invader skills, so I'm giving you an A"/>
-</scene>
-
 <scenariogroup character="Sei">
 	<scenario cond="seiknowsyouparticipated"  jumpTo="seithanksyouforparticipating"/>
 	<scenario cond="DEFAULT" jumpTo="seiasksyouifyouparticipatedinclassproject"/>
@@ -53,5 +19,39 @@
 <scene id="notifyseiyoudidparticipate">
 	<dialogue speaker="Student" content="Yes I have!"/>
 	<toggle id="seiknowsyouparticipated"/>
+</scene>
+
+<scenariogroup character="Brad">
+	<scenario cond="bradhasbeendefeated"  jumpTo="bradgivesyouana"/>
+	<scenario cond="bradknowsyou"  jumpTo="bradfightsyou"/>
+	<scenario cond="DEFAULT" jumpTo="braddoesnotknowwhoyouare"/>
+</scenariogroup>
+
+<scene id="braddoesnotknowwhoyouare">
+	<toggle id="bradknowsyou"/>
+</scene>
+
+<scene id="bradfightsyou">
+<choicegroup>
+	<choice option="Yes" onSelection="playspaceinvaderagainstbrad"/>
+	<choice option="Ignore" onSelection="no_jump"/>
+</choicegroup>
+</scene>
+
+<scene id="playspaceinvaderagainstbrad">
+	<event id="spaceinvaderbrad" onSuccess="youbeatbradinspaceinvader" onFail="no_jump">
+</scene>
+
+<scene id="youbeatbradinspaceinvader">
+	<dialogue speaker="Brad" content="Wow, I am amazed!"/>
+	<toggle id="bradhasbeendefeated"/>
+</scene>
+
+<scene id="youlostagainstbradinspaceinvader">
+	<dialogue speaker="Brad" content="Hah, You suck!"/>
+</scene>
+
+<scene id="bradgivesyouana">
+	<dialogue speaker="Brad" content="I am so impressed with your space invader skills, so I'm giving you an A"/>
 </scene>
 

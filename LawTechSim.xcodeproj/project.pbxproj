@@ -59,6 +59,11 @@
 		8C6167151C19019400A25573 /* Sei-WU0.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C6166F11C19019400A25573 /* Sei-WU0.png */; };
 		8C6167161C19019400A25573 /* Sei-WU1.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C6166F21C19019400A25573 /* Sei-WU1.png */; };
 		8C6167191C1901AD00A25573 /* EntityNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C6167181C1901AD00A25573 /* EntityNode.m */; };
+		8CC7F2EE1C1AA8EC00B8B648 /* StoryReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CC7F2ED1C1AA8EC00B8B648 /* StoryReader.m */; };
+		8CC7F2F11C1AAEE400B8B648 /* EventSequence.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CC7F2F01C1AAEE400B8B648 /* EventSequence.m */; };
+		8CC7F2FD1C1AC32400B8B648 /* ChoiceEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CC7F2FC1C1AC32400B8B648 /* ChoiceEvent.m */; };
+		8CC7F3001C1AC32C00B8B648 /* DialogueEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CC7F2FF1C1AC32C00B8B648 /* DialogueEvent.m */; };
+		8CC7F3031C1AC33C00B8B648 /* FlagToggleEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CC7F3021C1AC33C00B8B648 /* FlagToggleEvent.m */; };
 		8CFD662F1C18DBB5002C4B4E /* labelTileset.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CFD662C1C18DBB5002C4B4E /* labelTileset.png */; };
 		8CFD66311C18DBB5002C4B4E /* tileset.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CFD662E1C18DBB5002C4B4E /* tileset.png */; };
 		8CFD66351C18DDA0002C4B4E /* tilemap.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 8CFD66341C18DDA0002C4B4E /* tilemap.tmx */; };
@@ -75,6 +80,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8C1306C91C1B98C000C57530 /* EventProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventProtocol.h; sourceTree = "<group>"; };
 		8C40EAAF1C139E3E0053CBFE /* LawTechSim.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LawTechSim.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C40EAB31C139E3E0053CBFE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8C40EAB51C139E3E0053CBFE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -141,6 +147,16 @@
 		8C6166F21C19019400A25573 /* Sei-WU1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sei-WU1.png"; sourceTree = "<group>"; };
 		8C6167171C1901AD00A25573 /* EntityNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntityNode.h; sourceTree = "<group>"; };
 		8C6167181C1901AD00A25573 /* EntityNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntityNode.m; sourceTree = "<group>"; };
+		8CC7F2EC1C1AA8EC00B8B648 /* StoryReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoryReader.h; sourceTree = "<group>"; };
+		8CC7F2ED1C1AA8EC00B8B648 /* StoryReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoryReader.m; sourceTree = "<group>"; };
+		8CC7F2EF1C1AAEE400B8B648 /* EventSequence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventSequence.h; sourceTree = "<group>"; };
+		8CC7F2F01C1AAEE400B8B648 /* EventSequence.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventSequence.m; sourceTree = "<group>"; };
+		8CC7F2FB1C1AC32400B8B648 /* ChoiceEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChoiceEvent.h; sourceTree = "<group>"; };
+		8CC7F2FC1C1AC32400B8B648 /* ChoiceEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChoiceEvent.m; sourceTree = "<group>"; };
+		8CC7F2FE1C1AC32C00B8B648 /* DialogueEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DialogueEvent.h; sourceTree = "<group>"; };
+		8CC7F2FF1C1AC32C00B8B648 /* DialogueEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DialogueEvent.m; sourceTree = "<group>"; };
+		8CC7F3011C1AC33C00B8B648 /* FlagToggleEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlagToggleEvent.h; sourceTree = "<group>"; };
+		8CC7F3021C1AC33C00B8B648 /* FlagToggleEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlagToggleEvent.m; sourceTree = "<group>"; };
 		8CFD662C1C18DBB5002C4B4E /* labelTileset.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = labelTileset.png; sourceTree = "<group>"; };
 		8CFD662E1C18DBB5002C4B4E /* tileset.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tileset.png; sourceTree = "<group>"; };
 		8CFD66341C18DDA0002C4B4E /* tilemap.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = tilemap.tmx; sourceTree = "<group>"; };
@@ -165,6 +181,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8C1306CA1C1BA2B100C57530 /* Events */ = {
+			isa = PBXGroup;
+			children = (
+				8C1306C91C1B98C000C57530 /* EventProtocol.h */,
+				8CC7F2FB1C1AC32400B8B648 /* ChoiceEvent.h */,
+				8CC7F2FC1C1AC32400B8B648 /* ChoiceEvent.m */,
+				8CC7F2FE1C1AC32C00B8B648 /* DialogueEvent.h */,
+				8CC7F2FF1C1AC32C00B8B648 /* DialogueEvent.m */,
+				8CC7F3011C1AC33C00B8B648 /* FlagToggleEvent.h */,
+				8CC7F3021C1AC33C00B8B648 /* FlagToggleEvent.m */,
+			);
+			name = Events;
+			sourceTree = "<group>";
+		};
 		8C40EAA61C139E3E0053CBFE = {
 			isa = PBXGroup;
 			children = (
@@ -197,6 +227,7 @@
 				8C40EAC31C139E3E0053CBFE /* Assets.xcassets */,
 				8C40EAC51C139E3E0053CBFE /* LaunchScreen.storyboard */,
 				8C40EAC81C139E3E0053CBFE /* Info.plist */,
+				8CC7F3041C1AC4BD00B8B648 /* StoryReader */,
 				8C6166CB1C19019400A25573 /* SpriteAssets */,
 				8CFD662B1C18DBB5002C4B4E /* TMXAssets */,
 				8C40EAE91C13FC450053CBFE /* External */,
@@ -348,6 +379,18 @@
 				8C6166F21C19019400A25573 /* Sei-WU1.png */,
 			);
 			path = Sei;
+			sourceTree = "<group>";
+		};
+		8CC7F3041C1AC4BD00B8B648 /* StoryReader */ = {
+			isa = PBXGroup;
+			children = (
+				8CC7F2EC1C1AA8EC00B8B648 /* StoryReader.h */,
+				8CC7F2ED1C1AA8EC00B8B648 /* StoryReader.m */,
+				8CC7F2EF1C1AAEE400B8B648 /* EventSequence.h */,
+				8CC7F2F01C1AAEE400B8B648 /* EventSequence.m */,
+				8C1306CA1C1BA2B100C57530 /* Events */,
+			);
+			name = StoryReader;
 			sourceTree = "<group>";
 		};
 		8CFD662B1C18DBB5002C4B4E /* TMXAssets */ = {
@@ -505,11 +548,16 @@
 				8C40EAFB1C1413C30053CBFE /* GameControlView.m in Sources */,
 				8C40EABF1C139E3E0053CBFE /* AutoGenGameViewController.m in Sources */,
 				8C40EAB71C139E3E0053CBFE /* AppDelegate.m in Sources */,
+				8CC7F3001C1AC32C00B8B648 /* DialogueEvent.m in Sources */,
 				8C6167191C1901AD00A25573 /* EntityNode.m in Sources */,
 				8C40EAE51C13FC350053CBFE /* JSTileMap.m in Sources */,
 				8C40EABA1C139E3E0053CBFE /* AutoGenGameScene.m in Sources */,
+				8CC7F2EE1C1AA8EC00B8B648 /* StoryReader.m in Sources */,
+				8CC7F2FD1C1AC32400B8B648 /* ChoiceEvent.m in Sources */,
 				8C40EAE21C13A6B80053CBFE /* GameScene.m in Sources */,
+				8CC7F3031C1AC33C00B8B648 /* FlagToggleEvent.m in Sources */,
 				8C40EAE81C13FC400053CBFE /* LFCGzipUtility.m in Sources */,
+				8CC7F2F11C1AAEE400B8B648 /* EventSequence.m in Sources */,
 				8C40EAB41C139E3E0053CBFE /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

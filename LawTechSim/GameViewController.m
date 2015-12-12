@@ -65,7 +65,6 @@
     ctrlFrame.size.height /= 2;
     ctrlFrame.origin.y += ctrlFrame.size.height;
     [self.controlView setFrame:ctrlFrame];
-    
 }
 
 #pragma mark - Properties
