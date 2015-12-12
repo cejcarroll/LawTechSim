@@ -8,36 +8,59 @@
 
 #import "EventSequence.h"
 
+@interface EventSequence ()
+
+/// Current location within sequence. Initially at 0
+@property (nonatomic, assign) NSUInteger currentIndex;
+
+/// Sequence of all events
+@property (nonatomic, copy) NSMutableArray<id<EventProtocol>> *events;
+
+@end
+
 @implementation EventSequence
 
 - (instancetype)initWithSceneId:(NSString *)sceneId
 {
     if (self = [super init])
     {
-        // TODO: method stub
+        _sceneId = sceneId;
+        _currentIndex = 0;
+        _events = [NSMutableArray array];
     }
     
     return self;
 }
 
+- (NSString *)description
+{
+    return [NSString stringWithFormat:@"%@: %@",
+            NSStringFromClass([self class]), self.events];
+}
+
+#pragma mark - EventSequence
+
 - (void)appendEvent:(id<EventProtocol>)event
 {
-    // TODO: method stub
+    [self.events addObject:event];
 }
 
 - (id<EventProtocol>)nextEvent
 {
-    // TODO: method stub
+    if (self.currentIndex >= self.events.count)
+        return nil; // Reached end of sequence
     
-    return nil;
+    id<EventProtocol> e = self.events[self.currentIndex];
+    self.currentIndex += 1;
+    
+    return e;
 }
 
 
 - (void)rewindToBeginning
 {
-    // TODO: method stub
+    self.currentIndex = 0;
 }
-
 
 
 @end
