@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8C1306CD1C1BC43C00C57530 /* StoryParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C1306CC1C1BC43C00C57530 /* StoryParser.m */; };
+		8C1306D01C1BC6CE00C57530 /* EntityInteractionGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C1306CF1C1BC6CE00C57530 /* EntityInteractionGroup.m */; };
 		8C40EAB41C139E3E0053CBFE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C40EAB31C139E3E0053CBFE /* main.m */; };
 		8C40EAB71C139E3E0053CBFE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C40EAB61C139E3E0053CBFE /* AppDelegate.m */; };
 		8C40EABA1C139E3E0053CBFE /* AutoGenGameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C40EAB91C139E3E0053CBFE /* AutoGenGameScene.m */; };
@@ -81,6 +83,10 @@
 
 /* Begin PBXFileReference section */
 		8C1306C91C1B98C000C57530 /* EventProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventProtocol.h; sourceTree = "<group>"; };
+		8C1306CB1C1BC43C00C57530 /* StoryParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoryParser.h; sourceTree = "<group>"; };
+		8C1306CC1C1BC43C00C57530 /* StoryParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoryParser.m; sourceTree = "<group>"; };
+		8C1306CE1C1BC6CE00C57530 /* EntityInteractionGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntityInteractionGroup.h; sourceTree = "<group>"; };
+		8C1306CF1C1BC6CE00C57530 /* EntityInteractionGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntityInteractionGroup.m; sourceTree = "<group>"; };
 		8C40EAAF1C139E3E0053CBFE /* LawTechSim.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LawTechSim.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C40EAB31C139E3E0053CBFE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8C40EAB51C139E3E0053CBFE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -386,8 +392,12 @@
 			children = (
 				8CC7F2EC1C1AA8EC00B8B648 /* StoryStore.h */,
 				8CC7F2ED1C1AA8EC00B8B648 /* StoryStore.m */,
+				8C1306CE1C1BC6CE00C57530 /* EntityInteractionGroup.h */,
+				8C1306CF1C1BC6CE00C57530 /* EntityInteractionGroup.m */,
 				8CC7F2EF1C1AAEE400B8B648 /* EventSequence.h */,
 				8CC7F2F01C1AAEE400B8B648 /* EventSequence.m */,
+				8C1306CB1C1BC43C00C57530 /* StoryParser.h */,
+				8C1306CC1C1BC43C00C57530 /* StoryParser.m */,
 				8C1306CA1C1BA2B100C57530 /* Events */,
 			);
 			name = StoryStore;
@@ -558,6 +568,8 @@
 				8CC7F3031C1AC33C00B8B648 /* FlagToggleEvent.m in Sources */,
 				8C40EAE81C13FC400053CBFE /* LFCGzipUtility.m in Sources */,
 				8CC7F2F11C1AAEE400B8B648 /* EventSequence.m in Sources */,
+				8C1306D01C1BC6CE00C57530 /* EntityInteractionGroup.m in Sources */,
+				8C1306CD1C1BC43C00C57530 /* StoryParser.m in Sources */,
 				8C40EAB41C139E3E0053CBFE /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

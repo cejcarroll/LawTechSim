@@ -18,14 +18,19 @@
 /// Unique identifier for this EventSeqence (i.e. a scene name)
 @property (nonatomic, readonly, copy) NSString *sceneId;
 
+/// Identifier for state flag need to be raised for EventSequence. Can be nil if there is no condition
+@property (nonatomic, readonly, copy) NSString *requiredFlagIdentifier;
+
 /**
  Initialize new EventSequence with sceneId
  
- @param sceneId NSString of scene's name
+ @param sceneId NSString identifier of scene's name
+ @param flagId NSString identifier of required flag. nil if no requirement
  
  @return new EventSequence
  */
-- (instancetype)initWithSceneId:(NSString *)sceneId;
+- (instancetype)initWithSceneId:(NSString *)sceneId
+                   requiredFlag:(NSString *)flagId;
 
 
 /**

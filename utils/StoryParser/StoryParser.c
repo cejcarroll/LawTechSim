@@ -30,7 +30,7 @@
 
 #define SCENARIO_BLK_TAG_OPEN       ("<scenariogroup character=\"%s\">\n")
 #define SCENARIO_WITH_COND_TAG      ("\t<scenario cond=\"%s\"  jumpTo=\"%s\"/>\n")
-#define SCENARIO_DEFAULT_TAG        ("\t<scenario cond=\"DEFAULT\" jumpTo=\"%s\"/>\n")
+#define SCENARIO_DEFAULT_TAG        ("\t<scenario jumpTo=\"%s\"/>\n")
 #define SCENARIO_BLK_TAG_CLOSE      ("</scenariogroup>\n\n")
 
 
