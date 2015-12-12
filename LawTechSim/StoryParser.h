@@ -7,16 +7,19 @@
 //
 
 #import <Foundation/Foundation.h>
-@class EntityInteractionGroup;
+@class EntityInteractionGroup, EventSequence;
 
 @protocol StoryParserDelegate <NSObject>
 
 /**
  Called when StoryParser finishes parsing all EntityInteractionGroups described in file
  
- @param sequenceGroups NSDictionary of entityId to EventSequenceGroup for that entity
+ 
+ @param interactionGroupsDict NSDictionary of entityId to EntityInteractionGroup for that entity. I.e. the "starting" scenes for a entity
+ @param scenes NSDictionary of sceneId to EventSequences. I.e. the comprehensive dictionary of all scenes
  */
-- (void)storyParserDidParseInteractionGroups:(NSDictionary <NSString *, EntityInteractionGroup *> *)interactionGroups;
+- (void)storyParserDidParseInteractionGroups:(NSDictionary <NSString *, EntityInteractionGroup *> *)interactionGroupsDict
+                                      scenes:(NSDictionary <NSString *, EventSequence *> *)scenes;
 
 
 @end
@@ -25,7 +28,6 @@
 
 /**
  StoryParser parses game story file .ltg
- When VALIDATE flag is on, validates story file
  */
 @interface StoryParser : NSObject <NSXMLParserDelegate>
 

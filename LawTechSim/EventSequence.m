@@ -32,12 +32,6 @@
     return self;
 }
 
-- (NSString *)description
-{
-    return [NSString stringWithFormat:@"%@: %@",
-            NSStringFromClass([self class]), self.events];
-}
-
 #pragma mark - Public
 
 - (void)appendEvent:(id<EventProtocol>)event

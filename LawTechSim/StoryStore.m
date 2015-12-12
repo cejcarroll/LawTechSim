@@ -15,6 +15,9 @@
 /// Dictionary of entityId to it's EntityInteractionGroup
 @property (nonatomic, copy) NSDictionary <NSString *, EntityInteractionGroup *> *interactionGroups;
 
+/// Dictionary of all eventSequences in sceneId to EventSequence map
+@property (nonatomic, copy) NSDictionary <NSString *, EventSequence *> *eventSequences;
+
 /// Representation of game's state, consisting of set of flag identifiers for ones that are raised
 @property (nonatomic, strong) NSMutableSet <NSString *> *gameState;
 
@@ -37,6 +40,7 @@
     if (self = [super init])
     {
         _storyParser = [[StoryParser alloc] init];
+        _storyParser.delegate = self;
         [_storyParser parseInteractionGroupsFromFileNamed:fileName];
         
         _gameState = [NSMutableSet set];
@@ -104,9 +108,10 @@
 # pragma mark - StoryParserDelegate
 
 - (void)storyParserDidParseInteractionGroups:(NSDictionary<NSString *,EntityInteractionGroup *> *)interactionGroupDict
+                                      scenes:(NSDictionary<NSString *,EventSequence *> *)scenes
 {
-    NSLog(@"Parsed story file");
     self.interactionGroups = [interactionGroupDict copy];
+    self.eventSequences = scenes;
     
     // Dealloc parser
     self.storyParser = nil;

@@ -14,7 +14,8 @@ typedef NS_ENUM(NSInteger, EventType)
     EventTypeNone,
     EventTypeDialogue,
     EventTypeChoice,
-    EventTypeFlagToggle
+    EventTypeFlagToggle,
+    EventTypeSpecial
 };
 
 @protocol EventProtocol <NSObject>

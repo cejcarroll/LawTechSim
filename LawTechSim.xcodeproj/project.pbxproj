@@ -10,6 +10,7 @@
 		8C1306CD1C1BC43C00C57530 /* StoryParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C1306CC1C1BC43C00C57530 /* StoryParser.m */; };
 		8C1306D01C1BC6CE00C57530 /* EntityInteractionGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C1306CF1C1BC6CE00C57530 /* EntityInteractionGroup.m */; };
 		8C1306D71C1BE2B600C57530 /* story.ltg in Resources */ = {isa = PBXBuildFile; fileRef = 8C1306D61C1BE2B600C57530 /* story.ltg */; };
+		8C1306DA1C1CC49C00C57530 /* SpecialEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C1306D91C1CC49C00C57530 /* SpecialEvent.m */; };
 		8C40EAB41C139E3E0053CBFE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C40EAB31C139E3E0053CBFE /* main.m */; };
 		8C40EAB71C139E3E0053CBFE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C40EAB61C139E3E0053CBFE /* AppDelegate.m */; };
 		8C40EABA1C139E3E0053CBFE /* AutoGenGameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C40EAB91C139E3E0053CBFE /* AutoGenGameScene.m */; };
@@ -89,6 +90,8 @@
 		8C1306CE1C1BC6CE00C57530 /* EntityInteractionGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntityInteractionGroup.h; sourceTree = "<group>"; };
 		8C1306CF1C1BC6CE00C57530 /* EntityInteractionGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntityInteractionGroup.m; sourceTree = "<group>"; };
 		8C1306D61C1BE2B600C57530 /* story.ltg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = story.ltg; sourceTree = "<group>"; };
+		8C1306D81C1CC49C00C57530 /* SpecialEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpecialEvent.h; sourceTree = "<group>"; };
+		8C1306D91C1CC49C00C57530 /* SpecialEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpecialEvent.m; sourceTree = "<group>"; };
 		8C40EAAF1C139E3E0053CBFE /* LawTechSim.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LawTechSim.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C40EAB31C139E3E0053CBFE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8C40EAB51C139E3E0053CBFE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -199,6 +202,8 @@
 				8CC7F2FF1C1AC32C00B8B648 /* DialogueEvent.m */,
 				8CC7F3011C1AC33C00B8B648 /* FlagToggleEvent.h */,
 				8CC7F3021C1AC33C00B8B648 /* FlagToggleEvent.m */,
+				8C1306D81C1CC49C00C57530 /* SpecialEvent.h */,
+				8C1306D91C1CC49C00C57530 /* SpecialEvent.m */,
 			);
 			name = Events;
 			sourceTree = "<group>";
@@ -559,6 +564,7 @@
 			files = (
 				8C40EAEE1C13FD0E0053CBFE /* CharacterNode.m in Sources */,
 				8C40EADF1C13A5BE0053CBFE /* GameViewController.m in Sources */,
+				8C1306DA1C1CC49C00C57530 /* SpecialEvent.m in Sources */,
 				8C40EAFB1C1413C30053CBFE /* GameControlView.m in Sources */,
 				8C40EABF1C139E3E0053CBFE /* AutoGenGameViewController.m in Sources */,
 				8C40EAB71C139E3E0053CBFE /* AppDelegate.m in Sources */,

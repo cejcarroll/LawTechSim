@@ -39,7 +39,7 @@ static NSString *const kChoiceDestSceneKey = @"onSelection";
 
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"%@: %@\n\t%@",
+    return [NSString stringWithFormat:@"%@: %@ => %@",
             NSStringFromClass([self class]), self.option, self.destinationScene];
 }
 

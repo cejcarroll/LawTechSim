@@ -32,7 +32,7 @@
  and are evaluated later on.
  
  // TODO: Add priority to sequences?
- 
+
  @param sequence EventSequence to add
  */
 - (void)addEventSequence:(EventSequence *)sequence;

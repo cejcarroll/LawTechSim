@@ -26,7 +26,7 @@ static NSString *const kContentKey = @"content";
     if (self = [super init])
     {
         _speakerName = speakerName;
-        _content = speakerName;
+        _content = content;
     }
     
     return self;
