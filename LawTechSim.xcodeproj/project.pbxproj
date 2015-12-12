@@ -59,7 +59,7 @@
 		8C6167151C19019400A25573 /* Sei-WU0.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C6166F11C19019400A25573 /* Sei-WU0.png */; };
 		8C6167161C19019400A25573 /* Sei-WU1.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C6166F21C19019400A25573 /* Sei-WU1.png */; };
 		8C6167191C1901AD00A25573 /* EntityNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C6167181C1901AD00A25573 /* EntityNode.m */; };
-		8CC7F2EE1C1AA8EC00B8B648 /* StoryReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CC7F2ED1C1AA8EC00B8B648 /* StoryReader.m */; };
+		8CC7F2EE1C1AA8EC00B8B648 /* StoryStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CC7F2ED1C1AA8EC00B8B648 /* StoryStore.m */; };
 		8CC7F2F11C1AAEE400B8B648 /* EventSequence.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CC7F2F01C1AAEE400B8B648 /* EventSequence.m */; };
 		8CC7F2FD1C1AC32400B8B648 /* ChoiceEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CC7F2FC1C1AC32400B8B648 /* ChoiceEvent.m */; };
 		8CC7F3001C1AC32C00B8B648 /* DialogueEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CC7F2FF1C1AC32C00B8B648 /* DialogueEvent.m */; };
@@ -147,8 +147,8 @@
 		8C6166F21C19019400A25573 /* Sei-WU1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sei-WU1.png"; sourceTree = "<group>"; };
 		8C6167171C1901AD00A25573 /* EntityNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntityNode.h; sourceTree = "<group>"; };
 		8C6167181C1901AD00A25573 /* EntityNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntityNode.m; sourceTree = "<group>"; };
-		8CC7F2EC1C1AA8EC00B8B648 /* StoryReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoryReader.h; sourceTree = "<group>"; };
-		8CC7F2ED1C1AA8EC00B8B648 /* StoryReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoryReader.m; sourceTree = "<group>"; };
+		8CC7F2EC1C1AA8EC00B8B648 /* StoryStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoryStore.h; sourceTree = "<group>"; };
+		8CC7F2ED1C1AA8EC00B8B648 /* StoryStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoryStore.m; sourceTree = "<group>"; };
 		8CC7F2EF1C1AAEE400B8B648 /* EventSequence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventSequence.h; sourceTree = "<group>"; };
 		8CC7F2F01C1AAEE400B8B648 /* EventSequence.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventSequence.m; sourceTree = "<group>"; };
 		8CC7F2FB1C1AC32400B8B648 /* ChoiceEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChoiceEvent.h; sourceTree = "<group>"; };
@@ -227,7 +227,7 @@
 				8C40EAC31C139E3E0053CBFE /* Assets.xcassets */,
 				8C40EAC51C139E3E0053CBFE /* LaunchScreen.storyboard */,
 				8C40EAC81C139E3E0053CBFE /* Info.plist */,
-				8CC7F3041C1AC4BD00B8B648 /* StoryReader */,
+				8CC7F3041C1AC4BD00B8B648 /* StoryStore */,
 				8C6166CB1C19019400A25573 /* SpriteAssets */,
 				8CFD662B1C18DBB5002C4B4E /* TMXAssets */,
 				8C40EAE91C13FC450053CBFE /* External */,
@@ -381,16 +381,16 @@
 			path = Sei;
 			sourceTree = "<group>";
 		};
-		8CC7F3041C1AC4BD00B8B648 /* StoryReader */ = {
+		8CC7F3041C1AC4BD00B8B648 /* StoryStore */ = {
 			isa = PBXGroup;
 			children = (
-				8CC7F2EC1C1AA8EC00B8B648 /* StoryReader.h */,
-				8CC7F2ED1C1AA8EC00B8B648 /* StoryReader.m */,
+				8CC7F2EC1C1AA8EC00B8B648 /* StoryStore.h */,
+				8CC7F2ED1C1AA8EC00B8B648 /* StoryStore.m */,
 				8CC7F2EF1C1AAEE400B8B648 /* EventSequence.h */,
 				8CC7F2F01C1AAEE400B8B648 /* EventSequence.m */,
 				8C1306CA1C1BA2B100C57530 /* Events */,
 			);
-			name = StoryReader;
+			name = StoryStore;
 			sourceTree = "<group>";
 		};
 		8CFD662B1C18DBB5002C4B4E /* TMXAssets */ = {
@@ -552,7 +552,7 @@
 				8C6167191C1901AD00A25573 /* EntityNode.m in Sources */,
 				8C40EAE51C13FC350053CBFE /* JSTileMap.m in Sources */,
 				8C40EABA1C139E3E0053CBFE /* AutoGenGameScene.m in Sources */,
-				8CC7F2EE1C1AA8EC00B8B648 /* StoryReader.m in Sources */,
+				8CC7F2EE1C1AA8EC00B8B648 /* StoryStore.m in Sources */,
 				8CC7F2FD1C1AC32400B8B648 /* ChoiceEvent.m in Sources */,
 				8C40EAE21C13A6B80053CBFE /* GameScene.m in Sources */,
 				8CC7F3031C1AC33C00B8B648 /* FlagToggleEvent.m in Sources */,
