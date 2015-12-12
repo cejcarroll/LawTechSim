@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "EventProtocol.h"
+#import "StoryParser.h"
 
 @protocol StoryStoreDelegate <NSObject>
 
@@ -29,7 +30,7 @@
  Store for interacting with game story described in .ltg file
  Manages events, state flags, and components of story content
  */
-@interface StoryStore : NSObject
+@interface StoryStore : NSObject <StoryParserDelegate>
 
 @property (nonatomic, weak) id<StoryStoreDelegate> delegate;
 
@@ -45,7 +46,7 @@
  @return new StoryReader
  */
 - (instancetype)initWithFileNamed:(NSString *)fileName
-                         loadSave:(BOOL)loadState;
+                         loadSave:(BOOL)loadSave;
 
 
 /**
@@ -77,14 +78,16 @@
 
 /**
  Notify StoryStore that current active event has been dealt with, and StoryStore
- should move to next event.
+ should move to next event. Causes callback to delegate
  I.e. should be called after displaying a dialogue
+ Causes callback to delegate
  */
 - (void)progressToNextEvent;
 
 /**
  Notify StoryStore that current active event has been interacted with with an option
  I.e. should be called after a Choice option is selected
+ Causes callback to delegate
  
  @param option NSString describing interaction
  */

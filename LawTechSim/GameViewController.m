@@ -20,7 +20,7 @@
 
 @implementation GameViewController
 
-
+#pragma mark - UIViewController
 
 - (void)loadView
 {

@@ -12,8 +12,8 @@
 
 @interface EntityInteractionGroup ()
 
-/// Array of EventSequences for particular entity
-@property (nonatomic, strong) NSMutableArray <EventSequence *> *eventSequences;
+/// Dictionary of SceneID to EventSequences for particular entity
+@property (nonatomic, strong) NSMutableDictionary <NSString *, EventSequence *> *eventSequences;
 
 @end
 
@@ -29,11 +29,12 @@
     return self;
 }
 
-#pragma mark - EntityInteractionGroup
+#pragma mark - Public
 
 - (void)addEventSequence:(EventSequence *)sequence
 {
-    [self.eventSequences addObject:sequence];
+    [self.eventSequences setObject:sequence
+                            forKey:sequence.sceneId];
 }
 
 - (EventSequence *)eventSequenceForFlags:(NSSet <NSString *> *)state
@@ -41,7 +42,7 @@
     EventSequence *eSToReturn = nil;
     NSString *requiredFlag = nil;
     
-    for (EventSequence *eS in self.eventSequences)
+    for (EventSequence *eS in self.eventSequences.allValues)
     {
         requiredFlag = eS.requiredFlagIdentifier;
 

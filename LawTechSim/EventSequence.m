@@ -40,7 +40,7 @@
             NSStringFromClass([self class]), self.events];
 }
 
-#pragma mark - EventSequence
+#pragma mark - Public
 
 - (void)appendEvent:(id<EventProtocol>)event
 {

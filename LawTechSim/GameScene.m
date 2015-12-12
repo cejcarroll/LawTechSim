@@ -9,6 +9,7 @@
 #import "GameScene.h"
 #import "JSTileMap.h"
 #import "CharacterNode.h"
+#import "StoryStore.h"
 
 //#define COLLISION_DEBUG
 
@@ -26,6 +27,8 @@
 /// Last time update: was called in game loop
 @property (nonatomic, assign) NSTimeInterval lastUpdateTimeInterval;
 
+@property (nonatomic, strong) StoryStore *storyStore;
+
 #ifdef COLLISION_DEBUG
 /// Show where the collision box is
 @property (nonatomic, strong) SKSpriteNode *collisionBoxNode;
@@ -37,6 +40,8 @@
 //-------------------------------------------------
 
 @implementation GameScene
+
+static NSString *const kGameStoryFileName       = @"story";
 
 /*   TMX Constants   */
 static NSString *const kTMXFileName             = @"tilemap.tmx";
@@ -62,6 +67,9 @@ static const CGFloat kCollisionPadding = 0.5;
         self.scaleMode = SKSceneScaleModeAspectFill;
         
         _lastUpdateTimeInterval = 0;
+        
+        _storyStore = [[StoryStore alloc] initWithFileNamed:kGameStoryFileName
+                                                   loadSave:NO];
         
         [self addChild:self.cameraNode];
         [self addChild:self.tileMapNode];
@@ -211,7 +219,7 @@ static const CGFloat kCollisionPadding = 0.5;
     // TODO: STUB
 }
 
-#pragma mark - GameScene
+#pragma mark - Private
 
 // FIXME: Consider moving positionNode:atLocationObj to JSTileMap extension
 /**

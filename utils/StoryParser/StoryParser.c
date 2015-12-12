@@ -15,6 +15,9 @@
 #define FMT_NONE      (0)
 #define FMT_LOWERCASE (1)
 
+#define STORY_TAG_OPEN   ("<lawtechstory>")
+#define STORY_TAG_CLOSE  ("</lawtechstory>")
+
 #define SCENE_TAG_OPEN ("<scene id=\"%s\">\n")
 #define SCENE_TAG_CLOSE ("</scene>\n\n")
 
@@ -24,7 +27,7 @@
 #define CHOICE_TAG            ("\t<choice option=\"%s\" onSelection=\"%s\"/>\n")
 #define CHOICEGROUP_TAG_CLOSE ("</choicegroup>\n")
 
-#define EVENT_TAG       ("\t<event id=\"%s\" onSuccess=\"%s\" onFail=\"%s\">\n")
+#define EVENT_TAG       ("\t<event id=\"%s\" onSuccess=\"%s\" onFail=\"%s\"/>\n")
 
 #define STATE_TAG       ("\t<toggle id=\"%s\"/>\n")
 
@@ -451,6 +454,8 @@ int main(int argc, const char **argv)
     int numFiles; /*   Number of files to prse   */
 
     numFiles = argc - 1;
+    
+    puts(STORY_TAG_OPEN);
 
     for (int i = 0; i < numFiles; i++)
     {
@@ -470,6 +475,8 @@ int main(int argc, const char **argv)
 
         fclose(inFile);
     }
+    
+    puts(STORY_TAG_CLOSE);
 
     fprintf(stderr, "Parsed %d file(s) successfully\n", numFiles);
 

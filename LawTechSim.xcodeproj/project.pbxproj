@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		8C1306CD1C1BC43C00C57530 /* StoryParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C1306CC1C1BC43C00C57530 /* StoryParser.m */; };
 		8C1306D01C1BC6CE00C57530 /* EntityInteractionGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C1306CF1C1BC6CE00C57530 /* EntityInteractionGroup.m */; };
+		8C1306D71C1BE2B600C57530 /* story.ltg in Resources */ = {isa = PBXBuildFile; fileRef = 8C1306D61C1BE2B600C57530 /* story.ltg */; };
 		8C40EAB41C139E3E0053CBFE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C40EAB31C139E3E0053CBFE /* main.m */; };
 		8C40EAB71C139E3E0053CBFE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C40EAB61C139E3E0053CBFE /* AppDelegate.m */; };
 		8C40EABA1C139E3E0053CBFE /* AutoGenGameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C40EAB91C139E3E0053CBFE /* AutoGenGameScene.m */; };
@@ -87,6 +88,7 @@
 		8C1306CC1C1BC43C00C57530 /* StoryParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoryParser.m; sourceTree = "<group>"; };
 		8C1306CE1C1BC6CE00C57530 /* EntityInteractionGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntityInteractionGroup.h; sourceTree = "<group>"; };
 		8C1306CF1C1BC6CE00C57530 /* EntityInteractionGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntityInteractionGroup.m; sourceTree = "<group>"; };
+		8C1306D61C1BE2B600C57530 /* story.ltg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = story.ltg; sourceTree = "<group>"; };
 		8C40EAAF1C139E3E0053CBFE /* LawTechSim.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LawTechSim.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C40EAB31C139E3E0053CBFE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8C40EAB51C139E3E0053CBFE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -246,6 +248,7 @@
 		8C40EAB21C139E3E0053CBFE /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				8C1306D61C1BE2B600C57530 /* story.ltg */,
 				8C40EAB31C139E3E0053CBFE /* main.m */,
 			);
 			name = "Supporting Files";
@@ -529,6 +532,7 @@
 				8CFD66311C18DBB5002C4B4E /* tileset.png in Resources */,
 				8C6167071C19019400A25573 /* Main-WR0.png in Resources */,
 				8CFD662F1C18DBB5002C4B4E /* labelTileset.png in Resources */,
+				8C1306D71C1BE2B600C57530 /* story.ltg in Resources */,
 				8C6167011C19019400A25573 /* Main-SR.png in Resources */,
 				8C6167101C19019400A25573 /* Sei-WD1.png in Resources */,
 				8C6167111C19019400A25573 /* Sei-WL0.png in Resources */,

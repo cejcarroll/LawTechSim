@@ -55,6 +55,7 @@ static NSString *const kCharacterActionKey = @"CharacterNodeAction";
     return self;
 }
 
+#pragma mark - Public
 
 /**
  State representing current texture
@@ -67,6 +68,45 @@ static NSString *const kCharacterActionKey = @"CharacterNodeAction";
     [self performActionForState:state];
     _state = state;
 }
+
+- (void)updatePositionWithTimeInterval:(NSTimeInterval)deltaTime
+{
+    CGFloat moveDist = kMovementSpeedPerSec * deltaTime;
+    CGPoint newPosition = self.position;
+    
+    switch (self.state)
+    {
+        case CharacterNodeStateStill:
+            break;
+        case CharacterNodeStateMovingLeft:
+            newPosition.x += moveDist;
+            break;
+        case CharacterNodeStateMovingUp:
+            newPosition.y -= moveDist;
+            break;
+        case CharacterNodeStateMovingRight:
+            newPosition.x -= moveDist;
+            break;
+        case CharacterNodeStateMovingDown:
+            newPosition.y += moveDist;
+            break;
+    }
+    
+    [self setPosition:newPosition];
+}
+
+- (CGRect)collisionRect
+{
+    CGRect frame = self.frame;
+
+    frame.origin = self.position;
+    frame.origin.y -= kCollisionBoxYOffset; // Shift down
+    frame.size = kCollisionBoxSize;
+    
+    return frame;
+}
+
+#pragma mark - Private
 
 /**
  Perform texture changes for given state
@@ -107,43 +147,6 @@ static NSString *const kCharacterActionKey = @"CharacterNodeAction";
     /*   TODO: Maybe assign key? Dunno which is faster - clearing all action or specifying key */
     [self runAction:execAction
             withKey:kCharacterActionKey];
-}
-
-- (void)updatePositionWithTimeInterval:(NSTimeInterval)deltaTime
-{
-    CGFloat moveDist = kMovementSpeedPerSec * deltaTime;
-    CGPoint newPosition = self.position;
-    
-    switch (self.state)
-    {
-        case CharacterNodeStateStill:
-            break;
-        case CharacterNodeStateMovingLeft:
-            newPosition.x += moveDist;
-            break;
-        case CharacterNodeStateMovingUp:
-            newPosition.y -= moveDist;
-            break;
-        case CharacterNodeStateMovingRight:
-            newPosition.x -= moveDist;
-            break;
-        case CharacterNodeStateMovingDown:
-            newPosition.y += moveDist;
-            break;
-    }
-    
-    [self setPosition:newPosition];
-}
-
-- (CGRect)collisionRect
-{
-    CGRect frame = self.frame;
-
-    frame.origin = self.position;
-    frame.origin.y -= kCollisionBoxYOffset; // Shift down
-    frame.size = kCollisionBoxSize;
-    
-    return frame;
 }
 
 #pragma mark - Properties
