@@ -10,15 +10,22 @@
 
 @interface StoryParser ()
 
-@property (nonatomic, strong) NSMutableDictionary <NSString *, NSString *> *interactionMapping;
+/// Mapping of scene identifier to specific character
+@property (nonatomic, strong) NSMutableDictionary <NSString *, NSString *> *scenarioMapping;
 
-@property (nonatomic, strong) NSMutableDictionary <NSString *, EntityInteractionGroup *> *interactionGroups;
+/// Dict of scene identifier to required flag identifier
+@property (nonatomic, strong) NSMutableDictionary <NSString *, NSString *> *scenarioConditions;
 
+/// Array of parsed scenarios as EntityInteractionGroup
+@property (nonatomic, strong) NSMutableArray <EntityInteractionGroup *> *interactionGroups;
+
+/// parser for game file
 @property (nonatomic, strong) NSXMLParser *fileParser;
 
 @end
 
 @implementation StoryParser
+
 
 #pragma mark - Public
 
@@ -27,6 +34,10 @@
     NSString *path = [[NSBundle mainBundle] pathForResource:fileName
                                                      ofType:@"ltg"];
     NSData *data = [NSData dataWithContentsOfFile:path];
+    
+    self.scenarioMapping = [NSMutableDictionary dictionary];
+    self.scenarioConditions = [NSMutableDictionary dictionary];
+    self.interactionGroups = [NSMutableArray array];
     
     self.fileParser = [[NSXMLParser alloc] initWithData:data];
     self.fileParser.delegate = self;
@@ -42,7 +53,11 @@
 
 - (void)parserDidEndDocument:(NSXMLParser *)parser
 {
-    [self.delegate storyParserDidParseInteractionGroups:self.interactionGroups];
+    // TODO: Create dictionary by iterationg through self.interactionGroups
+    // Apply condition requires from scenarioConditions
+    // Add each interactionGroup to key (char id) of scenarioMapping
+    
+//    [self.delegate storyParserDidParseInteractionGroups:self.interactionGroups];
 }
 
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary<NSString *,NSString *> *)attributeDict

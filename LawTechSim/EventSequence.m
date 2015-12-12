@@ -21,12 +21,10 @@
 @implementation EventSequence
 
 - (instancetype)initWithSceneId:(NSString *)sceneId
-                   requiredFlag:(NSString *)flagId
 {
     if (self = [super init])
     {
         _sceneId = sceneId;
-        _requiredFlagIdentifier = flagId;
         _currentIndex = 0;
         _events = [NSMutableArray array];
     }

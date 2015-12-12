@@ -103,10 +103,10 @@
 
 # pragma mark - StoryParserDelegate
 
-- (void)storyParserDidParseInteractionGroups:(NSDictionary<NSString *,EntityInteractionGroup *> *)interactionGroups
+- (void)storyParserDidParseInteractionGroups:(NSDictionary<NSString *,EntityInteractionGroup *> *)interactionGroupDict
 {
     NSLog(@"Parsed story file");
-    self.interactionGroups = [interactionGroups copy];
+    self.interactionGroups = [interactionGroupDict copy];
     
     // Dealloc parser
     self.storyParser = nil;
