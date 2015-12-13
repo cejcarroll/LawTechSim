@@ -21,6 +21,9 @@
 /// Identifier for state flag need to be raised for EventSequence. Can be nil if there is no condition
 @property (nonatomic, copy) NSString *requiredFlagIdentifier;
 
+/// Property that indicates if all events within EventSequence has been traversed
+@property (nonatomic, readonly, getter=isDone) BOOL done;
+
 /**
  Initialize new EventSequence with sceneId
  

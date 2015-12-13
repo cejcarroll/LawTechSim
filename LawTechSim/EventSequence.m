@@ -34,6 +34,11 @@
 
 #pragma mark - Public
 
+- (BOOL)isDone
+{
+    return (self.currentIndex >= self.events.count);
+}
+
 - (void)appendEvent:(id<EventProtocol>)event
 {
     [self.events addObject:event];
@@ -41,7 +46,7 @@
 
 - (id<EventProtocol>)nextEvent
 {
-    if (self.currentIndex >= self.events.count)
+    if (self.isDone)
         return nil; // Reached end of sequence
     
     id<EventProtocol> e = self.events[self.currentIndex];

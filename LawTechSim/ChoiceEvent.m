@@ -13,13 +13,18 @@
 static NSString *const kChoiceOptionKey = @"option";
 static NSString *const kChoiceDestSceneKey = @"onSelection";
 
+/// Constant denoting choice results in no scene jump
+static NSString *const kChoiceNoJumpKey = @"no_jump";
+
 - (instancetype)initWithOption:(NSString *)option
               destinationScene:(NSString *)sceneId
 {
     if (self = [super init])
     {
         _option = option;
-        _destinationScene = sceneId;
+        
+        if (![sceneId isEqualToString:kChoiceNoJumpKey])
+            _destinationScene = sceneId;
     }
     
     return self;
@@ -33,6 +38,7 @@ static NSString *const kChoiceDestSceneKey = @"onSelection";
     if (!option || !destinationScene)
         NSLog(@"Error creating Choice with attr: %@", attr);
 
+    
     return [self initWithOption:option
                destinationScene:destinationScene];
 }
@@ -80,12 +86,28 @@ static NSString *const kChoiceDestSceneKey = @"onSelection";
     return EventTypeChoice;
 }
 
-#pragma mark - ChoiceEvent
+#pragma mark - Public
 
 - (void)addChoiceWithAttributes:(NSDictionary *)attr
 {
     Choice *c = [[Choice alloc] initWithAttributes:attr];
     [_mutableChoices addObject: c];
+}
+
+- (NSString *)destinationSceneForChoiceOption:(NSString *)option
+{
+    NSString *sceneId = nil;
+    
+    for (Choice *c in _mutableChoices)
+    {
+        if ([c.option isEqualToString:option])
+        {
+            sceneId = c.destinationScene;
+            break;
+        }
+    }
+    
+    return sceneId;
 }
 
 #pragma mark - Properties

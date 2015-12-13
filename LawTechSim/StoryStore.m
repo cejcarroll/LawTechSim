@@ -9,6 +9,12 @@
 #import "StoryStore.h"
 #import "EntityInteractionGroup.h"
 #import "EventSequence.h"
+#import "DialogueEvent.h"
+#import "FlagToggleEvent.h"
+#import "ChoiceEvent.h"
+#import "SpecialEvent.h"
+
+#define STORY_LOG
 
 @interface StoryStore ()
 
@@ -33,6 +39,11 @@
 @end
 
 @implementation StoryStore
+
+static NSString *const kSaveFileName = @"ltg-save.dat";
+
+NSString *const StoryStoreSpecialEventSuccess   = @"specialeventsuccess";
+NSString *const StoryStoreSpecialEventFail      = @"specialeventfailure";
 
 - (instancetype)initWithFileNamed:(NSString *)fileName
                          loadSave:(BOOL)loadSave
@@ -64,7 +75,10 @@
 
 - (BOOL)hasActiveEventSequence
 {
-    return !(self.activeSequence == nil);
+    BOOL hasActiveSequence = self.activeSequence && !self.activeSequence.isDone;
+    BOOL hasActiveEvent = self.currentEvent;
+    
+    return hasActiveEvent || hasActiveSequence;
 }
 
 - (void)activateEventSequenceForId:(NSString *)characterIdentifier
@@ -78,31 +92,176 @@
     [self.activeSequence rewindToBeginning];
     self.currentEvent = nil;
     
-    [self progressToNextEvent];
+#ifdef STORY_LOG
+    NSLog(@"Activated scene %@", self.activeSequence.sceneId);
+#endif
+    
+    [self progressToNextEventWithOption:nil];
 }
 
 - (void)cancelActiveEventSequence
 {
+#ifdef STORY_LOG
+    NSLog(@"Cancel: %@", self.currentEvent);
+#endif
+    
     self.activeSequence = nil;
     self.currentEvent = nil;
 }
 
-- (void)progressToNextEvent
-{
-    // TODO: stub
-//    [self.activeSequence nextEvent];
-}
-
 - (void)progressToNextEventWithOption:(NSString *)option
 {
-    // TODO: stub
+    assert(self.activeSequence);
+    
+    /// Event type of current, or next event
+    EventType type = EventTypeNone;
+
+    /*   Redirect if current event prompts further interactions   */
+    if (self.currentEvent)
+    {
+        /// Scene to jump to, depending on user interaction (e.g. choice selection, event completion)
+        NSString *destSceneId = nil;
+        
+        type = [self.currentEvent eventType];
+        
+        /*   Find which scene to jump to depending on event type and interaction   */
+        if (type == EventTypeChoice)
+        {
+            ChoiceEvent *choiceEvent = (ChoiceEvent *)self.currentEvent;
+            destSceneId = [choiceEvent destinationSceneForChoiceOption:option];
+            
+#ifdef STORY_LOG
+            NSLog(@"Chose: %@", option);
+#endif
+        }
+        else if (type == EventTypeSpecial)
+        {
+            SpecialEvent *specialEvent = (SpecialEvent *)self.currentEvent;
+            
+            if ([option isEqualToString:StoryStoreSpecialEventSuccess])
+            {
+                destSceneId = specialEvent.onSuccessSceneId;
+            }
+            else if ([option isEqualToString:StoryStoreSpecialEventFail])
+            {
+                destSceneId = specialEvent.onFailureSceneId;
+            }
+            else
+            {
+                @throw [NSException exceptionWithName:NSInternalInconsistencyException
+                                               reason:@"Invalid option in response to active SpecialEvent"
+                                             userInfo:nil];
+            }
+        }
+        
+        
+        /*   Clear current event, as it was handled   */
+        self.currentEvent = nil;
+        
+        /*   Jump to destination scene and interrupt current active event sequence, if any   */
+        if (destSceneId)
+        {
+            [self jumpToScene:destSceneId];
+            return;
+        }
+    }
+
+    
+    
+    /*   Move Forward in story   */
+    while (![self.activeSequence isDone])
+    {
+        self.currentEvent = self.activeSequence.nextEvent;
+        
+        type = [self.currentEvent eventType];
+        
+        if (type == EventTypeDialogue ||
+            type == EventTypeChoice ||
+            type == EventTypeSpecial)
+        {
+            // Dialogue, Choice, and Special events notify delegate
+            [self.delegate storyStoreReadEvent:self.currentEvent];
+            
+#ifdef STORY_LOG
+            NSLog(@"Read: %@", self.currentEvent);
+#endif
+            
+            break;
+        }
+        else if (type == EventTypeFlagToggle)
+        {
+            // Flag events silently update game state
+            FlagToggleEvent *flagEvent = (FlagToggleEvent *)self.currentEvent;
+            flagEvent.raised = YES;
+            
+            // Don't hold onto flag change events
+            self.currentEvent = nil;
+            
+#ifdef STORY_LOG
+            NSLog(@"Completed: %@", flagEvent.flagIdentifier);
+#endif
+            
+            [self.gameState addObject:flagEvent.flagIdentifier];
+        }
+        else
+        {
+            @throw [NSException exceptionWithName:NSInternalInconsistencyException
+                                           reason:@"Unhandled event type"
+                                         userInfo:nil];
+        }
+    }
+    
+    
+    /*   Sequence has been exhaused - no more events    */
+    if (self.currentEvent == nil)
+    {
+        [self.delegate storyStoreFinishedSequence];
+        
+#ifdef STORY_LOG
+        NSLog(@"Ended sequence");
+#endif
+    }
+    
+
 }
 
 #pragma mark - Private
 
+/**
+ Jump to scene with specified sceneId, interrupting current active eventSequence if any
+ */
+- (void)jumpToScene:(NSString *)sceneId
+{
+#ifdef STORY_LOG
+    NSLog(@"Jump to scene: %@", sceneId);
+#endif
+    
+    self.activeSequence = self.eventSequences[sceneId];
+    [self.activeSequence rewindToBeginning];
+    self.currentEvent = nil;
+
+    [self progressToNextEventWithOption:nil];
+}
+
+/**
+ Load save file from documents directory, if such file exists
+ */
 - (void)loadSaveFile
 {
     // TODO: stub
+}
+
+/**
+ Path to save file in Documents directory
+ 
+ @return NSString path to save file
+ */
+- (NSString *)saveFilePath
+{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths firstObject];
+    
+    return [documentsDirectory stringByAppendingPathComponent:kSaveFileName];
 }
 
 # pragma mark - StoryParserDelegate

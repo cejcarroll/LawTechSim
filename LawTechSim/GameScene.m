@@ -9,7 +9,7 @@
 #import "GameScene.h"
 #import "JSTileMap.h"
 #import "CharacterNode.h"
-#import "StoryStore.h"
+
 
 //#define COLLISION_DEBUG
 
@@ -70,6 +70,7 @@ static const CGFloat kCollisionPadding = 0.5;
         
         _storyStore = [[StoryStore alloc] initWithFileNamed:kGameStoryFileName
                                                    loadSave:NO];
+        _storyStore.delegate = self;
         
         [self addChild:self.cameraNode];
         [self addChild:self.tileMapNode];
@@ -200,6 +201,10 @@ static const CGFloat kCollisionPadding = 0.5;
 {
     CharacterNodeState charState;
     
+    /*   Interrumpt movement control if event sequence is active   */
+    if ([self.storyStore hasActiveEventSequence])
+        return;
+    
     if (state == GameControlViewStateNoPress)
         charState = CharacterNodeStateStill;
     else if (state == GameControlViewStateLeftPress)
@@ -212,11 +217,36 @@ static const CGFloat kCollisionPadding = 0.5;
         charState = CharacterNodeStateMovingDown;
     
     [self.characterNode setState:charState];
+
 }
 
 - (void)gameControlDidPressAction
 {
-    // TODO: STUB
+    // TODO: Execute event sequence when close to character
+    
+    /*   Stop character movement if event is triggered   */
+    // TODO: Only interrupt when event is triggered
+    [self.characterNode setState:CharacterNodeStateStill];
+ 
+    // StoryStore Temporary Test code.
+    if (![self.storyStore hasActiveEventSequence])
+    {
+        [self.storyStore activateEventSequenceForId:@"Sei"];
+    }
+    else if ([self.storyStore.currentEvent eventType] == EventTypeChoice)
+    {
+        [self.storyStore progressToNextEventWithOption:@"Yes"];
+    }
+    else if ([self.storyStore.currentEvent eventType] == EventTypeSpecial)
+    {
+        [self.storyStore progressToNextEventWithOption:StoryStoreSpecialEventSuccess];
+    }
+    else
+    {
+        [self.storyStore progressToNextEventWithOption:nil];
+    }
+
+    
 }
 
 #pragma mark - Private
@@ -402,7 +432,17 @@ static const CGFloat kCollisionPadding = 0.5;
 #endif
 
 
+#pragma mark - StoryStoreDelegate
 
+- (void)storyStoreReadEvent:(id<EventProtocol>)event
+{
+    
+}
+
+- (void)storyStoreFinishedSequence
+{
+    
+}
 
 
 @end

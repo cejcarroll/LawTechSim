@@ -8,10 +8,11 @@
 
 #import <SpriteKit/SpriteKit.h>
 #import "GameControlView.h"
+#import "StoryStore.h"
 
 /**
  GameScene represents the gameplay screen of sprites - Character, Map, and NPCs
  */
-@interface GameScene : SKScene <GameControlViewDelegate>
+@interface GameScene : SKScene <GameControlViewDelegate, StoryStoreDelegate>
 
 @end

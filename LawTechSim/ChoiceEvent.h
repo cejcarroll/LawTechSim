@@ -16,7 +16,7 @@
 /// Option encapsulated by a particular choice, eg answering "Yes"
 @property (nonatomic, readonly) NSString *option;
 
-/// identifier to scene to jump to if this choice's action is taken
+/// identifier to scene to jump to if this choice's action is taken. Nil denotes no jump
 @property (nonatomic, readonly) NSString *destinationScene;
 
 
@@ -59,5 +59,16 @@
  @param attr NSDictionary with attributes of choice
  */
 - (void)addChoiceWithAttributes:(NSDictionary *)attr;
+
+
+/**
+ Get SceneId for particular option chosen
+ 
+ @param option NSString denoting option chose
+ 
+ @return NSString sceneId of specified option. Nil if option has no jump
+ */
+- (NSString *)destinationSceneForChoiceOption:(NSString *)option;
+
 
 @end

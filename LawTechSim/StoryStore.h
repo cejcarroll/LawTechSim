@@ -19,6 +19,12 @@
  */
 - (void)storyStoreReadEvent:(id <EventProtocol>)event;
 
+
+/**
+ Notifies delegate that StoryStore finished sequence of events
+ */
+- (void)storyStoreFinishedSequence;
+
 @end
 
 
@@ -31,6 +37,12 @@
  Manages events, state flags, and components of story content
  */
 @interface StoryStore : NSObject <StoryParserDelegate>
+
+/// Constant indicating user's success competing an event
+extern NSString *const StoryStoreSpecialEventSuccess;
+
+/// Constant indicating user's failure to complete special event
+extern NSString *const StoryStoreSpecialEventFail;
 
 @property (nonatomic, weak) id<StoryStoreDelegate> delegate;
 
@@ -77,19 +89,12 @@
 - (void)cancelActiveEventSequence;
 
 /**
- Notify StoryStore that current active event has been dealt with, and StoryStore
- should move to next event. Causes callback to delegate
- I.e. should be called after displaying a dialogue
- Causes callback to delegate
- */
-- (void)progressToNextEvent;
+ Notify StoryStore that current active event has been interacted with with an option.
+ Option can be nil, constants like StoryStoreSpecialEventSuccess, or string value indicating choice option
 
-/**
- Notify StoryStore that current active event has been interacted with with an option
- I.e. should be called after a Choice option is selected
  Causes callback to delegate
  
- @param option NSString describing interaction
+ @param option NSString describing interaction. Can be nil if unused, e.g. for every event except Choice
  */
 - (void)progressToNextEventWithOption:(NSString *)option;
 

@@ -1,37 +1,51 @@
+<lawtechstory>
 <scenariogroup character="Brad">
 	<scenario cond="bradhasbeendefeated"  jumpTo="bradgivesyouana"/>
 	<scenario cond="bradknowsyou"  jumpTo="bradfightsyou"/>
 	<scenario jumpTo="braddoesnotknowwhoyouare"/>
 </scenariogroup>
+
 <scene id="braddoesnotknowwhoyouare">
+	<dialogue speaker="Brad" content="Hi. My name is Brad. I teach LawTech"/>
+	<dialogue speaker="Student" content="Hi, I am a student"/>
 	<toggle id="bradknowsyou"/>
 </scene>
+
 <scene id="bradfightsyou">
+	<dialogue speaker="Brad" content="Hey student. Do you think you beat me in Space Invader?"/>
 <choicegroup>
 	<choice option="Yes" onSelection="playspaceinvaderagainstbrad"/>
 	<choice option="Ignore" onSelection="no_jump"/>
 </choicegroup>
 </scene>
+
 <scene id="playspaceinvaderagainstbrad">
-	<event id="spaceinvaderbrad" onSuccess="youbeatbradinspaceinvader" onFail="no_jump">
+	<dialogue speaker="Brad" content="Think you can defeat me?"/>
+	<event id="spaceinvaderbrad" onSuccess="youbeatbradinspaceinvader" onFail="no_jump"/>
 </scene>
+
 <scene id="youbeatbradinspaceinvader">
 	<dialogue speaker="Brad" content="Wow, I am amazed!"/>
 	<toggle id="bradhasbeendefeated"/>
 </scene>
+
 <scene id="youlostagainstbradinspaceinvader">
 	<dialogue speaker="Brad" content="Hah, You suck!"/>
 </scene>
+
 <scene id="bradgivesyouana">
 	<dialogue speaker="Brad" content="I am so impressed with your space invader skills, so I'm giving you an A"/>
 </scene>
+
 <scenariogroup character="Sei">
 	<scenario cond="seiknowsyouparticipated"  jumpTo="seithanksyouforparticipating"/>
 	<scenario jumpTo="seiasksyouifyouparticipatedinclassproject"/>
 </scenariogroup>
+
 <scene id="seithanksyouforparticipating">
 	<dialogue speaker="Sei" content="Thanks for participating!"/>
 </scene>
+
 <scene id="seiasksyouifyouparticipatedinclassproject">
 	<dialogue speaker="Sei" content="Did you participate in the class project?"/>
 <choicegroup>
@@ -40,8 +54,10 @@
 </choicegroup>
 	<dialogue speaker="Sei" content="Okay, participate soon!"/>
 </scene>
+
 <scene id="notifyseiyoudidparticipate">
 	<dialogue speaker="Student" content="Yes I have!"/>
 	<toggle id="seiknowsyouparticipated"/>
 </scene>
 
+</lawtechstory>

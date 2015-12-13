@@ -11,9 +11,18 @@
 
 @interface SpecialEvent : NSObject <EventProtocol>
 
+/// Identifier for special event
 @property (nonatomic, readonly, copy) NSString *eventId;
 
-- (instancetype)initWithEventId:(NSString *)eventId;
+/// SceneId of scene to jump to on event success. Nil denotes no jump
+@property (nonatomic, readonly, copy) NSString *onSuccessSceneId;
+
+/// SceneId of scene to jump to on event failure. Nil denotes no jump
+@property (nonatomic, readonly, copy) NSString *onFailureSceneId;
+
+- (instancetype)initWithEventId:(NSString *)eventId
+                 onSuccessScene:(NSString *)onSuccessSceneId
+                 onFailureScene:(NSString *)onFailureSceneId;
 
 - (instancetype)initWithAttributes:(NSDictionary *)attr;
 

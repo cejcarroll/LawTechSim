@@ -6,10 +6,13 @@
 </scenariogroup>
 
 <scene id="braddoesnotknowwhoyouare">
+	<dialogue speaker="Brad" content="Hi. My name is Brad. I teach LawTech"/>
+	<dialogue speaker="Student" content="Hi, I am a student"/>
 	<toggle id="bradknowsyou"/>
 </scene>
 
 <scene id="bradfightsyou">
+	<dialogue speaker="Brad" content="Hey student. Do you think you beat me in Space Invader?"/>
 <choicegroup>
 	<choice option="Yes" onSelection="playspaceinvaderagainstbrad"/>
 	<choice option="Ignore" onSelection="no_jump"/>
@@ -17,6 +20,7 @@
 </scene>
 
 <scene id="playspaceinvaderagainstbrad">
+	<dialogue speaker="Brad" content="Think you can defeat me?"/>
 	<event id="spaceinvaderbrad" onSuccess="youbeatbradinspaceinvader" onFail="no_jump"/>
 </scene>
 
@@ -54,6 +58,7 @@
 <scene id="notifyseiyoudidparticipate">
 	<dialogue speaker="Student" content="Yes I have!"/>
 	<toggle id="seiknowsyouparticipated"/>
+    <dialogue speaker="Sei" content="Great job!"/>
 </scene>
 
 </lawtechstory>
