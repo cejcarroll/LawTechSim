@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GameControlView.h"
+#import "StoryStore.h"
 
-@interface GameViewController : UIViewController
+@interface GameViewController : UIViewController <GameControlViewDelegate, StoryStoreDelegate>
 
 @end

@@ -18,7 +18,8 @@ typedef NS_ENUM(NSInteger, GameControlViewState)
     GameControlViewStateLeftPress,
     GameControlViewStateUpPress,
     GameControlViewStateRightPress,
-    GameControlViewStateDownPress
+    GameControlViewStateDownPress,
+    GameControlViewStateActionPress
 };
 
 /**
@@ -26,7 +27,16 @@ typedef NS_ENUM(NSInteger, GameControlViewState)
  */
 @protocol GameControlViewDelegate <NSObject>
 
+/**
+ Notifies delegate action button was pressed
+ */
 - (void)gameControlDidPressAction;
+
+/**
+ Notifes delegate directional control's state has changed
+ 
+ @param state GameConrolViewState that control updated to
+ */
 - (void)gameControlDidChangeToState:(GameControlViewState) state;
 
 @end
@@ -38,11 +48,11 @@ typedef NS_ENUM(NSInteger, GameControlViewState)
 @interface GameControlView : UIView
 
 
-/**
- Property indication current interaction with control
- */
+
+/// Property indicating current interaction with control
 @property (nonatomic, assign) GameControlViewState state;
 
+/// Recipient of controller's messages.
 @property (nonatomic, weak) id<GameControlViewDelegate> delegate;
 
 @end

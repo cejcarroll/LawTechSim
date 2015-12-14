@@ -13,9 +13,6 @@
 		8C1306DD1C1D2DB400C57530 /* story.ltg in Resources */ = {isa = PBXBuildFile; fileRef = 8C1306DC1C1D2DB400C57530 /* story.ltg */; };
 		8C40EAB41C139E3E0053CBFE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C40EAB31C139E3E0053CBFE /* main.m */; };
 		8C40EAB71C139E3E0053CBFE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C40EAB61C139E3E0053CBFE /* AppDelegate.m */; };
-		8C40EABA1C139E3E0053CBFE /* AutoGenGameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C40EAB91C139E3E0053CBFE /* AutoGenGameScene.m */; };
-		8C40EABC1C139E3E0053CBFE /* AutoGenGameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 8C40EABB1C139E3E0053CBFE /* AutoGenGameScene.sks */; };
-		8C40EABF1C139E3E0053CBFE /* AutoGenGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C40EABE1C139E3E0053CBFE /* AutoGenGameViewController.m */; };
 		8C40EAC41C139E3E0053CBFE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C40EAC31C139E3E0053CBFE /* Assets.xcassets */; };
 		8C40EAC71C139E3E0053CBFE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C40EAC51C139E3E0053CBFE /* LaunchScreen.storyboard */; };
 		8C40EAD21C139E3E0053CBFE /* LawTechSimTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C40EAD11C139E3E0053CBFE /* LawTechSimTests.m */; };
@@ -63,6 +60,11 @@
 		8C6167151C19019400A25573 /* Sei-WU0.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C6166F11C19019400A25573 /* Sei-WU0.png */; };
 		8C6167161C19019400A25573 /* Sei-WU1.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C6166F21C19019400A25573 /* Sei-WU1.png */; };
 		8C6167191C1901AD00A25573 /* EntityNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C6167181C1901AD00A25573 /* EntityNode.m */; };
+		8C9566AC1C1E4A6100740356 /* UtilityView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C9566AB1C1E4A6100740356 /* UtilityView.m */; };
+		8C9566AF1C1E510300740356 /* ChoiceBoxView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C9566AE1C1E510300740356 /* ChoiceBoxView.m */; };
+		8C9566B51C1E54BF00740356 /* GameOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C9566B41C1E54BF00740356 /* GameOverlayView.m */; };
+		8C96EB431C1E29E20043DCBA /* backgroundBox.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C96EB421C1E29E20043DCBA /* backgroundBox.png */; };
+		8C96EB461C1E2A400043DCBA /* DialogBoxView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C96EB451C1E2A400043DCBA /* DialogBoxView.m */; };
 		8CC7F2EE1C1AA8EC00B8B648 /* StoryStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CC7F2ED1C1AA8EC00B8B648 /* StoryStore.m */; };
 		8CC7F2F11C1AAEE400B8B648 /* EventSequence.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CC7F2F01C1AAEE400B8B648 /* EventSequence.m */; };
 		8CC7F2FD1C1AC32400B8B648 /* ChoiceEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CC7F2FC1C1AC32400B8B648 /* ChoiceEvent.m */; };
@@ -96,11 +98,6 @@
 		8C40EAB31C139E3E0053CBFE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8C40EAB51C139E3E0053CBFE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		8C40EAB61C139E3E0053CBFE /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		8C40EAB81C139E3E0053CBFE /* AutoGenGameScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AutoGenGameScene.h; sourceTree = "<group>"; };
-		8C40EAB91C139E3E0053CBFE /* AutoGenGameScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AutoGenGameScene.m; sourceTree = "<group>"; };
-		8C40EABB1C139E3E0053CBFE /* AutoGenGameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = AutoGenGameScene.sks; sourceTree = "<group>"; };
-		8C40EABD1C139E3E0053CBFE /* AutoGenGameViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AutoGenGameViewController.h; sourceTree = "<group>"; };
-		8C40EABE1C139E3E0053CBFE /* AutoGenGameViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AutoGenGameViewController.m; sourceTree = "<group>"; };
 		8C40EAC31C139E3E0053CBFE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8C40EAC61C139E3E0053CBFE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8C40EAC81C139E3E0053CBFE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -158,6 +155,15 @@
 		8C6166F21C19019400A25573 /* Sei-WU1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sei-WU1.png"; sourceTree = "<group>"; };
 		8C6167171C1901AD00A25573 /* EntityNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntityNode.h; sourceTree = "<group>"; };
 		8C6167181C1901AD00A25573 /* EntityNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntityNode.m; sourceTree = "<group>"; };
+		8C9566AA1C1E4A6100740356 /* UtilityView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UtilityView.h; sourceTree = "<group>"; };
+		8C9566AB1C1E4A6100740356 /* UtilityView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UtilityView.m; sourceTree = "<group>"; };
+		8C9566AD1C1E510300740356 /* ChoiceBoxView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChoiceBoxView.h; sourceTree = "<group>"; };
+		8C9566AE1C1E510300740356 /* ChoiceBoxView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChoiceBoxView.m; sourceTree = "<group>"; };
+		8C9566B31C1E54BF00740356 /* GameOverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameOverlayView.h; sourceTree = "<group>"; };
+		8C9566B41C1E54BF00740356 /* GameOverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameOverlayView.m; sourceTree = "<group>"; };
+		8C96EB421C1E29E20043DCBA /* backgroundBox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backgroundBox.png; sourceTree = "<group>"; };
+		8C96EB441C1E2A400043DCBA /* DialogBoxView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DialogBoxView.h; sourceTree = "<group>"; };
+		8C96EB451C1E2A400043DCBA /* DialogBoxView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DialogBoxView.m; sourceTree = "<group>"; };
 		8CC7F2EC1C1AA8EC00B8B648 /* StoryStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoryStore.h; sourceTree = "<group>"; };
 		8CC7F2ED1C1AA8EC00B8B648 /* StoryStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoryStore.m; sourceTree = "<group>"; };
 		8CC7F2EF1C1AAEE400B8B648 /* EventSequence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventSequence.h; sourceTree = "<group>"; };
@@ -244,7 +250,6 @@
 				8C6166CB1C19019400A25573 /* SpriteAssets */,
 				8CFD662B1C18DBB5002C4B4E /* TMXAssets */,
 				8C40EAE91C13FC450053CBFE /* External */,
-				8C40EADC1C13A5060053CBFE /* AutoGen SceneKit Proj */,
 				8C40EAB21C139E3E0053CBFE /* Supporting Files */,
 			);
 			path = LawTechSim;
@@ -266,18 +271,6 @@
 				8C40EAD31C139E3E0053CBFE /* Info.plist */,
 			);
 			path = LawTechSimTests;
-			sourceTree = "<group>";
-		};
-		8C40EADC1C13A5060053CBFE /* AutoGen SceneKit Proj */ = {
-			isa = PBXGroup;
-			children = (
-				8C40EABD1C139E3E0053CBFE /* AutoGenGameViewController.h */,
-				8C40EABE1C139E3E0053CBFE /* AutoGenGameViewController.m */,
-				8C40EAB81C139E3E0053CBFE /* AutoGenGameScene.h */,
-				8C40EAB91C139E3E0053CBFE /* AutoGenGameScene.m */,
-				8C40EABB1C139E3E0053CBFE /* AutoGenGameScene.sks */,
-			);
-			name = "AutoGen SceneKit Proj";
 			sourceTree = "<group>";
 		};
 		8C40EAE91C13FC450053CBFE /* External */ = {
@@ -324,6 +317,14 @@
 			children = (
 				8C40EAF91C1413C30053CBFE /* GameControlView.h */,
 				8C40EAFA1C1413C30053CBFE /* GameControlView.m */,
+				8C9566AA1C1E4A6100740356 /* UtilityView.h */,
+				8C9566AB1C1E4A6100740356 /* UtilityView.m */,
+				8C96EB441C1E2A400043DCBA /* DialogBoxView.h */,
+				8C96EB451C1E2A400043DCBA /* DialogBoxView.m */,
+				8C9566AD1C1E510300740356 /* ChoiceBoxView.h */,
+				8C9566AE1C1E510300740356 /* ChoiceBoxView.m */,
+				8C9566B31C1E54BF00740356 /* GameOverlayView.h */,
+				8C9566B41C1E54BF00740356 /* GameOverlayView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -331,6 +332,7 @@
 		8C6166CB1C19019400A25573 /* SpriteAssets */ = {
 			isa = PBXGroup;
 			children = (
+				8C96EB411C1E29E20043DCBA /* Extras */,
 				8C6166CC1C19019400A25573 /* Brad */,
 				8C6166D91C19019400A25573 /* Main */,
 				8C6166E61C19019400A25573 /* Sei */,
@@ -393,6 +395,14 @@
 				8C6166F21C19019400A25573 /* Sei-WU1.png */,
 			);
 			path = Sei;
+			sourceTree = "<group>";
+		};
+		8C96EB411C1E29E20043DCBA /* Extras */ = {
+			isa = PBXGroup;
+			children = (
+				8C96EB421C1E29E20043DCBA /* backgroundBox.png */,
+			);
+			path = Extras;
 			sourceTree = "<group>";
 		};
 		8CC7F3041C1AC4BD00B8B648 /* StoryStore */ = {
@@ -507,7 +517,6 @@
 				8C6167051C19019400A25573 /* Main-WL0.png in Resources */,
 				8C6167151C19019400A25573 /* Sei-WU0.png in Resources */,
 				8C6166F61C19019400A25573 /* Brad-SU.png in Resources */,
-				8C40EABC1C139E3E0053CBFE /* AutoGenGameScene.sks in Resources */,
 				8C6166FF1C19019400A25573 /* Main-SD.png in Resources */,
 				8C6167001C19019400A25573 /* Main-SL.png in Resources */,
 				8C6166F91C19019400A25573 /* Brad-WL0.png in Resources */,
@@ -539,6 +548,7 @@
 				8CFD662F1C18DBB5002C4B4E /* labelTileset.png in Resources */,
 				8C1306DD1C1D2DB400C57530 /* story.ltg in Resources */,
 				8C6167011C19019400A25573 /* Main-SR.png in Resources */,
+				8C96EB431C1E29E20043DCBA /* backgroundBox.png in Resources */,
 				8C6167101C19019400A25573 /* Sei-WD1.png in Resources */,
 				8C6167111C19019400A25573 /* Sei-WL0.png in Resources */,
 				8C6167041C19019400A25573 /* Main-WD1.png in Resources */,
@@ -563,16 +573,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				8C40EAEE1C13FD0E0053CBFE /* CharacterNode.m in Sources */,
+				8C9566AF1C1E510300740356 /* ChoiceBoxView.m in Sources */,
 				8C40EADF1C13A5BE0053CBFE /* GameViewController.m in Sources */,
 				8C1306DA1C1CC49C00C57530 /* SpecialEvent.m in Sources */,
 				8C40EAFB1C1413C30053CBFE /* GameControlView.m in Sources */,
-				8C40EABF1C139E3E0053CBFE /* AutoGenGameViewController.m in Sources */,
 				8C40EAB71C139E3E0053CBFE /* AppDelegate.m in Sources */,
 				8CC7F3001C1AC32C00B8B648 /* DialogueEvent.m in Sources */,
 				8C6167191C1901AD00A25573 /* EntityNode.m in Sources */,
+				8C9566B51C1E54BF00740356 /* GameOverlayView.m in Sources */,
 				8C40EAE51C13FC350053CBFE /* JSTileMap.m in Sources */,
-				8C40EABA1C139E3E0053CBFE /* AutoGenGameScene.m in Sources */,
 				8CC7F2EE1C1AA8EC00B8B648 /* StoryStore.m in Sources */,
+				8C96EB461C1E2A400043DCBA /* DialogBoxView.m in Sources */,
 				8CC7F2FD1C1AC32400B8B648 /* ChoiceEvent.m in Sources */,
 				8C40EAE21C13A6B80053CBFE /* GameScene.m in Sources */,
 				8CC7F3031C1AC33C00B8B648 /* FlagToggleEvent.m in Sources */,
@@ -581,6 +592,7 @@
 				8C1306D01C1BC6CE00C57530 /* EntityInteractionGroup.m in Sources */,
 				8C1306CD1C1BC43C00C57530 /* StoryParser.m in Sources */,
 				8C40EAB41C139E3E0053CBFE /* main.m in Sources */,
+				8C9566AC1C1E4A6100740356 /* UtilityView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

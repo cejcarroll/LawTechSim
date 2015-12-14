@@ -8,11 +8,17 @@
 
 #import <SpriteKit/SpriteKit.h>
 #import "GameControlView.h"
-#import "StoryStore.h"
 
 /**
  GameScene represents the gameplay screen of sprites - Character, Map, and NPCs
  */
-@interface GameScene : SKScene <GameControlViewDelegate, StoryStoreDelegate>
+@interface GameScene : SKScene
+
+/**
+ Redirect game controller input from GameViewController
+ 
+ @param state GameControlView's state pressed
+ */
+- (void)redirectGameInput:(GameControlViewState)state;
 
 @end

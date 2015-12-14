@@ -10,7 +10,6 @@
 #import "JSTileMap.h"
 #import "CharacterNode.h"
 
-
 //#define COLLISION_DEBUG
 
 @interface GameScene ()
@@ -27,8 +26,6 @@
 /// Last time update: was called in game loop
 @property (nonatomic, assign) NSTimeInterval lastUpdateTimeInterval;
 
-@property (nonatomic, strong) StoryStore *storyStore;
-
 #ifdef COLLISION_DEBUG
 /// Show where the collision box is
 @property (nonatomic, strong) SKSpriteNode *collisionBoxNode;
@@ -40,8 +37,6 @@
 //-------------------------------------------------
 
 @implementation GameScene
-
-static NSString *const kGameStoryFileName       = @"story";
 
 /*   TMX Constants   */
 static NSString *const kTMXFileName             = @"tilemap.tmx";
@@ -68,17 +63,13 @@ static const CGFloat kCollisionPadding = 0.5;
         
         _lastUpdateTimeInterval = 0;
         
-        _storyStore = [[StoryStore alloc] initWithFileNamed:kGameStoryFileName
-                                                   loadSave:NO];
-        _storyStore.delegate = self;
-        
         [self addChild:self.cameraNode];
         [self addChild:self.tileMapNode];
         [self addChild:self.characterNode];
         
 #ifdef COLLISION_DEBUG
         self.collisionBoxNode = [SKSpriteNode spriteNodeWithColor:[UIColor blueColor] size:CGSizeZero];
-
+        
         self.collisionBoxNode.zPosition = kCharacterZPosition + 1; // right below character
         [self addChild:self.collisionBoxNode];
         
@@ -92,9 +83,32 @@ static const CGFloat kCollisionPadding = 0.5;
         }
 #endif
     }
-
+    
     return self;
 }
+
+#pragma mark - Public
+
+- (void)redirectGameInput:(GameControlViewState)state
+{
+    CharacterNodeState charState;
+    
+    if (state == GameControlViewStateNoPress)
+        charState = CharacterNodeStateStill;
+    else if (state == GameControlViewStateLeftPress)
+        charState = CharacterNodeStateMovingLeft;
+    else if (state == GameControlViewStateUpPress)
+        charState = CharacterNodeStateMovingUp;
+    else if (state == GameControlViewStateRightPress)
+        charState = CharacterNodeStateMovingRight;
+    else if (state == GameControlViewStateDownPress)
+        charState = CharacterNodeStateMovingDown;
+    
+    [self.characterNode setState:charState];
+    
+    
+}
+
 
 
 #pragma mark - Properties
@@ -157,6 +171,7 @@ static const CGFloat kCollisionPadding = 0.5;
     
     
     // FIXME: Refactor collision code
+    
     /*   Resolve collisions   */
     static TMXLayer *collisionLayer = nil;
     
@@ -164,7 +179,7 @@ static const CGFloat kCollisionPadding = 0.5;
         collisionLayer = [self.tileMapNode layerNamed:kCollisionLayer];
     
     NSArray <SKSpriteNode *> *collisionTiles = [self tileNodesForCollisionWithLayer:collisionLayer];
-
+    
     if (collisionTiles.count > 0)
     {
         CGRect relativeCharFrame = self.characterNode.collisionRect;
@@ -178,75 +193,19 @@ static const CGFloat kCollisionPadding = 0.5;
             [self adjustCharacterNodeWithCollisionRect:intersection];
         }
         
-        // Undo character movement that caused collision
-//        [self.characterNode updatePositionWithTimeInterval:-deltaTime];
     }
-
+    
     
 #ifdef COLLISION_DEBUG
     [self updateCollisionDebugViews:collisionTiles];
 #endif
-
+    
 }
 
 - (void)didFinishUpdate
 {
     /*   Update camera centered on user   */
     [self.cameraNode setPosition:self.characterNode.position];
-}
-
-#pragma mark - GameControlViewDelegate
-
-- (void)gameControlDidChangeToState:(GameControlViewState)state
-{
-    CharacterNodeState charState;
-    
-    /*   Interrumpt movement control if event sequence is active   */
-    if ([self.storyStore hasActiveEventSequence])
-        return;
-    
-    if (state == GameControlViewStateNoPress)
-        charState = CharacterNodeStateStill;
-    else if (state == GameControlViewStateLeftPress)
-        charState = CharacterNodeStateMovingLeft;
-    else if (state == GameControlViewStateUpPress)
-        charState = CharacterNodeStateMovingUp;
-    else if (state == GameControlViewStateRightPress)
-        charState = CharacterNodeStateMovingRight;
-    else if (state == GameControlViewStateDownPress)
-        charState = CharacterNodeStateMovingDown;
-    
-    [self.characterNode setState:charState];
-
-}
-
-- (void)gameControlDidPressAction
-{
-    // TODO: Execute event sequence when close to character
-    
-    /*   Stop character movement if event is triggered   */
-    // TODO: Only interrupt when event is triggered
-    [self.characterNode setState:CharacterNodeStateStill];
- 
-    // StoryStore Temporary Test code.
-    if (![self.storyStore hasActiveEventSequence])
-    {
-        [self.storyStore activateEventSequenceForId:@"Sei"];
-    }
-    else if ([self.storyStore.currentEvent eventType] == EventTypeChoice)
-    {
-        [self.storyStore progressToNextEventWithOption:@"Yes"];
-    }
-    else if ([self.storyStore.currentEvent eventType] == EventTypeSpecial)
-    {
-        [self.storyStore progressToNextEventWithOption:StoryStoreSpecialEventSuccess];
-    }
-    else
-    {
-        [self.storyStore progressToNextEventWithOption:nil];
-    }
-
-    
 }
 
 #pragma mark - Private
@@ -297,19 +256,19 @@ static const CGFloat kCollisionPadding = 0.5;
     
     // Top Left
     topLeftCoord = [layer coordForPoint:CGPointMake(charLocBox.origin.x - deltaX,
-                                              charLocBox.origin.y + deltaY)];
+                                                    charLocBox.origin.y + deltaY)];
     
     // Top Right
     topRightCoord = [layer coordForPoint:CGPointMake(charLocBox.origin.x + deltaX,
-                                              charLocBox.origin.y + deltaY)];
-
+                                                     charLocBox.origin.y + deltaY)];
+    
     // Bottom Left
     botLeftCoord = [layer coordForPoint:CGPointMake(charLocBox.origin.x - deltaX,
-                                              charLocBox.origin.y - deltaY)];
-
+                                                    charLocBox.origin.y - deltaY)];
+    
     // Bottom Right
     botRightCoord = [layer coordForPoint:CGPointMake(charLocBox.origin.x + deltaX,
-                                              charLocBox.origin.y - deltaY)];
+                                                     charLocBox.origin.y - deltaY)];
     
     if (self.characterNode.state == CharacterNodeStateMovingLeft)
     {
@@ -373,7 +332,7 @@ static const CGFloat kCollisionPadding = 0.5;
 {
     if (CGRectIsNull(intersectionRect))
         return;
-
+    
     CGPoint newPos = self.characterNode.position;
     
     // NOTE: kCollisionPadding gives some space to prevent getting stuck along walls / in corners
@@ -394,10 +353,10 @@ static const CGFloat kCollisionPadding = 0.5;
     {
         newPos.y += intersectionRect.size.height + kCollisionPadding;
     }
-
+    
     [self.characterNode setState:CharacterNodeStateStill];
     [self.characterNode setPosition:newPos];
-
+    
 }
 
 
@@ -430,19 +389,5 @@ static const CGFloat kCollisionPadding = 0.5;
     }
 }
 #endif
-
-
-#pragma mark - StoryStoreDelegate
-
-- (void)storyStoreReadEvent:(id<EventProtocol>)event
-{
-    
-}
-
-- (void)storyStoreFinishedSequence
-{
-    
-}
-
 
 @end

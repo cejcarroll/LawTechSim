@@ -12,13 +12,23 @@
 
 @interface GameViewController ()
 
+/// View of GameScene
 @property (nonatomic, strong) SKView *gameView;
+
+/// SKScene of sprites
 @property (nonatomic, strong) GameScene *gameScene;
+
+/// View of control
 @property (nonatomic, strong) GameControlView *controlView;
+
+/// Manages story and game state
+@property (nonatomic, strong) StoryStore *storyStore;
 
 @end
 
 @implementation GameViewController
+
+static NSString *const kGameStoryFileName       = @"story";
 
 #pragma mark - UIViewController
 
@@ -37,7 +47,7 @@
     self.gameView.showsNodeCount = YES;
     
     // Controls
-    [self.view addSubview:self.controlView];
+    [self.view addSubview:self.controlView];    
 
     // TODO: Implement Start Screen?
 }
@@ -46,9 +56,13 @@
 {
     [super viewDidLoad];
     
-    // TEMP: Load GameScene for now
-    // Setup and Present GameScene
-    self.controlView.delegate = self.gameScene;
+    _storyStore = [[StoryStore alloc] initWithFileNamed:kGameStoryFileName
+                                               loadSave:NO];
+    _storyStore.delegate = self;
+    
+    
+    /*   Setup GameScene   */
+    self.controlView.delegate = self;
     [self.gameView presentScene:self.gameScene];
 }
 
@@ -60,7 +74,7 @@
     gameFrame.size.height /= 2;
     [self.gameView setFrame:gameFrame];
     
-    // Layout control to bottom half of screen TEMP
+    // ControlView to bottom half of screen TEMP
     CGRect ctrlFrame = self.view.bounds;
     ctrlFrame.size.height /= 2;
     ctrlFrame.origin.y += ctrlFrame.size.height;
@@ -89,6 +103,63 @@
     
     return _controlView;
 }
+
+
+#pragma mark - GameControlViewDelegate
+
+//FIXME: Consider moving GameControlViewDelegate to GameViewController
+
+- (void)gameControlDidChangeToState:(GameControlViewState)state
+{
+    /*   Interrumpt movement control if event sequence is active   */
+    if ([self.storyStore hasActiveEventSequence])
+        return;
+    
+    /*   If there is no active event sequence, redirect to game scene to control character   */
+    [self.gameScene redirectGameInput:state];
+}
+
+- (void)gameControlDidPressAction
+{
+    // TODO: Execute event sequence when close to character
+    
+    /*   Stop character movement if event is triggered   */
+//    [self.characterNode setState:CharacterNodeStateStill];
+    
+    // StoryStore Temporary Test code.
+    if (![self.storyStore hasActiveEventSequence])
+    {
+        [self.storyStore activateEventSequenceForId:@"Sei"];
+    }
+    else if ([self.storyStore.currentEvent eventType] == EventTypeChoice)
+    {
+        [self.storyStore progressToNextEventWithOption:@"Yes"];
+    }
+    else if ([self.storyStore.currentEvent eventType] == EventTypeSpecial)
+    {
+        [self.storyStore progressToNextEventWithOption:StoryStoreSpecialEventSuccess];
+    }
+    else
+    {
+        [self.storyStore progressToNextEventWithOption:nil];
+    }
+}
+
+
+
+#pragma mark - StoryStoreDelegate
+
+//FIXME: Consider moving StoryStore / Delegate to GameViewController
+- (void)storyStoreReadEvent:(id<EventProtocol>)event
+{
+
+}
+
+- (void)storyStoreFinishedSequence
+{
+    //    [self.dialogBoxView setHidden:YES];
+}
+
 
 
 
