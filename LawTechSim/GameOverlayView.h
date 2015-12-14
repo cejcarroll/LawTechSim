@@ -27,6 +27,11 @@
  */
 @interface GameOverlayView : UIView
 
+@property (nonatomic, strong) id <GameOverlayViewDelegate> delegate;
+
+/// BOOL indicating whether commands should be swallowed by overlay. I.e. when choice is active
+@property (nonatomic, readonly) BOOL swallowsAction;
+
 
 /**
  Hides all overlays displayed. Call when series of interaction ends
@@ -39,7 +44,7 @@
  
  @param event Obj conforming to EventProtocol to display
  */
-- (void)displayEvent:(id<EventProtocol> *)event;
+- (void)displayEvent:(id<EventProtocol>)event;
 
 /**
  Redirect input when there is an active event.
@@ -47,6 +52,6 @@
  
  @param state GameControlState to forward to overlay view
  */
-- (void)redirectInputFromGame:(GameControlViewState)state;
+- (void)redirectGameInput:(GameControlViewState)state;
 
 @end

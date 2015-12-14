@@ -14,4 +14,11 @@
  */
 @interface UtilityView : UIView
 
+@property (nonatomic, strong) UIFont *utilityFont;
+
+/// Font utility views 
+extern NSString *const UtilityViewFontName;
+extern const CGFloat UtilityViewFontSize;
+
+
 @end

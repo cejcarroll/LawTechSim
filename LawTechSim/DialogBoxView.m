@@ -19,8 +19,6 @@
 @implementation DialogBoxView
 
 static const CGFloat kTextBoxPadding = 5;
-static NSString *const kDialogBoxFontName = @"ArialMT";
-static const CGFloat kDialogBoxFontSize = 18.0;
 
 
 - (instancetype)initWithFrame:(CGRect)frame
@@ -70,7 +68,7 @@ static const CGFloat kDialogBoxFontSize = 18.0;
     if (!_textView)
     {
         _textView = [[UITextView alloc] initWithFrame:CGRectZero];
-        _textView.font = [UIFont fontWithName:kDialogBoxFontName size:kDialogBoxFontSize];
+        _textView.font = [UIFont fontWithName:UtilityViewFontName size:UtilityViewFontSize];
     }
     
     return _textView;

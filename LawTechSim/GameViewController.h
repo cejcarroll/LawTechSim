@@ -9,7 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "GameControlView.h"
 #import "StoryStore.h"
+#import "GameOverlayView.h"
 
-@interface GameViewController : UIViewController <GameControlViewDelegate, StoryStoreDelegate>
+@interface GameViewController : UIViewController <GameControlViewDelegate, StoryStoreDelegate, GameOverlayViewDelegate>
 
 @end

@@ -17,6 +17,11 @@
 
 @implementation UtilityView
 
+NSString *const UtilityViewFontName = @"ArialMT";
+const CGFloat UtilityViewFontSize = 18.0;
+
+
+
 static NSString *const kBackgroundImageFileName = @"backgroundBox";
 static const UIEdgeInsets kBackgroundImageEdgeInsets = {6, 6, 6, 6};
 
@@ -54,6 +59,16 @@ static const UIEdgeInsets kBackgroundImageEdgeInsets = {6, 6, 6, 6};
     }
     
     return _backgroundImageView;
+}
+
+- (UIFont *)utilityFont
+{
+    if (!_utilityFont)
+    {
+        _utilityFont = [UIFont fontWithName:UtilityViewFontName size:UtilityViewFontSize];
+    }
+    
+    return _utilityFont;
 }
 
 @end

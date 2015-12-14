@@ -12,7 +12,7 @@
 
 /**
  Interface for displaying a series of choices within a box
- @note set frame with height = 0. ChoiceBox will grow up from that line as needed
+ @note bottom corner of ChoiceBoxView's frame is used to resize subviews properly
  */
 @interface ChoiceBoxView : UtilityView
 
@@ -27,5 +27,22 @@
  @param event ChoiceEvent to display
  */
 - (void)displayChoiceEvent:(ChoiceEvent *)event;
+
+
+/**
+ Return the size ChoiceBoxView should be with respect to current choice being displayed
+ Calculates based on text within internal UITextView. If empty, returns CGRectZero
+ 
+ @return CGRect frame value for ChoiceBoxView.
+ */
+- (CGSize)sizeForCurrentChoiceEvent;
+
+
+/**
+ Returns Choice object's option string for current selection
+ 
+ @return NSString of Choice object's option
+ */
+- (NSString *)choiceOptionForCurrentSelection;
 
 @end
