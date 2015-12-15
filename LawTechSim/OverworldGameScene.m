@@ -6,14 +6,14 @@
 //  Copyright © 2015 Leo Shimonaka. All rights reserved.
 //
 
-#import "GameScene.h"
+#import "OverworldGameScene.h"
 #import "JSTileMap.h"
 #import "CharacterNode.h"
 #import "NPCNode.h"
 
 //#define COLLISION_DEBUG
 
-@interface GameScene ()
+@interface OverworldGameScene ()
 
 /// Adjusts viewport of scene
 @property (nonatomic, strong) SKCameraNode *cameraNode;
@@ -49,7 +49,7 @@
 
 //-------------------------------------------------
 
-@implementation GameScene
+@implementation OverworldGameScene
 
 /*   TMX Constants   */
 static NSString *const kTMXFileName             = @"tilemap.tmx";
@@ -165,9 +165,13 @@ static const CGFloat kNearbyThresholdDistance = 25;
     }
     
     if (closestDist < kNearbyThresholdDistance)
+    {
         return nearbyNPCNode.entityId;
+    }
     else
+    {
         return nil;
+    }
 }
 
 

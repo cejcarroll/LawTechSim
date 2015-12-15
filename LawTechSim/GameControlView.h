@@ -23,6 +23,21 @@ typedef NS_ENUM(NSInteger, GameControlViewState)
 };
 
 /**
+ Responds to input from GameControlView. 
+ The GameControlViewDelegate redirects inputs to appropriate views conforming to this protocol
+ */
+@protocol GameControlViewInputReceiver <NSObject>
+
+/**
+ Redirect game controller input from GameViewController
+ 
+ @param state GameControlView's state pressed
+ */
+- (void)redirectGameInput:(GameControlViewState)state;
+
+@end
+
+/**
  Delegate for GameControlView to communicate action buttonpress
  */
 @protocol GameControlViewDelegate <NSObject>

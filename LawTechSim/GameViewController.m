@@ -7,7 +7,8 @@
 //
 
 #import "GameViewController.h"
-#import "GameScene.h"
+#import "OverworldGameScene.h"
+
 
 @interface GameViewController ()
 
@@ -15,7 +16,7 @@
 @property (nonatomic, strong) SKView *gameView;
 
 /// SKScene of sprites
-@property (nonatomic, strong) GameScene *gameScene;
+@property (nonatomic, strong) OverworldGameScene *overworldGameScene;
 
 /// View of control
 @property (nonatomic, strong) GameControlView *controlView;
@@ -25,6 +26,9 @@
 
 /// Manages story and game state
 @property (nonatomic, strong) StoryStore *storyStore;
+
+/// Pointer to mini game
+@property (nonatomic, strong) MinigameScene *miniGame;
 
 @end
 
@@ -64,9 +68,8 @@ static NSString *const kGameStoryFileName = @"story";
                                                    loadSave:NO];
     self.storyStore.delegate = self;
     
-    
     /*   Setup GameScene   */
-    [self.gameView presentScene:self.gameScene];
+    [self.gameView presentScene:self.overworldGameScene];
 }
 
 // FIXME: Create separate view class for GameViewController
@@ -102,15 +105,14 @@ static NSString *const kGameStoryFileName = @"story";
     return _gameView;
 }
 
-- (GameScene *)gameScene
+- (OverworldGameScene *)overworldGameScene
 {
-    if (!_gameScene)
+    if (!_overworldGameScene)
     {
-        _gameScene = [GameScene sceneWithSize: self.view.bounds.size];
-        // TODO: Load last played state (?)
+        _overworldGameScene = [OverworldGameScene sceneWithSize: self.view.bounds.size];
     }
     
-    return _gameScene;
+    return _overworldGameScene;
 }
 
 - (GameControlView *)controlView
@@ -129,6 +131,7 @@ static NSString *const kGameStoryFileName = @"story";
     if (!_overlayView)
     {
         _overlayView = [[GameOverlayView alloc] initWithFrame:CGRectZero];
+        _overlayView.userInteractionEnabled = NO;
         _overlayView.delegate = self;
     }
     
@@ -140,54 +143,44 @@ static NSString *const kGameStoryFileName = @"story";
 
 - (void)gameControlDidChangeToState:(GameControlViewState)state
 {
-    /*   Interrumpt movement control if event sequence is active. (i.e. Choice or Dialogue being shown)   */
-    if ([self.storyStore hasActiveEventSequence])
+    if (self.miniGame)          /*   Redirect to Minigame if one is active   */
+    {
+        [self.miniGame redirectGameInput:state];
+    }
+    if ([self.storyStore hasActiveEventSequence])       /*   Interrumpt movement control if event sequence is active. (i.e. Choice or Dialogue being shown)   */
     {
         [self.overlayView redirectGameInput:state];
     }
-    else /*   If there is no active event sequence, redirect to game scene to control character   */
+    else        /*   If there is no active event sequence, redirect to game scene to control character   */
     {
-        [self.gameScene redirectGameInput:state];
+        [self.overworldGameScene redirectGameInput:state];
     }
     
 }
 
 - (void)gameControlDidPressAction
 {
-    // TODO: Execute event sequence when close to character
-    
-    /*   Stop character movement if event is triggered   */
-    //    [self.characterNode setState:CharacterNodeStateStill];
-    
-    /*   Redirect to overlay for choice box   */
-    if (self.overlayView.swallowsAction)
+    if (self.miniGame)                                  /*   Redirect to minigame if there is one   */
+    {
+        [self.miniGame redirectGameInput:GameControlViewStateActionPress];
+    }
+    else if (self.overlayView.swallowsAction)           /*   Redirect to overlay for choice box   */
     {
         [self.overlayView redirectGameInput:GameControlViewStateActionPress];
-        return;
     }
-    
-    
-    /*   Progress story based on current active event   */
-    if ([self.storyStore hasActiveEventSequence])
+    else if ([self.storyStore hasActiveEventSequence])       /*   Progress story based on current active event   */
     {
-        if ([self.storyStore.currentEvent eventType] == EventTypeSpecial)
-        {
-            // TODO: This selector should be sent on mini-game success / fail
-            [self.storyStore progressToNextEventWithOption:StoryStoreSpecialEventSuccess];
-        }
-        else
-        {
-            [self.storyStore progressToNextEventWithOption:nil];
-        }
+
+        [self.storyStore progressToNextEventWithOption:nil];
     }
     else
     {
         /*   If no active event loaded, and there is an entity nearby, begin new interaction   */
-        NSString *nearbyEntityId = [self.gameScene nearbyEntityForCharacter];
+        NSString *nearbyEntityId = [self.overworldGameScene nearbyEntityForCharacter];
         
         if (nearbyEntityId)
         {
-            [self.gameScene redirectGameInput:GameControlViewStateNoPress];
+            [self.overworldGameScene redirectGameInput:GameControlViewStateNoPress];
             [self.storyStore activateEventSequenceForId:nearbyEntityId];
         }
 
@@ -207,12 +200,52 @@ static NSString *const kGameStoryFileName = @"story";
 
 - (void)storyStoreReadEvent:(id<EventProtocol>)event
 {
-    [self.overlayView displayEvent:event];
+    EventType type = [event eventType];
+    
+    if (type == EventTypeDialogue ||
+        type == EventTypeChoice)
+    {
+        [self.overlayView displayEvent:event];
+    }
+    else if (type == EventTypeSpecial)
+    {
+        [self.overlayView hideAllOverlays];
+        
+        self.miniGame = [[MinigameScene alloc] initWithSize:self.gameView.bounds.size
+                                                 minigameId:@"MINIGAME_ID"];
+        self.miniGame.resultsDelegate = self;
+        
+        SKTransition *transition = [SKTransition doorwayWithDuration:0.5];
+        [self.gameView presentScene:self.miniGame transition:transition];
+    }
+    else
+    {
+        NSLog(@"Found unhandled event type %@", event);
+    }
+
 }
+
 
 - (void)storyStoreFinishedSequence
 {
     [self.overlayView hideAllOverlays];
+}
+
+#pragma mark - MinigameSceneDelegate
+
+- (void)minigameDidEndWithState:(MinigameState)state
+{
+    [self.gameView presentScene:self.overworldGameScene transition:[SKTransition fadeWithDuration:0.5]];
+    self.miniGame = nil;
+    
+    if (state == MinigameStateSuccess)
+    {
+        [self.storyStore progressToNextEventWithOption:StoryStoreSpecialEventSuccess];
+    }
+    else if (state == MinigameStateFail)
+    {
+        [self.storyStore progressToNextEventWithOption:StoryStoreSpecialEventFail];
+    }
 }
 
 

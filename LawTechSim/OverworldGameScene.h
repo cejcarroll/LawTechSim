@@ -12,15 +12,7 @@
 /**
  GameScene represents the gameplay screen of sprites - Character, Map, and NPCs
  */
-@interface GameScene : SKScene
-
-/**
- Redirect game controller input from GameViewController
- 
- @param state GameControlView's state pressed
- */
-- (void)redirectGameInput:(GameControlViewState)state;
-
+@interface OverworldGameScene : SKScene <GameControlViewInputReceiver>
 
 /**
  Returns NSString entityId of nearby NPC, if there are any.

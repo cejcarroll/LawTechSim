@@ -1,0 +1,8 @@
+SCENARIO: Emily
+DEFAULT: Emily says hi
+
+SCENE: Emily says hi
+*:Emily:Hi! I’m Emily.
+*:Student:Hi! I’m a student
+SCENE_END:
+

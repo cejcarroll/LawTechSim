@@ -25,7 +25,7 @@
  View above GameScene's SKView, containing all HUD elements like dialog box, choice box, etc
  Swallows user interaction from GameControlView when Choice mode is active
  */
-@interface GameOverlayView : UIView
+@interface GameOverlayView : UIView <GameControlViewInputReceiver>
 
 @property (nonatomic, strong) id <GameOverlayViewDelegate> delegate;
 
@@ -45,13 +45,5 @@
  @param event Obj conforming to EventProtocol to display
  */
 - (void)displayEvent:(id<EventProtocol>)event;
-
-/**
- Redirect input when there is an active event.
- This pattern is a bit cleaner than swapping delegate of GameControlView.
- 
- @param state GameControlState to forward to overlay view
- */
-- (void)redirectGameInput:(GameControlViewState)state;
 
 @end

@@ -17,7 +17,7 @@
 		8C40EAC71C139E3E0053CBFE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C40EAC51C139E3E0053CBFE /* LaunchScreen.storyboard */; };
 		8C40EAD21C139E3E0053CBFE /* LawTechSimTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C40EAD11C139E3E0053CBFE /* LawTechSimTests.m */; };
 		8C40EADF1C13A5BE0053CBFE /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C40EADE1C13A5BE0053CBFE /* GameViewController.m */; };
-		8C40EAE21C13A6B80053CBFE /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C40EAE11C13A6B80053CBFE /* GameScene.m */; };
+		8C40EAE21C13A6B80053CBFE /* OverworldGameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C40EAE11C13A6B80053CBFE /* OverworldGameScene.m */; };
 		8C40EAE51C13FC350053CBFE /* JSTileMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C40EAE41C13FC350053CBFE /* JSTileMap.m */; };
 		8C40EAE81C13FC400053CBFE /* LFCGzipUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C40EAE71C13FC400053CBFE /* LFCGzipUtility.m */; };
 		8C40EAEE1C13FD0E0053CBFE /* CharacterNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C40EAED1C13FD0E0053CBFE /* CharacterNode.m */; };
@@ -78,6 +78,7 @@
 		8CB6993E1C1FD05B00093431 /* Emily-WR1.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CB699321C1FD05B00093431 /* Emily-WR1.png */; };
 		8CB6993F1C1FD05B00093431 /* Emily-WU0.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CB699331C1FD05B00093431 /* Emily-WU0.png */; };
 		8CB699401C1FD05B00093431 /* Emily-WU1.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CB699341C1FD05B00093431 /* Emily-WU1.png */; };
+		8CB699441C1FE62D00093431 /* MinigameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CB699431C1FE62D00093431 /* MinigameScene.m */; };
 		8CC7F2EE1C1AA8EC00B8B648 /* StoryStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CC7F2ED1C1AA8EC00B8B648 /* StoryStore.m */; };
 		8CC7F2F11C1AAEE400B8B648 /* EventSequence.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CC7F2F01C1AAEE400B8B648 /* EventSequence.m */; };
 		8CC7F2FD1C1AC32400B8B648 /* ChoiceEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CC7F2FC1C1AC32400B8B648 /* ChoiceEvent.m */; };
@@ -119,8 +120,8 @@
 		8C40EAD31C139E3E0053CBFE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8C40EADD1C13A5BE0053CBFE /* GameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
 		8C40EADE1C13A5BE0053CBFE /* GameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
-		8C40EAE01C13A6B80053CBFE /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
-		8C40EAE11C13A6B80053CBFE /* GameScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameScene.m; sourceTree = "<group>"; };
+		8C40EAE01C13A6B80053CBFE /* OverworldGameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverworldGameScene.h; sourceTree = "<group>"; };
+		8C40EAE11C13A6B80053CBFE /* OverworldGameScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverworldGameScene.m; sourceTree = "<group>"; };
 		8C40EAE31C13FC350053CBFE /* JSTileMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSTileMap.h; sourceTree = "<group>"; };
 		8C40EAE41C13FC350053CBFE /* JSTileMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSTileMap.m; sourceTree = "<group>"; };
 		8C40EAE61C13FC400053CBFE /* LFCGzipUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFCGzipUtility.h; sourceTree = "<group>"; };
@@ -191,6 +192,8 @@
 		8CB699321C1FD05B00093431 /* Emily-WR1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Emily-WR1.png"; sourceTree = "<group>"; };
 		8CB699331C1FD05B00093431 /* Emily-WU0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Emily-WU0.png"; sourceTree = "<group>"; };
 		8CB699341C1FD05B00093431 /* Emily-WU1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Emily-WU1.png"; sourceTree = "<group>"; };
+		8CB699421C1FE62D00093431 /* MinigameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MinigameScene.h; sourceTree = "<group>"; };
+		8CB699431C1FE62D00093431 /* MinigameScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MinigameScene.m; sourceTree = "<group>"; };
 		8CC7F2EC1C1AA8EC00B8B648 /* StoryStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoryStore.h; sourceTree = "<group>"; };
 		8CC7F2ED1C1AA8EC00B8B648 /* StoryStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoryStore.m; sourceTree = "<group>"; };
 		8CC7F2EF1C1AAEE400B8B648 /* EventSequence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventSequence.h; sourceTree = "<group>"; };
@@ -335,8 +338,10 @@
 		8C40EAF81C1413180053CBFE /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				8C40EAE01C13A6B80053CBFE /* GameScene.h */,
-				8C40EAE11C13A6B80053CBFE /* GameScene.m */,
+				8C40EAE01C13A6B80053CBFE /* OverworldGameScene.h */,
+				8C40EAE11C13A6B80053CBFE /* OverworldGameScene.m */,
+				8CB699421C1FE62D00093431 /* MinigameScene.h */,
+				8CB699431C1FE62D00093431 /* MinigameScene.m */,
 			);
 			name = Scenes;
 			sourceTree = "<group>";
@@ -635,6 +640,7 @@
 			files = (
 				8C40EAEE1C13FD0E0053CBFE /* CharacterNode.m in Sources */,
 				8C9566AF1C1E510300740356 /* ChoiceBoxView.m in Sources */,
+				8CB699441C1FE62D00093431 /* MinigameScene.m in Sources */,
 				8C40EADF1C13A5BE0053CBFE /* GameViewController.m in Sources */,
 				8C1306DA1C1CC49C00C57530 /* SpecialEvent.m in Sources */,
 				8C40EAFB1C1413C30053CBFE /* GameControlView.m in Sources */,
@@ -647,7 +653,7 @@
 				8C9566B81C1E933200740356 /* NPCNode.m in Sources */,
 				8C96EB461C1E2A400043DCBA /* DialogBoxView.m in Sources */,
 				8CC7F2FD1C1AC32400B8B648 /* ChoiceEvent.m in Sources */,
-				8C40EAE21C13A6B80053CBFE /* GameScene.m in Sources */,
+				8C40EAE21C13A6B80053CBFE /* OverworldGameScene.m in Sources */,
 				8CC7F3031C1AC33C00B8B648 /* FlagToggleEvent.m in Sources */,
 				8C40EAE81C13FC400053CBFE /* LFCGzipUtility.m in Sources */,
 				8CC7F2F11C1AAEE400B8B648 /* EventSequence.m in Sources */,

@@ -58,7 +58,15 @@
 <scene id="notifyseiyoudidparticipate">
 	<dialogue speaker="Student" content="Yes I have!"/>
 	<toggle id="seiknowsyouparticipated"/>
-    <dialogue speaker="Sei" content="Great job!"/>
+</scene>
+
+<scenariogroup character="Emily">
+	<scenario jumpTo="emilysayshi"/>
+</scenariogroup>
+
+<scene id="emilysayshi">
+	<dialogue speaker="Emily" content="Hi! I’m Emily."/>
+	<dialogue speaker="Student" content="Hi! I’m a student"/>
 </scene>
 
 </lawtechstory>

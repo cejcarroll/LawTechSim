@@ -10,7 +10,8 @@
 #import "GameControlView.h"
 #import "StoryStore.h"
 #import "GameOverlayView.h"
+#import "MinigameScene.h"
 
-@interface GameViewController : UIViewController <GameControlViewDelegate, StoryStoreDelegate, GameOverlayViewDelegate>
+@interface GameViewController : UIViewController <GameControlViewDelegate, StoryStoreDelegate, GameOverlayViewDelegate, MinigameSceneDelegate>
 
 @end

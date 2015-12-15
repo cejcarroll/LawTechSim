@@ -60,4 +60,13 @@
 	<toggle id="seiknowsyouparticipated"/>
 </scene>
 
+<scenariogroup character="Emily">
+	<scenario jumpTo="emilysayshi"/>
+</scenariogroup>
+
+<scene id="emilysayshi">
+	<dialogue speaker="Emily" content="Hi! I’m Emily."/>
+	<dialogue speaker="Student" content="Hi! I’m a student"/>
+</scene>
+
 </lawtechstory>
