@@ -72,7 +72,15 @@ static NSString *const kGameStoryFileName = @"story";
     [self.gameView presentScene:self.overworldGameScene];
 }
 
-// FIXME: Create separate view class for GameViewController
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    
+    // Clear redirected input if there was one
+    [self.overworldGameScene redirectGameInput:GameControlViewStateNoPress];
+}
+
+// FIXME: Create separate view class for GameViewController(?)
 - (void)viewDidLayoutSubviews
 {
     [super viewDidLayoutSubviews];

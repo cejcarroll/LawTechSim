@@ -102,7 +102,6 @@ static const CGFloat kNearbyThresholdDistance = 25;
         [self addChild:self.bradNode];
         [self addChild:self.seiNode];
         [self addChild:self.emilyNode];
-        
         [self addChild:self.characterNode];
         
         

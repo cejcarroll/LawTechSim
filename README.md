@@ -168,6 +168,96 @@ Here are some examples of the aformentioned syntax. Hopefully this will work in 
 	SCENE_END:
 
 
+##### 4) Example Scenario for Sei
+
+	SCENARIO: Sei
+	IF:Sei knows you participated : Sei thanks you for participating
+	DEFAULT: Sei asks you if you participated in class project
+
+	SCENE: Sei thanks you for participating
+	*:Sei:Thanks for participating!
+	SCENE_END:
+
+	SCENE: Sei asks you if you participated in class project
+	*:Sei: Did you participate in the class project?
+
+	CHOICE:
+	Yes : Notify Sei you did participate
+	Not yet : NO_JUMP
+	CHOICE_END:
+
+	*:Sei:Okay, participate soon!
+
+	SCENE_END:
+
+
+	SCENE: Notify Sei you did participate
+
+	*:Student: Yes I have!
+	COMPLETED: Sei knows you participated
+
+	SCENE_END:
+
+
+##### 5) Example Scenario for Brad
+
+# Set up characters
+
+	SCENARIO: Brad
+	IF: Brad has been defeated: Brad gives you an A
+	IF: Brad knows you: Brad fights you
+	DEFAULT: Brad does not know who you are
+
+
+
+	SCENE: Brad does not know who you are
+
+	*:Brad: Hi. My name is Brad. I teach LawTech
+	*:Student: Hi, I am a student
+
+	COMPLETED: Brad knows you
+
+	SCENE_END:
+
+
+	SCENE: Brad fights you
+	*:Brad: Hey student. Do you think you beat me in Space Invader?
+
+	CHOICE:
+	Yes : Play Space Invader against Brad
+	Ignore : NO_JUMP
+	CHOICE_END:
+
+	SCENE_END:
+
+
+	SCENE: Play Space Invader against Brad
+	*:Brad: Think you can defeat me?
+
+	EVENT: Space Invader Brad
+	ON_SUCCESS: You beat Brad in Space Invader
+	ON_FAIL: You lost against Brad in Space Invader
+	EVENT_END:
+
+	SCENE_END:
+
+
+	SCENE: You beat Brad in Space Invader
+	*:Brad: Wow, I am amazed!
+	COMPLETED: Brad has been defeated
+	SCENE_END:
+
+	SCENE: You lost against Brad in Space Invader
+	*:Brad: Hah, You suck!
+	SCENE_END:
+
+
+
+	SCENE: Brad gives you an A
+	*:Brad: I am so impressed with your space invader skills, so I'm giving you an A
+	SCENE_END:
+
+
 ### Tips & Tricks
 
 Few tips and tricks to improve your experience. Unfortunately I'm probably not going to spend much time making the parser robust since it's not really part of the original project, only a utility to help story-making more decoupled with development of iOS game. That being said, following these tips should help not throw off the parser!
