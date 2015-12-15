@@ -201,8 +201,6 @@ Here are some examples of the aformentioned syntax. Hopefully this will work in 
 
 ##### 5) Example Scenario for Brad
 
-# Set up characters
-
 	SCENARIO: Brad
 	IF: Brad has been defeated: Brad gives you an A
 	IF: Brad knows you: Brad fights you
