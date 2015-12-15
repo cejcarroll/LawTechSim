@@ -92,12 +92,15 @@ NSString *const StoryStoreSpecialEventFail      = @"specialeventfailure";
     [self.activeSequence rewindToBeginning];
     self.currentEvent = nil;
     
-#ifdef STORY_LOG
-    NSLog(@"Activated scene %@", self.activeSequence.sceneId);
-#endif
-    
     if (self.activeSequence)
+    {
+#ifdef STORY_LOG
+        NSLog(@"Activated scene %@", self.activeSequence.sceneId);
+#endif
+        
         [self progressToNextEventWithOption:nil];
+    }
+    
 }
 
 - (void)cancelActiveEventSequence
