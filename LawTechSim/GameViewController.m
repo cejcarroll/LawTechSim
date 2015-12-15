@@ -159,6 +159,7 @@ static NSString *const kGameStoryFileName = @"story";
     /*   Stop character movement if event is triggered   */
     //    [self.characterNode setState:CharacterNodeStateStill];
     
+    /*   Redirect to overlay for choice box   */
     if (self.overlayView.swallowsAction)
     {
         [self.overlayView redirectGameInput:GameControlViewStateActionPress];
@@ -166,18 +167,30 @@ static NSString *const kGameStoryFileName = @"story";
     }
     
     
-    // StoryStore Temporary Test code.
-    if (![self.storyStore hasActiveEventSequence])
+    /*   Progress story based on current active event   */
+    if ([self.storyStore hasActiveEventSequence])
     {
-        [self.storyStore activateEventSequenceForId:@"Brad"];
-    }
-    else if ([self.storyStore.currentEvent eventType] == EventTypeSpecial)
-    {
-        [self.storyStore progressToNextEventWithOption:StoryStoreSpecialEventSuccess];
+        if ([self.storyStore.currentEvent eventType] == EventTypeSpecial)
+        {
+            // TODO: This selector should be sent on mini-game success / fail
+            [self.storyStore progressToNextEventWithOption:StoryStoreSpecialEventSuccess];
+        }
+        else
+        {
+            [self.storyStore progressToNextEventWithOption:nil];
+        }
     }
     else
     {
-        [self.storyStore progressToNextEventWithOption:nil];
+        /*   If no active event loaded, and there is an entity nearby, begin new interaction   */
+        NSString *nearbyEntityId = [self.gameScene nearbyEntityForCharacter];
+        
+        if (nearbyEntityId)
+        {
+            [self.gameScene redirectGameInput:GameControlViewStateNoPress];
+            [self.storyStore activateEventSequenceForId:nearbyEntityId];
+        }
+
     }
 }
 

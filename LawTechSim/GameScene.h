@@ -21,4 +21,14 @@
  */
 - (void)redirectGameInput:(GameControlViewState)state;
 
+
+/**
+ Returns NSString entityId of nearby NPC, if there are any.
+ Threshold is defined by an internal constant kNearbyThresholdDistance
+ 
+ @return NSString entityId, or nil if there are no nearby characters
+ */
+- (NSString *)nearbyEntityForCharacter;
+
+
 @end

@@ -81,6 +81,9 @@ static const CGFloat kTileMapLayerDistance = -10;
 /// Extra padding on collision to prevent being stuck on walls
 static const CGFloat kCollisionPadding = 0.5;
 
+/// Distance required to be considered "nearby"
+static const CGFloat kNearbyThresholdDistance = 25;
+
 - (instancetype)initWithSize:(CGSize)size
 {
     if (self = [super initWithSize:size])
@@ -142,7 +145,29 @@ static const CGFloat kCollisionPadding = 0.5;
     
     [self.characterNode setState:charState];
     
+}
+
+- (NSString *)nearbyEntityForCharacter
+{
+    CGFloat closestDist = CGFLOAT_MAX;
+    NPCNode *nearbyNPCNode = nil;
     
+    for (NPCNode *npcNode in self.npcNodes)
+    {
+        CGFloat dist = [self distanceBetweenPoint:self.characterNode.position
+                                          toPoint:npcNode.position];
+        
+        if (dist < closestDist)
+        {
+            closestDist = dist;
+            nearbyNPCNode = npcNode;
+        }
+    }
+    
+    if (closestDist < kNearbyThresholdDistance)
+        return nearbyNPCNode.entityId;
+    else
+        return nil;
 }
 
 
@@ -462,6 +487,20 @@ static const CGFloat kCollisionPadding = 0.5;
         npcNode.zPosition = kNPCZPositionForeground;
     else
         npcNode.zPosition = kNPCZPositionBackground;
+}
+
+/**
+ Returns distance between two points
+ //FIXME: Should move elsewhere
+ 
+ @param p1 CGPoint first point
+ @param p2 CGPoint second point
+ 
+ @return CGFloat distance between points
+ */
+- (CGFloat)distanceBetweenPoint:(CGPoint)p1 toPoint:(CGPoint)p2
+{
+    return sqrt(pow(p2.x-p1.x,2)+pow(p2.y-p1.y,2));
 }
 
 

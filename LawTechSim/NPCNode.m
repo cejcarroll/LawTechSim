@@ -12,6 +12,8 @@
 
 static NSString *const kStandbyActionKey = @"NPCStandby";
 
+static const CGFloat kNPCCollisionRectHeightInset = -5;
+
 #pragma mark - Public
 
 /// Runs repeating action once assigned
@@ -39,6 +41,14 @@ static NSString *const kStandbyActionKey = @"NPCStandby";
     {
         [self removeActionForKey:kStandbyActionKey];
     }
+}
+
+#pragma mark - EntityNode
+
+// Collision rect for NPC is little bigger for some space
+- (CGRect)collisionRect
+{
+    return CGRectInset([super collisionRect], 0, kNPCCollisionRectHeightInset);
 }
 
 

@@ -96,7 +96,8 @@ NSString *const StoryStoreSpecialEventFail      = @"specialeventfailure";
     NSLog(@"Activated scene %@", self.activeSequence.sceneId);
 #endif
     
-    [self progressToNextEventWithOption:nil];
+    if (self.activeSequence)
+        [self progressToNextEventWithOption:nil];
 }
 
 - (void)cancelActiveEventSequence
