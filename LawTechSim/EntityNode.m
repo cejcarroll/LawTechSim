@@ -10,6 +10,15 @@
 
 @implementation EntityNode
 
+/// Increase sprite size by this ratio to match tilemap
+static const CGFloat kScreenRatioMagnifier = 0.5;
+
+/// Size of collision box. Should be close to tile-size
+static const CGSize kCollisionBoxSize = {16, 8};
+
+/// Offset to bring bounding box closer to feet of character
+static const CGFloat kCollisionBoxYOffset = 10;
+
 - (instancetype)initWithEntityId:(NSString *)entityId
 {
     if (self = [super init])
@@ -18,9 +27,24 @@
         
         [self setTexture:self.stlDownTexture];
         [self setSize:self.stlDownTexture.size];
+        
+        [self setScale:kScreenRatioMagnifier];
     }
     
     return self;
+}
+
+#pragma mark - Public
+
+- (CGRect)collisionRect
+{
+    CGRect frame = self.frame;
+    
+    frame.origin = self.position;
+    frame.origin.y -= kCollisionBoxYOffset; // Shift down
+    frame.size = kCollisionBoxSize;
+    
+    return frame;
 }
 
 #pragma mark - Properties

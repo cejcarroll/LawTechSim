@@ -9,6 +9,7 @@
 #import "GameScene.h"
 #import "JSTileMap.h"
 #import "CharacterNode.h"
+#import "NPCNode.h"
 
 //#define COLLISION_DEBUG
 
@@ -22,6 +23,18 @@
 
 /// Representation of user character in screen
 @property (nonatomic, strong) CharacterNode *characterNode;
+
+/// Array of all NPC Nodes
+@property (nonatomic, strong) NSArray <NPCNode *> *npcNodes;
+
+/// Representation of NPC Brad
+@property (nonatomic, strong) NPCNode *bradNode;
+
+/// Representation of NPC Emily
+@property (nonatomic, strong) NPCNode *emilyNode;
+
+/// Representation of NPC Sei
+@property (nonatomic, strong) NPCNode *seiNode;
 
 /// Last time update: was called in game loop
 @property (nonatomic, assign) NSTimeInterval lastUpdateTimeInterval;
@@ -44,9 +57,23 @@ static NSString *const kCollisionLayer          = @"collisions";
 static NSString *const kLocationObjLayer        = @"locations";
 static NSString *const kLocationObjCharacterPos = @"characterLocation";
 static NSString *const kLocationObjNPCBradPos   = @"npcBradLocation";
+static NSString *const kLocationObjNPCSeiPos    = @"npcSeiLocation";
+static NSString *const kLocationObjNPCEmilyPos  = @"npcEmilyLocation";
+
+/*   NPC Constants   */
+static NSString *const kBradEntityId            = @"Brad";
+static NSString *const kSeiEntityId             = @"Sei";
+static NSString *const kEmilyEntityId           = @"Emily";
+
 
 /// Character's zPosition
 static const CGFloat kCharacterZPosition = -35;
+
+/// NPC'z zPosition when in front of character
+static const CGFloat kNPCZPositionForeground = -20;
+
+/// NPC's zPosition when behind character
+static const CGFloat kNPCZPositionBackground = -40;
 
 /// Space between zPosition of layers
 static const CGFloat kTileMapLayerDistance = -10;
@@ -63,9 +90,18 @@ static const CGFloat kCollisionPadding = 0.5;
         
         _lastUpdateTimeInterval = 0;
         
+        /*   Setup world nodes   */
         [self addChild:self.cameraNode];
         [self addChild:self.tileMapNode];
+        
+        
+        /*   Setup Entity nodes   */
+        [self addChild:self.bradNode];
+        [self addChild:self.seiNode];
+        [self addChild:self.emilyNode];
+        
         [self addChild:self.characterNode];
+        
         
 #ifdef COLLISION_DEBUG
         self.collisionBoxNode = [SKSpriteNode spriteNodeWithColor:[UIColor blueColor] size:CGSizeZero];
@@ -156,6 +192,52 @@ static const CGFloat kCollisionPadding = 0.5;
     return _characterNode;
 }
 
+- (NSArray <NPCNode *> *)npcNodes
+{
+    if (!_npcNodes)
+    {
+        _npcNodes = @[self.bradNode, self.emilyNode, self.seiNode];
+    }
+    
+    return _npcNodes;
+}
+
+- (NPCNode *)bradNode
+{
+    if (!_bradNode)
+    {
+        _bradNode = [[NPCNode alloc] initWithEntityId:kBradEntityId];
+        _bradNode.zPosition = kNPCZPositionBackground;
+        [self positionNode:_bradNode atLocationObj:kLocationObjNPCBradPos];
+    }
+    
+    return _bradNode;
+}
+
+- (NPCNode *)seiNode
+{
+    if (!_seiNode)
+    {
+        _seiNode = [[NPCNode alloc] initWithEntityId:kSeiEntityId];
+        _seiNode.zPosition = kNPCZPositionBackground;
+        [self positionNode:_seiNode atLocationObj:kLocationObjNPCSeiPos];
+    }
+    
+    return _seiNode;
+}
+
+- (NPCNode *)emilyNode
+{
+    if (!_emilyNode)
+    {
+        _emilyNode = [[NPCNode alloc] initWithEntityId:kEmilyEntityId];
+        _emilyNode.zPosition = kNPCZPositionBackground;
+        [self positionNode:_emilyNode atLocationObj:kLocationObjNPCEmilyPos];
+    }
+    
+    return _emilyNode;
+}
+
 #pragma mark - SKScene
 
 - (void)update:(NSTimeInterval)currentTime
@@ -189,17 +271,25 @@ static const CGFloat kCollisionPadding = 0.5;
         
         for (SKSpriteNode *tile in collisionTiles)
         {
-            CGRect intersection = CGRectIntersection(relativeCharFrame, tile.frame);
-            [self adjustCharacterNodeWithCollisionRect:intersection];
+            CGRect tileCollisionIntersection = CGRectIntersection(relativeCharFrame, tile.frame);
+            [self adjustCharacterNodeWithCollisionRect:tileCollisionIntersection];
         }
         
     }
-    
     
 #ifdef COLLISION_DEBUG
     [self updateCollisionDebugViews:collisionTiles];
 #endif
     
+    /*   Resolve NPC zPositions and collisions   */
+    CGRect npcCollisionIntersection = CGRectNull;
+    
+    for (NPCNode *npcNode in self.npcNodes)
+    {
+        [self adjustZPositionForNPCNode:npcNode];
+        npcCollisionIntersection = CGRectIntersection(self.characterNode.collisionRect, npcNode.collisionRect);
+        [self adjustCharacterNodeWithCollisionRect:npcCollisionIntersection];
+    }
 }
 
 - (void)didFinishUpdate
@@ -357,6 +447,21 @@ static const CGFloat kCollisionPadding = 0.5;
     [self.characterNode setState:CharacterNodeStateStill];
     [self.characterNode setPosition:newPos];
     
+}
+
+/**
+ Change zPosition of NPCNodes depending on characterNode's yPosition
+ Only changes value if npcNode is displayed within cameraNode's viewport
+ */
+- (void)adjustZPositionForNPCNode:(NPCNode *)npcNode;
+{
+    if (![self.cameraNode containsNode:npcNode])
+        return;
+    
+    if (npcNode.position.y < self.characterNode.position.y)
+        npcNode.zPosition = kNPCZPositionForeground;
+    else
+        npcNode.zPosition = kNPCZPositionBackground;
 }
 
 

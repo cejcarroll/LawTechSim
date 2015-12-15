@@ -22,8 +22,8 @@
 @implementation GameOverlayView
 
 /*   Dialog box   */
-static const CGFloat kBoxPadding = 10;
-static const CGFloat kDialogBoxHeight = 90;
+static const CGFloat kBoxPadding        = 10;
+static const CGFloat kDialogBoxHeight   = 90;
 
 - (instancetype)initWithFrame:(CGRect)frame
 {

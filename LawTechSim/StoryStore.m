@@ -75,8 +75,8 @@ NSString *const StoryStoreSpecialEventFail      = @"specialeventfailure";
 
 - (BOOL)hasActiveEventSequence
 {
-    BOOL hasActiveSequence = self.activeSequence && !self.activeSequence.isDone;
-    BOOL hasActiveEvent = self.currentEvent;
+    BOOL hasActiveSequence = self.activeSequence != nil && !self.activeSequence.isDone;
+    BOOL hasActiveEvent = self.currentEvent != nil;
     
     return hasActiveEvent || hasActiveSequence;
 }

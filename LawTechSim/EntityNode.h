@@ -10,7 +10,8 @@
 
 
 /**
- Encapsulates an SKNode with 12 assotiated textures based on entityId
+ Encapsulates an SKNode with 12 assotiated textures based on entityId.
+ Note: Each sprite should be 64x64 ish size. Sizes down by factor of 2 for sharpness on retina
  */
 @interface EntityNode : SKSpriteNode
 
@@ -42,6 +43,14 @@
  @return new EntityNode
  */
 - (instancetype)initWithEntityId:(NSString *)entityId;
+
+
+/**
+ Frame to detect collisions for CharacterNode
+ 
+ @return a CGRect indication the frame's position
+ */
+- (CGRect)collisionRect;
 
 
 @end

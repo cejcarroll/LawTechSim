@@ -69,6 +69,9 @@ static const CGFloat kTextBoxPadding = 5;
     {
         _textView = [[UITextView alloc] initWithFrame:CGRectZero];
         _textView.font = [UIFont fontWithName:UtilityViewFontName size:UtilityViewFontSize];
+        _textView.editable = NO;
+        _textView.scrollEnabled = NO;
+        _textView.userInteractionEnabled = NO;
     }
     
     return _textView;

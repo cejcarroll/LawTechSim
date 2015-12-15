@@ -153,6 +153,10 @@ static NSString *const kChoiceBoxBoldFontName = @"Arial-BoldMT";
     {
         _textView = [[UITextView alloc] initWithFrame:CGRectZero];
         
+        _textView.editable = NO;
+        _textView.scrollEnabled = NO;
+        _textView.userInteractionEnabled = NO;
+        
         [_textView setContentHuggingPriority:UILayoutPriorityDefaultHigh
                                      forAxis:UILayoutConstraintAxisVertical];
         [_textView setContentHuggingPriority:UILayoutPriorityDefaultHigh

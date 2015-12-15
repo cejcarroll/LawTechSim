@@ -43,12 +43,4 @@ typedef NS_ENUM(NSInteger, CharacterNodeState)
 - (void)updatePositionWithTimeInterval:(NSTimeInterval)deltaTime;
 
 
-/**
- Frame to detect collisions for CharacterNode
- 
- @return a CGRect indication the frame's position
- */
-- (CGRect)collisionRect;
-
-
 @end
