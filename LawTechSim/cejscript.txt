@@ -1,0 +1,774 @@
+
+
+#Brad Scenario
+
+
+SCENARIO: Brad
+IF: You Know Brad: Brad Talks About Class Project
+IF: Brad Sends You To Sei: You Need To Talk To Sei
+IF: You Talk To Sei: Sei Question One
+IF: Sei First A: Sei Question 2A
+IF: Sei First B: Sei Question 2B
+IF: Sei Second: Sei Question 3
+IF: You Defeated Sei: Brad Talks About Reading Responses
+IF: You Need To Talk To Emily: Emily Introduction
+IF: Talk To Emily: Emily Question 1
+IF: You Defeated Emily: Brad Talks About Final Projects
+IF: Brad Final Intro: Brad Question 1
+IF: Fooled Brad: Brad Question 3
+IF: Brad Final Battle: Brad End
+IF: Mini Game Prep: Mini Game
+IF: Mini Game Won: Defeated Brad
+IF: Mini Game Lost: DEATH
+IF: DEATH: You Die
+DEFAULT: Brad Does Not Know You
+
+
+#Introduction 
+
+SCENE: Brad Does Not Know You
+
+*:Emily: Talk to Professor Rosen!
+*:Sei: Talk to Professor Rosen!
+
+*:Brad: Greetings Student! My name is Brad, but you can call me Professor Rosen!
+*:Brad: Welcome to CPSC 183! A semester of expletives and memes await you!
+*:Student: Hi, Professor Rosen!
+
+CHOICE:
+Enroll: You Enroll
+Don't Enroll: You Don't Enroll
+CHOICE_END:
+
+SCENE_END:
+
+
+#Intro 2: confirmation
+
+SCENE: You Enroll
+
+*:Emily: Talk to Professor Rosen!
+*:Sei: Talk to Professor Rosen!
+
+*:Brad: Are you sure? I’m Crazy!
+
+CHOICE:
+Enroll Anyway: You Know Brad
+Don't Enroll: You Don't Enroll
+CHOICE_END:
+
+SCENE_END:
+
+
+#No enrollment 
+
+SCENE: You Don't Enroll
+
+*:Emily: Talk to Professor Rosen!
+*:Sei: Talk to Professor Rosen!
+
+*:Brad: You decided not to take LawTech and as a result did not learn good practices in legally navigating the web...
+*:Brad: You tried to copy that floppy, and were sued and sent to JAIL! Try again in 5-10 years.
+*:Student: Oh No!
+
+COMPLETED: DEATH
+
+SCENE_END:
+
+
+SCENE: Brad Talks About Class Project
+
+*:Emily: Talk to Professor Rosen!
+*:Sei: Talk to Professor Rosen!
+
+*:Brad: Now that you’re in the class, let’s get to work!
+
+# #4 weeks later
+
+*:Brad: Don’t forget students, the class project is an integral part of your learning!...
+*:Brad: Talk to Sei, who isn’t a TA, if you haven’t done anything yet... 
+*:Brad: What am I saying “if,” of course you haven’t done anything. Go talk to Sei, you delinquents.
+
+*:Student: (thinking to self) Crap! I haven’t done anything! I have to go see Sei!
+
+COMPLETED: Brad Sends You To Sei
+
+SCENE_END:
+
+##NOW WE GO SEE SEI
+
+SCENE: You Need To Talk To Sei
+
+*:Brad: Go see Sei!
+*:Emily: Hey, make sure you submit reading responses!
+
+*:Sei: Hi, I’m Sei. What do you need?
+*:Student: You're the TA, right?
+
+*:Sei: Nope, just a senior with the right priorities!
+*:Student: How do I get involved with the class project?
+
+*:Sei: I have some questions I need help with, why don’t you try to answer them?
+*:Student: Okay!
+
+COMPLETED: You Talk To Sei
+
+SCENE_END:
+
+
+SCENE: Sei Question One
+
+*:Brad: Go see Sei!
+*:Emily: Hey, make sure you submit reading responses!
+
+*:Sei: So we’re making a parody video mashup of Don’t Copy that Floppy and Shake it Off...
+*:Sei: but I don’t want us to get sued for copyright infringement...
+*:Sei: Do you know the principles of fair use, whatever that is?
+
+*:Student: OPTION A: Purpose, character, nature, potential market effect, and amount of material used!
+*:Student: OPTION B: As long as the parody is funny, it’s fair use!
+*:Student: OPTION C: The amount of original material used, and whether it incorporates other works.
+*:Student: OPTION D: Sorry, I forgot what you said, can you repeat that?
+
+CHOICE:
+OPTION A: Sei Question 2A Bridge
+OPTION B: Sei Wrong 2
+OPTION C: Sei Question 2B Bridge
+OPTION D: You Talk To Sei
+CHOICE_END:
+
+SCENE_END:
+
+
+SCENE: Sei Wrong 2
+
+*:Brad: Go see Sei!
+*:Emily: Hey, make sure you submit reading responses!
+
+*:Sei: No, not everyone thinks you’re funny.
+*:Student: Oh no!
+
+COMPLETED: DEATH
+
+SCENE_END:
+
+
+SCENE: Sei Question 2A Bridge
+
+
+*:Brad: Go see Sei!
+*:Emily: Hey, make sure you submit reading responses!
+
+
+*:Sei: Oh yeah, now i remember! Thanks!
+
+COMPLETED: Sei First A
+
+SCENE_END:
+
+
+SCENE: Sei Question 2A
+
+
+*:Brad: Go see Sei!
+*:Emily: Hey, make sure you submit reading responses!
+
+*:Sei: So if our video constitutes fair use and goes viral, and I start getting ad revenue, is it still fair use?
+
+*:Student: OPTION A: Maybe, depending on if the copyright owner sues and if the judge seeing the case takes a liberal or conservative reading of fair use, since it’s a very grey area...
+*:Student: Just wait it out for a duckface Congress, then you’ll be okay.
+*:Student: OPTION B: No, because impinging on the copyright owner’s potential market is the biggest factor in determining fair use, duh.
+*:Student: OPTION C: Yes, once fair use, always fair use, no matter how much money it make$$$$$$$$$$$.
+*:Student: OPTION D: Sorry, I forgot what you said, can you repeat that?
+
+CHOICE:
+OPTION A: Sei Question 3 Bridge From A
+OPTION B: Sei Wrong 2AB
+OPTION C: Sei Wrong 2AC
+OPTION D: Sei First A
+CHOICE_END:
+
+SCENE_END:
+
+
+SCENE: Sei Wrong 2AB
+
+*:Brad: Go see Sei!
+*:Emily: Hey, make sure you submit reading responses!
+
+*:Sei: No, you can sometimes make money off of fair use (think cover artists). You clearly don’t get it. 
+*:Student: Oh No!
+
+COMPLETED: DEATH
+
+SCENE_END:
+
+
+SCENE: Sei Wrong 2AC
+
+*:Brad: Go see Sei!
+*:Emily: Hey, make sure you submit reading responses!
+
+*:Sei: While that may be the way the law *should* operate, it’s not the way it does. You clearly don’t get it.
+*:Student: Oh No!
+
+COMPLETED: DEATH
+
+SCENE_END:
+
+
+SCENE: Sei Question 2B Bridge
+
+
+*:Brad: Go see Sei!
+*:Emily: Hey, make sure you submit reading responses!
+
+
+*:Sei: Oh, that makes sense! So I’ll make sure we combine multiple works.
+
+COMPLETED: Sei First B
+
+SCENE_END:
+
+
+SCENE: Sei Question 2B
+
+
+*:Brad: Go see Sei!
+*:Emily: Hey, make sure you submit reading responses!
+
+*:Sei: So if I put "Shake it Off" in the background of "Don’t Copy that Floppy" footage, that’s fair use? And I can claim ownership/profit from it?
+
+*:Student: OPTION A: No, because that’s not very transformative! You need to add effort and utilize your creativity!
+*:Student: OPTION B: Sure, mo money, mo problemz, right? That’s how lawyers work! 
+*:Student: OPTION C: It's not really fair use, but the copyright holders probably won't notice your video, so you'll be fine.
+*:Student: OPTION D: Sorry, I forgot what you said, can you repeat that?
+
+CHOICE:
+OPTION A: Sei Question 3 Bridge From B
+OPTION B: Sei Wrong 2BB
+OPTION C: Sei Wrong 2BC
+OPTION D: Sei First B
+CHOICE_END:
+
+SCENE_END:
+
+SCENE: Sei Wrong 2BB
+
+*:Brad: Go see Sei!
+*:Emily: Hey, make sure you submit reading responses!
+
+*:Sei: With that attitude, you're gonna get sued.
+*:Student: Oh No!
+
+COMPLETED: DEATH
+
+SCENE_END:
+
+
+SCENE: Sei Wrong 2BC
+
+*:Brad: Go see Sei!
+*:Emily: Hey, make sure you submit reading responses!
+
+*:Sei: That's still probably breaking the law though...Not a great idea.
+*:Student: Oh No!
+
+COMPLETED: DEATH
+
+SCENE_END:
+
+SCENE: Sei Question 3 Bridge From B
+
+
+*:Brad: Go see Sei!
+*:Emily: Hey, make sure you submit reading responses!
+
+
+*:Sei: Oh, I understand now! It’s about more than just combining works, it’s about making them into something new!
+
+COMPLETED: Sei Second
+
+SCENE_END:
+
+
+SCENE: Sei Question 3 Bridge From A
+
+*:Brad: Go see Sei!
+*:Emily: Hey, make sure you submit reading responses!
+
+*:Sei: I think I’m starting to understand now.
+
+COMPLETED: Sei Second
+SCENE_END:
+
+SCENE: Sei Question 3
+
+*:Brad: Go see Sei!
+*:Emily: Hey, make sure you submit reading responses!
+
+*:Sei: Ok, so if the video is copyright infringement and NOT fair use, how bad actually is it?
+
+*:Student: OPTION A: It’s only a total clusterfuck, you might get a DMCA takedown request.
+*:Student: OPTION B: It’s a total goat rodeo, your mom will hate you forever.
+*:Student: OPTION C: It’s definitely a cat circus.
+*:Student: OPTION D: Sorry, I forgot what you said, can you repeat that?
+
+CHOICE:
+OPTION A: Sei Conclusion
+OPTION B: Sei Conclusion
+OPTION C: Sei Conclusion
+OPTION D: Sei Second
+CHOICE_END:
+
+SCENE_END:
+
+SCENE: Sei Conclusion
+
+*:Brad: Go see Sei!
+*:Emily: Hey, make sure you submit reading responses!
+
+*:Sei: Yeah, better not risk it. I’ll make sure it’s transformative.
+*:Sei: Thanks for your help! You get full participation points!
+
+*:Student: Wait, do you decide grading?
+*:Sei: ...Bye! Go See Brad 
+
+#Should I send him to Brad here, or will you prompt that?
+
+COMPLETED: You Defeated Sei
+
+SCENE_END:
+
+##THAT IS THE END OF SEI
+##We Shouldn't Talk to Him Anymore
+##Okay? Please don't go back there!
+##I don't want to write more dialogue for him 
+##Please just leave him alone
+##Thanks Kind User...who had access to and read the source code? Aw damn. 
+##Okay just do whatever you want I quit 
+
+SCENE: Brad Talks About Reading Responses
+
+*:Sei: Go see Professor Rosen!
+*:Emily: Go see Professor Rosen!
+
+*:Brad: Make sure you handed in your 4 reading responses to Emily by tonight!
+*:Brad: Otherwise I'll fail you!
+*:Brad: Not in the "I haven't done what I should for you" sense, but in the literal F on your transcript way...
+*:Brad: Whatever! Just make sure you do the reading responses!
+
+*:Student: Shit! I’ve only done 2! I have to go see Emily!
+
+COMPLETED: You Need To Talk To Emily
+
+SCENE_END:
+
+##NOW WE GO SEE EMILY
+
+SCENE: Emily Introduction
+
+*:Sei: Go see Emily!
+*:Brad: Go see Emily!
+
+*:Emily: Hi! What's up?
+*:Student: I haven’t done the all the reading responses, but I need to pass this class! What can I do?
+*:Emily: Hmmm, how about taking a quiz in place of a reading response? If you get them all right, I’ll mark you as having completed all assignments.
+*:Student: Great! Let’s get started.
+
+COMPLETED: Talk To Emily
+
+SCENE_END:
+
+SCENE: Emily Question 1
+
+*:Sei: Go see Emily!
+*:Brad: Go see Emily!
+
+*:Emily: What is the difference between Norms and Laws?
+
+*:Student: OPTION A: They are the same!
+*:Student: OPTION B: Laws have repercussions that can send you to jail, while norms create a ceiling for things that may be lawful, but not socially acceptable. 
+*:Student: OPTION C: Norms are reinforced by societal standards, while laws are not.
+*:Student: OPTION D: Can we go over this again?
+
+CHOICE:
+OPTION A: Emily Death 1
+OPTION B: Emily Q2B
+OPTION C: Emily Q2C
+OPTION D: Talk To Emily
+CHOICE_END:
+
+SCENE_END:
+
+
+SCENE: Emily Death 1
+
+*:Sei: Go see Emily!
+*:Brad: Go see Emily!
+
+*:Emily: While both laws and norms bind your behavior and result in punishment by large powerful groups when broken, they are not the same.
+*:Emily: Sorry, I won't be able to pass you on this quiz. You fail!
+*:Student: Oh No!
+
+COMPLETED: DEATH
+
+SCENE_END:
+
+
+SCENE: Emily Q2B
+
+*:Sei: Go see Emily!
+*:Brad: Go see Emily!
+
+*:Emily: Looks like you paid attention in class. Nice work!
+
+*:Emily: How about this: A blogger who runs a music blog writes a post about Karmin's song covers...
+*:Emily: An anonymous person comments in a crude manner, tagging Karmin's facebook page in the process...
+*:Emily: Karmin finds this comment, removes the tag, and asks the blogger to take down the comment...
+*:Emily: The blogger is freaking out too much about a dm from Karmin, and ignores the request...
+*:Emily: Is this situation violating a norm or a law?
+
+*:Student: OPTION A: Norm!
+*:Student: OPTION B: Law!
+*:Student: OPTION C: ...Both?
+*:Student: OPTION D: Wait what? Bloggers? Singers? Can you repeat that?
+
+CHOICE:
+OPTION A: Emily Question 3
+OPTION B: Emily Death 2
+OPTION C: Emily Death 2
+OPTION D: Emily Q2B
+CHOICE_END:
+
+SCENE_END:
+
+SCENE: Emily Q2C
+
+*:Sei: Go see Emily!
+*:Brad: Go see Emily!
+
+*:Emily: Well that is sometimes true, like with underaged drinking...
+*:Emily: But there are some laws that are supported by societal norms.
+*:Emily: Can you come up with a good example for that?
+
+*:Student: OPTION A: J-walking!
+*:Student: OPTION B: Murder!
+*:Student: OPTION C: Separation of Church and State!
+*:Student: OPTION D: I'm confused. Can you repeat that?
+
+CHOICE:
+OPTION A: Emily Death 3
+OPTION B: Emily Question 3
+OPTION C: Emily Death 4
+OPTION D: Emily Q2C
+CHOICE_END:
+
+SCENE_END:
+
+
+SCENE: Emily Death 2
+
+*:Sei: Go see Emily!
+*:Brad: Go see Emily!
+
+*:Emily: Nope, sorry. I won't be able to pass you on this quiz. You fail!
+*:Student: Oh no!
+
+COMPLETED: DEATH
+
+SCENE_END:
+
+SCENE: Emily Death 3
+
+*:Sei: Go see Emily!
+*:Brad: Go see Emily!
+
+*:Emily: Yeah okay. Because Yale students just really crack down on J-walkers...
+*:Emily: Sorry, you don't get it. I won't be able to pass you.
+*:Student: Oh no!
+
+COMPLETED: DEATH
+
+SCENE_END:
+
+SCENE: Emily Death 4
+
+*:Sei: Go see Emily!
+*:Brad: Go see Emily!
+
+*:Emily: Dude have you NOT been keeping up with the Presidential Race? 
+*:Emily: That was so not the best option there...
+*:Emily: Sorry, I won't be able to pass you.
+*:Student: Oh no!
+
+COMPLETED: DEATH
+
+SCENE_END:
+
+SCENE: Emily Question 3
+
+*:Sei: Go see Emily!
+*:Brad: Go see Emily!
+
+*:Emily: Correct!
+*:Emily: Okay, Bonus Question: What does Brad--I mean, Professor Rosen--always bring to class?
+
+*:Student: OPTION A: Well, he always wears pants!
+*:Student: OPTION B: Claire's Cupcakes!
+*:Student: OPTION C: Werecows from Peru, Nebraska!
+*:Student: OPTION D: I don't really go to class, so this is hard. Can you repeat that?
+
+CHOICE:
+OPTION A: Emily Death 2 
+OPTION B: Emily Conclusion
+OPTION C: Emily Death 2
+OPTION D: Emily Question 3
+CHOICE_END:
+
+SCENE_END:
+
+SCENE: Emily Conclusion
+
+*:Sei: Go see Emily!
+*:Brad: Go see Emily!
+
+*:Emily: Wow, looks like you learned a lot this semester! You pass the reading response quiz! Nice job!
+*:Emily: I guess the last thing you need to focus on now is the final project, which is due tomorrow...
+*:Student: Oh No! I was gonna Woads tonight!
+*:Emily: Sucks to Suck...Go talk to Professor Rosen. TTFN!
+
+COMPLETED: You Defeated Emily
+
+SCENE_END:
+
+##THAT IS THE END OF EMILY
+##We shouldn't talk to her anymore
+##Like yes, she's super smart and cool
+##But be a good user and don't pester her
+##So I don't need more words.
+##I only have so many...
+
+SCENE: Brad Talks About Final Projects
+
+*:Emily: Talk to Professor Rosen!
+*:Sei: Talk to Professor Rosen!
+
+*:Brad: We’re coming up to the end of the semester, so if you haven’t come up with anything for the final project yet, you should talk to me!
+*:Student: Oh no! I haven’t thought about my project! I should go talk to Professor Rosen!
+*:Brad: You’ve grown wise with your training, but you still have a lot to learn. Let’s talk about your final project.
+*:Student: I was thinking I’d like to become a famous meme for my final project. If I get 10 million views, then I must be doing something right!
+*:Student: Or I'm a Kardashian 2.0 with a highly sexualized body image, but you know, same dif.
+*:Brad: Hmm.. that could be interesting... Let's discuss
+
+COMPLETED: Brad Final Intro
+
+SCENE_END:
+
+SCENE: Brad Question 1
+
+*:Emily: Good luck with your final project!
+*:Sei: Good luck with your final project!
+
+*:Brad: Okay, but what if you don’t pay your ISP special premium, so they stick you in the “slow lane” when people try to watch your video?
+
+*:Student: OPTION A: Then I eat a pint of Ben and Jerry’s and resign myself to a life of obscurity.
+*:Student: OPTION B: We should rally for Net Neutrality! Big Brother must be stopped!
+*:Student: OPTION C: Well, ISPs are seen as telecommunication utility providers, so they can’t show that sort of paid favoritism. 
+*:Student: OPTION D: Umm, what does ISP stand for? Repeat the beat plz.
+
+CHOICE:
+OPTION A: Brad Death 1
+OPTION B: Brad 2B Almost
+OPTION C: Brad 2C Correct
+OPTION D: Brad Final Intro
+CHOICE_END:
+
+SCENE_END:
+
+SCENE: Brad 2B Almost
+
+*:Sei: Good luck with your final project!
+*:Emily: Good luck with your final project!
+
+*:Brad: Yeah, I guess...
+*:Student: Phew, that was close.
+*:Brad: Why are you still fighting for Net Neutrality? We’ve already won! The internet trolls have finally served a purpose?
+
+*:Student: OPTION A: This is like reverse Ender's Game. We thought we won the actual battle, but it was just a game....
+*:Student: Time for Round 2.
+*:Student: OPTION B: Because ISPs are some of the lobbiests in the country, and are trying to convince them to repeal.
+*:Student: OPTION C: We should fight so that ISPs stop their monopolies and gerrymandering! That's almost Net Neutrality.
+*:Student: OPTION D: Got my iPod stuck on replay replay replay...(Repeat that please!)
+
+CHOICE:
+OPTION A: Brad Death 5
+OPTION B: Brad Fine
+OPTION C: Brad Fine
+OPTION D: Brad 2B Almost
+CHOICE_END:
+SCENE_END:
+
+SCENE: Brad Fine
+
+*:Sei: Good luck with your final project!
+*:Emily: Good luck with your final project!
+
+*:Brad: I suppose. Alright. You win this round.
+*:Student: Score!
+
+COMPLETED: Fooled Brad
+SCENE_END:
+
+SCENE: Brad 2C Correct
+
+*:Sei: Good luck with your final project!
+*:Emily: Good luck with your final project!
+
+*:Brad: I see you’ve been keeping up in lecture, nice work.
+*:Student: Thanks!
+*:Brad: Ok, let’s say you wanted everyone to be able to access your meme, not just people in the US...
+*:Brad: How would you make sure that your meme got to users in the developing world?
+
+*:Student: OPTION A: What kind of question is that? Everyone has the internet, dude! And my meme is a part of it.
+*:Student: OPTION B: I will put my meme on Facebook, so that it gets onto Internet.org, because Facebook’s walled garden is anything but objective.
+*:Student: OPTION C: I will put my meme on the dark web and hope that it arises from the depths.
+*:Student: OPTION D: I couldn’t hear your question because my own thoughts were deafening. Me Me Me Me Me! Can you repeat it?
+
+CHOICE:
+OPTION A: Brad Death 2
+OPTION B: Brad Question 3
+OPTION C: Brad Death 3
+OPTION D: Brad 2C Correct
+CHOICE_END:
+
+SCENE_END:
+
+
+SCENE: Brad Question 3
+
+*:Sei: Good luck with your final project!
+*:Emily: Good luck with your final project!
+
+*:Brad: Okay, so everyone can see your meme, but they still have to pay for it with data on mobile...
+*:Brad: How would you make sure ISPs gave the site hosting your meme a zero-rating, so people could watch it without paying?
+
+*:Student: OPTION A: Sneak onto sites, like Netflix, with zero-rating deals and deep pockets muahaha.
+*:Student: OPTION B: Isn't zero-rating just as big an issue as net neutrality? Shouldn't we be trying to fight that too?
+*:Student: OPTION C: Why would I want a "zero-rating" on my meme? I want 5 stars, yo!
+*:Student: OPTION D: Repetez que s'il vous plait! (Wut?)
+
+CHOICE:
+OPTION A: Brad Death 4
+OPTION B: Brad Final Battle
+OPTION C: Brad Death 4
+OPTION D: Brad Question 3
+CHOICE_END:
+
+SCENE_END:
+
+
+##Brad Deaths
+
+SCENE: Brad Death 1
+
+*:Sei: Good luck with your final project!
+*:Emily: Good luck with your final project!
+
+*:Brad: As much as I love ice cream, that's not the path to victory...
+*:Brad: You will only get 20 views. 17 will be from you looping it, and the rest will be from the TAs during grading.
+*:Brad: You fail!
+*:Student: Oh no!
+
+COMPLETED: DEATH
+
+SCENE_END:
+
+SCENE: Brad Death 2
+
+*:Sei: Good luck with your final project!
+*:Emily: Good luck with your final project!
+
+*:Brad: Well that's just blatantly false.
+*:Brad: Do you even go here?
+*:Brad: You fail!
+*:Student: Oh no!
+
+COMPLETED: DEATH
+
+SCENE_END:
+
+SCENE: Brad Death 3
+
+*:Sei: Good luck with your final project!
+*:Emily: Good luck with your final project!
+
+*:Brad: This isn't a Batman movie, you can't "rise" from the dark web...
+*:Brad: But can you show me how to get onto the dark web some time? For academic purposes, of course.
+*:Brad: Anyway, you fail! Sorry!
+*:Student: Oh no!
+
+COMPLETED: DEATH
+
+SCENE_END:
+
+SCENE: Brad Death 4
+
+*:Sei: Good luck with your final project!
+*:Emily: Good luck with your final project!
+
+*:Brad: You are either immoral, incompetent, or both.
+*:Brad: You fail!
+*:Student: Oh no!
+
+COMPLETED: DEATH
+
+SCENE_END:
+
+SCENE: Brad Death 5
+
+*:Sei: That's just kind of silly.
+*:Emily: Do you think this class is a joke? Ugh. You're awful.
+
+*:Brad: No. Just No. Get out. You fail.
+*:Student: Oh no!
+
+COMPLETED: DEATH
+
+SCENE_END:
+
+SCENE: Brad End
+
+*:Sei: Good luck with your final project!
+*:Emily: Good luck with your final project!
+
+*:Brad: Well, you've answered my questions, and as such I will pass you on your final project.
+*:Student: Hooray!
+*:Brad: But...you haven't passed the course yet!
+*:Student: What now?
+*:Brad: You have to beat me in this duel, and then you will win!
+*:Student: *Gulp* Okay. I will try.
+
+COMPLETED: Mini Game Prep
+
+SCENE_END:
+
+SCENE: Defeated Brad
+
+*:Brad: Congrads! You win! You get an A! Now you can call me Brad!
+*:Student: No, I couldn't. It feels wrong to call you anything besides Professor Rosen.
+*:Brad: Seriously, call me Brad.
+*:Student: Okay. Thanks...Brad.
+
+SCENE_END:
+
+
+
+
+
+
+
+
+
+
+
